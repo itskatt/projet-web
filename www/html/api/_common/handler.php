@@ -52,6 +52,18 @@ abstract class RouteHandler
     }
 
     /**
+     * Envoie une réponse JSON suite à un succées.
+     */
+    protected function sendOK(array $array): void
+    {
+        http_response_code(200);
+        $this->sendJSON(array_merge(
+            ["status" => "succes"],
+            $array
+        ));
+    }
+
+    /**
      * Gère la route en entier.
      */
     public function handle(): void
