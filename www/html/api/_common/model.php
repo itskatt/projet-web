@@ -7,20 +7,12 @@ class DatabaseConnector
 {
     private static $db;
 
-    /**
-     * Effectue une connection a la base de données.
-     */
-    private function getDb(): PDO
-    {
-        if ($this->db === null) {
-            $this->db = new PDO(
-                "mysql:host=localhost;dbname=tel;charset=utf8",
-                "root",
-                ""
-            );
-        }
-
-        return $this->db;
+    public function __construct() {
+        $this->db = new PDO(
+            "mysql:host=localhost;dbname=tel;charset=utf8",
+            "root",
+            ""
+        );
     }
 
     /**
@@ -29,10 +21,10 @@ class DatabaseConnector
     protected function query(string $sql, array $params = []): PDOStatement
     {
         if (empty($params)) {
-            return $this->getDb()->query($sql);
+            return $this->bd->query($sql);
         }
 
-        $result = $this->getDb()->prepare($sql);
+        $result = $this->db->prepare($sql);
         $result->execute($params);
 
         return $result;

@@ -4,7 +4,7 @@ require_once "model.php";
 
 abstract class RouteHandler
 {
-    private static DatabaseConnector $conn;
+    private ?DatabaseConnector $conn = null;
 
     /**
      * Renvoie le connecteur vers la base de données, le créant
