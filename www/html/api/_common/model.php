@@ -18,7 +18,7 @@ class DatabaseConnector
     /**
      * Execute la requête SQL et renvoie le résultat.
      */
-    protected function query(string $sql, array $params = []): PDOStatement
+    public function query(string $sql, array $params = []): PDOStatement
     {
         if (empty($params)) {
             return $this::$db->query($sql);
