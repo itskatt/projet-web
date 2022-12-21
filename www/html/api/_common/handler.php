@@ -13,7 +13,14 @@ abstract class RouteHandler
     protected function getConnector(): DatabaseConnector
     {
         if ($this->conn === null) {
-            $this->conn = new DatabaseConnector();
+            try {
+                $this->conn = new DatabaseConnector();
+            } catch (PDOException $e) {
+                $this->sendError(
+                    500,
+                    "Connexion à la base de données impossible ! ({$e->getMessage()})"
+                );
+            }
         }
 
         return $this->conn;
