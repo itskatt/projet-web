@@ -8,7 +8,7 @@ class DatabaseConnector
     private static $db;
 
     public function __construct() {
-        $this->db = new PDO(
+        $this::$db = new PDO(
             "mysql:host=localhost;dbname=tel;charset=utf8",
             "root",
             ""
@@ -21,10 +21,10 @@ class DatabaseConnector
     protected function query(string $sql, array $params = []): PDOStatement
     {
         if (empty($params)) {
-            return $this->bd->query($sql);
+            return $this::$db->query($sql);
         }
 
-        $result = $this->db->prepare($sql);
+        $result = $this::$db->prepare($sql);
         $result->execute($params);
 
         return $result;
