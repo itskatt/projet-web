@@ -1,7 +1,24 @@
 <?php
 
+require_once "model.php";
+
 abstract class RouteHandler
 {
+    private static DatabaseConnector $conn;
+
+    /**
+     * Renvoie le connecteur vers la base de données, le créant
+     * au passage si il n'existe pas.
+     */
+    protected function getConnector(): DatabaseConnector
+    {
+        if ($this->conn === null) {
+            $this->conn = new DatabaseConnector();
+        }
+
+        return $this->conn;
+    }
+
     /**
      * Determine si l'utilisateur de la route REST est autorisé
      * a faire son action.
