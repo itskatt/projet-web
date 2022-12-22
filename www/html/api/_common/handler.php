@@ -162,8 +162,6 @@ abstract class RouteHandler
             "Cette méthode http n'est pas supportée sur cette route."
         );
     }
-
-    // sendOK
 }
 
 /**
