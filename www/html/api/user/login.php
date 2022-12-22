@@ -34,8 +34,8 @@ class LoginHandler extends PublicHandler
             );
         }
 
-        // On est bon
-        // TODO : token et cie
+        $this->startSession($data["email"]);
+
         $this->sendOK([]);
     }
 }

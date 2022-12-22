@@ -64,6 +64,41 @@ abstract class RouteHandler
     }
 
     /**
+     * Démare une session après qu'un utilisateur se soit connecté.
+     */
+    protected function startSession(string $email, bool $rememberMe = false): void
+    {
+        $token = bin2hex(random_bytes(25));
+
+        if ($rememberMe) {
+            // 2 jours
+            $cookieTime = 60 * 60 * 24 * 2;
+            $sessionTime = "2 0:0";
+        } else {
+            // 20 min
+            $cookieTime = 60 * 20;
+            $sessionTime = "0:20";
+        }
+
+        $conn = $this->getConnector();
+        $conn->query(
+            <<<END
+            insert into session (client_email, token, expires)
+            values (:email, :token, addtime(now(), '$sessionTime'));
+            END,
+            [
+                "email" => $email,
+                "token" => $token
+            ]
+        );
+
+        // On nettoie les sessions expirées
+        $conn->query("delete from session where expires < now();");
+
+        setcookie("token", $token, time() + $cookieTime);
+    }
+
+    /**
      * Envoie le tableau passé en paramètre sous la forme d'un JSON.
      */
     protected function sendJSON(array $array): void
