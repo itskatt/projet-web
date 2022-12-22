@@ -43,7 +43,9 @@ class SingleArticleHandler extends PublicHandler
             );
         }
 
-        $this->sendOK($res);
+        $this->sendOK([
+            "article" => $res
+        ]);
     }
 }
 
