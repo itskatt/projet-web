@@ -4,6 +4,22 @@ require_once "../_common/handler.php";
 
 class AdminArticleHandler extends AdminRequiredHandler
 {
+    /**
+     * Verifie si un élément contenu dans un tableau est un entier valide.
+     */
+    private function validateInt(array $data, string $name): int
+    {
+        $object = $data[$name];
+        if (!is_int($object)) {
+            $this->sendError(
+                400,
+                "Le paramètre '$name' n'est pas un nombre !"
+            );
+        }
+
+        return (int) $object;
+    }
+
     protected function handlePOST(array $data): void
     {
         // TODO ? image
@@ -20,14 +36,7 @@ class AdminArticleHandler extends AdminRequiredHandler
         $supplierName = htmlspecialchars($data["supplier_name"]);
         $description = htmlspecialchars($data["description"]);
 
-        $rating = $data["rating"];
-        if (!is_int($rating)) {
-            $this->sendError(
-                400,
-                "Le paramètre rating n'est pas un nombre !"
-            );
-        }
-        $rating = (int) $rating;
+        $rating = $this->validateInt($data, "rating");
 
         if ($rating > 5 or $rating < 0) {
             $this->sendError(
@@ -36,23 +45,9 @@ class AdminArticleHandler extends AdminRequiredHandler
             );
         }
 
-        $year = $data["year"];
-        if (!is_int($year)) {
-            $this->sendError(
-                400,
-                "L'année n'est pas un nombre !"
-            );
-        }
-        $year = (int) $year;
+        $year = $this->validateInt($data, "year");
 
-        $quantity = $data["quantity"];
-        if (!is_int($quantity)) {
-            $this->sendError(
-                400,
-                "La quantité de l'article n'est pas un nombre !"
-            );
-        }
-        $quantity = (int) $quantity;
+        $quantity = $this->validateInt($data, "quantity");
 
         $supplierPrice = $data["supplier_price"];
         if (!(is_int($supplierPrice) or is_float($supplierPrice))) {
@@ -135,23 +130,9 @@ class AdminArticleHandler extends AdminRequiredHandler
             $data
         );
 
-        $articleId = $data["article_id"];
-        if (!is_int($articleId)) {
-            $this->sendError(
-                400,
-                "L'id de l'article n'est pas un nombre !"
-            );
-        }
-        $articleId = (int) $articleId;
+        $articleId = $this->validateInt($data, "article_id");
 
-        $quantity = $data["quantity"];
-        if (!is_int($quantity)) {
-            $this->sendError(
-                400,
-                "La quantité de l'article n'est pas un nombre !"
-            );
-        }
-        $quantity = (int) $quantity;
+        $quantity = $this->validateInt($data, "quantity");
 
         $conn = $this->getConnector();
         $conn->query(
