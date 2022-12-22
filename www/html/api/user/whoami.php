@@ -6,13 +6,13 @@ class WhoAmIHandler extends PublicHandler
 {
     protected function handleGET(): void
     {
-        $token = $_COOKIE["token"];
-
-        if (!$token) {
+        if (!isset($_COOKIE["token"])) {
             $this->sendOK(
                 ["message" => "Personne n'est connecté (pas de cookies)."]
             );
         }
+
+        $token = $_COOKIE["token"];
 
         $conn = $this->getConnector();
         $email = $conn->query(
