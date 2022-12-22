@@ -1,7 +1,6 @@
 create table if not exists Client (
     email varchar(30),
-    password_ varchar(30) not null,
-    salt varchar(10) not null,
+    password_ varchar(255) not null,
     last_name varchar(30) not null,
     first_name varchar(30) not null,
     admin_ boolean not null,
