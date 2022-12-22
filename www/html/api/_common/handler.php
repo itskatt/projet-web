@@ -285,6 +285,6 @@ abstract class AdminRequiredHandler extends LoginRequiredHandler
             ["token" => $token]
         )->fetch(PDO::FETCH_NUM)[0];
 
-        return $admin;
+        return boolval($admin);
     }
 }
