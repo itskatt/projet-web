@@ -6,14 +6,14 @@ class SingleArticleHandler extends PublicHandler
 {
     protected function handleGET(): void
     {
-        $conn = $this->getConnector();
-
         if (!isset($_GET["id"])) {
             $this->sendError(
                 400,
                 "Aucun ID renseigné pour trouver l'article."
             );
         }
+
+        $conn = $this->getConnector();
 
         $id = $_GET["id"];
 
