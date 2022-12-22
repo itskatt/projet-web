@@ -8,6 +8,15 @@ create table if not exists Client (
     primary key (email)
 );
 
+create table if not exists Session (
+    id int auto_increment,
+    client_email varchar(30),
+    token varchar(50),
+    expires datetime,
+    primary key (id),
+    foreign key (client_email) references Client(email)
+);
+
 create table if not exists Cart (
     id int auto_increment,
     client_email varchar(30),
