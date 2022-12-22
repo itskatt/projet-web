@@ -149,19 +149,25 @@ abstract class RouteHandler
             $method = $_SERVER["REQUEST_METHOD"];
             switch ($method) {
                 case "PUT":
-                    $this->handlePUT();
+                    $request_body = file_get_contents("php://input");
+                    $data = json_decode($request_body, true);
+                    $this->handlePUT($data);
                     break;
+
                 case "POST":
                     $request_body = file_get_contents("php://input");
                     $data = json_decode($request_body, true);
                     $this->handlePOST($data);
                     break;
+
                 case "GET":
                     $this->handleGET();
                     break;
+
                 case "DELETE":
                     $this->handleDELETE();
                     break;
+
                 default:
                     // handle_error($request);
                     break;
@@ -178,7 +184,7 @@ abstract class RouteHandler
      * Gère une appel fait avec une méthode PUT.
      * Par default produit une erreur.
      */
-    protected function handlePUT(): void
+    protected function handlePUT(array $data): void
     {
         $this->sendError(
             405,
