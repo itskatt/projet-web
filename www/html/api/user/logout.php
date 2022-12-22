@@ -9,7 +9,7 @@ class LogoutHandler extends LoginRequiredHandler
         $token = $_COOKIE["token"];
 
         // On supprime le cookie
-        setcookie("token", "", time() - 10);
+        setcookie("token", "", time() - 10, "/");
 
         // Et la/les session(s) dans la BDD
         $conn = $this->getConnector();

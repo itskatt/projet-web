@@ -95,7 +95,7 @@ abstract class RouteHandler
         // On nettoie les sessions expirées
         $conn->query("delete from session where expires < now();");
 
-        setcookie("token", $token, time() + $cookieTime);
+        setcookie("token", $token, time() + $cookieTime, "/");
     }
 
     /**
