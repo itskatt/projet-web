@@ -101,7 +101,9 @@ abstract class RouteHandler
                 $this->handlePUT();
                 break;
             case "POST":
-                $this->handlePOST();
+                $request_body = file_get_contents("php://input");
+                $data = json_decode($request_body, true);
+                $this->handlePOST($data);
                 break;
             case "GET":
                 $this->handleGET();
@@ -131,7 +133,7 @@ abstract class RouteHandler
      * Gère une appel fait avec une méthode POST.
      * Par default produit une erreur.
      */
-    protected function handlePOST(): void
+    protected function handlePOST(array $data): void
     {
         $this->sendError(
             405,
