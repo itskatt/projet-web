@@ -12,6 +12,15 @@ class RegistrationHandler extends PublicHandler
         );
 
         $email = $data["email"];
+
+        // L'email est-elle valide ?
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->sendError(
+                400,
+                "Adresse email invalide."
+            );
+        }
+
         $conn = $this->getConnector();
 
         // L'utilisateur existe déjà ?
