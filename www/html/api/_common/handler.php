@@ -263,3 +263,28 @@ abstract class LoginRequiredHandler extends RouteHandler
         return true;
     }
 }
+
+/**
+ * Routes nécessitant qu'un admininistrateur soit connecté.
+ */
+abstract class AdminRequiredHandler extends LoginRequiredHandler
+{
+    protected function authorised(): bool
+    {
+        parent::authorised();
+
+        $token = $_COOKIE["token"];
+
+        $conn = $this->getConnector();
+        $admin = $conn->query(
+            <<<END
+            select admin_ from client c
+            inner join session s on c.email = s.client_email
+            where token = :token;
+            END,
+            ["token" => $token]
+        )->fetch(PDO::FETCH_NUM)[0];
+
+        return $admin;
+    }
+}
