@@ -49,6 +49,21 @@ abstract class RouteHandler
     }
 
     /**
+     * Verifie que les champs sont bien présent dans les données.
+     */
+    protected function checkFields($fields, $data): void
+    {
+        foreach ($fields as $field) {
+            if (!isset($data[$field])) {
+                $this->sendError(
+                    400,
+                    "Champ obligatoire manquant : $field"
+                );
+            }
+        }
+    }
+
+    /**
      * Envoie le tableau passé en paramètre sous la forme d'un JSON.
      */
     protected function sendJSON(array $array): void

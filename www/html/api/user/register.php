@@ -6,16 +6,10 @@ class RegistrationHandler extends PublicHandler
 {
     protected function handlePOST($data): void
     {
-        $fields = ["email", "password", "last_name", "first_name"];
-
-        foreach ($fields as $field) {
-            if (!isset($data[$field])) {
-                $this->sendError(
-                    400,
-                    "Champ obligatoire manquant : $field"
-                );
-            }
-        }
+        $this->checkFields(
+            ["email", "password", "last_name", "first_name"],
+            $data
+        );
 
         $email = $data["email"];
         $conn = $this->getConnector();
