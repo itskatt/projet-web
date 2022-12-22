@@ -127,6 +127,43 @@ class AdminArticleHandler extends AdminRequiredHandler
             "article_id" => $articleId
         ]);
     }
+
+    protected function handlePUT(array $data): void
+    {
+        $this->checkFields(
+            ["article_id", "quantity"],
+            $data
+        );
+
+        $articleId = $data["article_id"];
+        if (!is_int($articleId)) {
+            $this->sendError(
+                400,
+                "L'id de l'article n'est pas un nombre !"
+            );
+        }
+        $articleId = (int) $articleId;
+
+        $quantity = $data["quantity"];
+        if (!is_int($quantity)) {
+            $this->sendError(
+                400,
+                "La quantité de l'article n'est pas un nombre !"
+            );
+        }
+        $quantity = (int) $quantity;
+
+        $conn = $this->getConnector();
+        $conn->query(
+            <<<END
+            update stock
+            set quantity = $quantity
+            where article_id = $articleId;
+            END
+        );
+
+        $this->sendOK([]);
+    }
 }
 
 $handler = new AdminArticleHandler();
