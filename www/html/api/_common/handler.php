@@ -142,28 +142,35 @@ abstract class RouteHandler
      */
     public function handle(): void
     {
-        $this->check();
+        try {
+            $this->check();
 
-        // Quelle methode utiliser
-        $method = $_SERVER["REQUEST_METHOD"];
-        switch ($method) {
-            case "PUT":
-                $this->handlePUT();
-                break;
-            case "POST":
-                $request_body = file_get_contents("php://input");
-                $data = json_decode($request_body, true);
-                $this->handlePOST($data);
-                break;
-            case "GET":
-                $this->handleGET();
-                break;
-            case "DELETE":
-                $this->handleDELETE();
-                break;
-            default:
-                // handle_error($request);
-                break;
+            // Quelle methode utiliser
+            $method = $_SERVER["REQUEST_METHOD"];
+            switch ($method) {
+                case "PUT":
+                    $this->handlePUT();
+                    break;
+                case "POST":
+                    $request_body = file_get_contents("php://input");
+                    $data = json_decode($request_body, true);
+                    $this->handlePOST($data);
+                    break;
+                case "GET":
+                    $this->handleGET();
+                    break;
+                case "DELETE":
+                    $this->handleDELETE();
+                    break;
+                default:
+                    // handle_error($request);
+                    break;
+            }
+        } catch (Error $e) {
+            $this->sendError(
+                500,
+                "Erreur lors de la gestion de la route : {$e->getMessage()}"
+            );
         }
     }
 
@@ -223,6 +230,36 @@ abstract class PublicHandler extends RouteHandler
 {
     protected function authorised(): bool
     {
+        return true;
+    }
+}
+
+/**
+ * Routes nécessitant qu'un utilisateur soit connecté pour être utilisées.
+ */
+abstract class LoginRequiredHandler extends RouteHandler
+{
+    protected function authorised(): bool
+    {
+        if (!isset($_COOKIE["token"])) {
+            return false;
+        }
+
+        $token = $_COOKIE["token"];
+
+        $conn = $this->getConnector();
+        $email = $conn->query(
+            <<<END
+            select client_email from session where expires > now() and token = :token
+            order by expires desc;
+            END,
+            ["token" => $token]
+        )->fetch(PDO::FETCH_NUM)[0];
+
+        if (!$email) {
+            return false;
+        }
+
         return true;
     }
 }
