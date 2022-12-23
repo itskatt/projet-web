@@ -68,4 +68,5 @@ create table if not exists Stock (
     quantity int default 0,
     primary key (id),
     foreign key (article_id) references Article(id)
+                                 on delete cascade
 );
