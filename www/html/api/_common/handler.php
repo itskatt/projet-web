@@ -277,7 +277,9 @@ abstract class AdminRequiredHandler extends LoginRequiredHandler
 {
     protected function authorised(): bool
     {
-        parent::authorised();
+        if (!parent::authorised()) {
+            return false;
+        }
 
         $token = $_COOKIE["token"];
 
