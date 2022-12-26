@@ -145,6 +145,16 @@ class AdminArticleHandler extends AdminRequiredHandler
 
         $this->sendOK([]);
     }
+
+    protected function handleDELETE(): void
+    {
+        if (!isset($_GET["id"])) {
+            $this->sendError(
+                400,
+                "Aucun ID renseigné pour supprimer l'article."
+            );
+        }
+    }
 }
 
 $handler = new AdminArticleHandler();

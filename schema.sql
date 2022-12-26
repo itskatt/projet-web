@@ -58,8 +58,8 @@ create table if not exists Cart_Article (
     article_id int,
     quantity int default 0,
     primary key (cart_id, article_id),
-    foreign key (cart_id) references Cart(id),
-    foreign key (article_id) references Article(id)
+    foreign key (cart_id) references Cart(id) on delete cascade,
+    foreign key (article_id) references Article(id) on delete cascade
 );
 
 create table if not exists Stock (
