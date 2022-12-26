@@ -245,6 +245,11 @@ abstract class PublicHandler extends RouteHandler
  */
 abstract class LoginRequiredHandler extends RouteHandler
 {
+    /**
+     * L'adresse email de la personne connectée.
+     */
+    protected string $email;
+
     protected function authorised(): bool
     {
         if (!isset($_COOKIE["token"])) {
@@ -266,6 +271,7 @@ abstract class LoginRequiredHandler extends RouteHandler
             return false;
         }
 
+        $this->email = $email;
         return true;
     }
 }
