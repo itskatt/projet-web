@@ -154,6 +154,18 @@ class AdminArticleHandler extends AdminRequiredHandler
                 "Aucun ID renseigné pour supprimer l'article."
             );
         }
+
+        $conn = $this->getConnector();
+        $conn->query(
+            <<<END
+            delete from article
+            where id = :id;
+            END, [
+                "id" => $_GET["id"]
+            ]
+        );
+
+        $this->sendOK([]);
     }
 }
 
