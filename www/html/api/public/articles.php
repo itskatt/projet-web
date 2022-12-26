@@ -40,7 +40,7 @@ class MultipleArticleHandler extends PublicHandler
         if (!$res) {
             $this->sendError(
                 404,
-                "Cet page n'existe pas."
+                "Cette page n'existe pas."
             );
         }
 
