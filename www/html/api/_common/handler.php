@@ -250,6 +250,28 @@ abstract class LoginRequiredHandler extends RouteHandler
      */
     protected string $email;
 
+    /**
+     * Renvoie l'Id du panier courant (non commandé).
+     */
+    protected function getCurrentCartId(): int
+    {
+        $conn = $this->getConnector();
+
+        $currentCardId = $conn->query(
+            <<<END
+            select id from cart
+            where id not in (
+                select c.id from cart c
+                inner join invoice i on c.id = i.cart_id
+                where c.client_email = :email
+            );
+            END,
+            ["email" => $this->email]
+        )->fetch(PDO::FETCH_NUM)[0];
+
+        return $currentCardId;
+    }
+
     protected function authorised(): bool
     {
         if (!isset($_COOKIE["token"])) {
