@@ -184,7 +184,7 @@ abstract class RouteHandler
      * Gère une appel fait avec une méthode PUT.
      * Par default produit une erreur.
      */
-    protected function handlePUT(array $data): void
+    protected function handlePUT(?array $data): void
     {
         $this->sendError(
             405,
@@ -196,7 +196,7 @@ abstract class RouteHandler
      * Gère une appel fait avec une méthode POST.
      * Par default produit une erreur.
      */
-    protected function handlePOST(array $data): void
+    protected function handlePOST(?array $data): void
     {
         $this->sendError(
             405,
