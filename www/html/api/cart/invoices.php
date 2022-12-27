@@ -12,7 +12,7 @@ class InvoicesHandler extends LoginRequiredHandler
             select i.id "invoice_id",
                     i.cart_id,
                     i.created,
-                    (select count(article_id) from cart_article
+                    (select sum(quantity) from cart_article
                         where cart_id = i.cart_id) "num_articles"
                 from invoice i
                 inner join cart c on i.cart_id = c.id
