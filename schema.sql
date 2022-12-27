@@ -26,7 +26,7 @@ create table if not exists Cart (
 create table if not exists Invoice (
     id int auto_increment,
     cart_id int,
-    created date not null,
+    created datetime not null,
     primary key (id),
     foreign key (cart_id) references Cart(id)
 );
