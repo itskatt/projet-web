@@ -175,7 +175,7 @@ abstract class RouteHandler
         } catch (Throwable $e) {
             $this->sendError(
                 500,
-                "Erreur lors de la gestion de la route : {$e->getMessage()}\n{$e->getTraceAsString()}"
+                "Erreur (". get_class($e). ") lors de la gestion de la route : {$e->getMessage()}\n{$e->getTraceAsString()}"
             );
         }
     }
