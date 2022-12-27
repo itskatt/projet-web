@@ -47,6 +47,7 @@ class CurrentCartHandler extends LoginRequiredHandler
         }
 
         $this->sendOK([
+            "cart_id" => $currentCartId,
             "articles" => $cart,
             "price_no_tax" => $priceNoTax,
             "price_tax" => $priceNoTax * 1.2
