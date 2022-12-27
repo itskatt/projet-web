@@ -98,7 +98,7 @@ class UpdateCartHandler extends LoginRequiredHandler
                         "cid" => $currentCardId,
                         "aid" => $articleToModify["article_id"]
                     ]
-                );
+                )->fetch(PDO::FETCH_NUM)[0];
 
                 if ($res == 0) {
                     //insert
