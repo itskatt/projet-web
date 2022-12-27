@@ -20,7 +20,9 @@ class CurrentCartHandler extends LoginRequiredHandler
                     image_ "image",
                     s.name_ "supplier_name",
                     s2.quantity "stock_quantity",
-                    ca.quantity "cart_quantity"
+                    ca.quantity "cart_quantity",
+                    ca.quantity * supplier_price "price_no_tax",
+                    ca.quantity * supplier_price * 1.2 "price_tax"
             from article a
                     inner join supplier s on a.supplier_id = s.id
                     inner join stock s2 on a.id = s2.article_id
