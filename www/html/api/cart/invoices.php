@@ -1,0 +1,30 @@
+<?php
+
+require_once "../_common/handler.php";
+
+class InvoicesHandler extends LoginRequiredHandler 
+{
+    protected function handleGET(): void
+    {
+        $conn = $this->getConnector();
+        $invoices = $conn->query(
+            <<<END
+            select i.id "invoice_id",
+                    i.cart_id,
+                    i.created,
+                    (select count(article_id) from cart_article
+                        where cart_id = i.cart_id) "num_articles"
+                from invoice i
+                inner join cart c on i.cart_id = c.id
+                where c.client_email = 'raph10@mail.com';
+            END
+        )->fetchAll(PDO::FETCH_ASSOC);
+
+        $this->sendOK([
+            "invoices" => $invoices
+        ]);
+    }
+}
+
+$handler = new InvoicesHandler();
+$handler->handle();
