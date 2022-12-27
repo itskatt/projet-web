@@ -8,6 +8,13 @@ class CurrentCartHandler extends LoginRequiredHandler
     {
         $currentCartId = $this->getCurrentCartId();
 
+        if (!$currentCartId) {
+            $this->sendError(
+                404,
+                "Il n'y a pas de panier actuelement modifiable, veillez en créer un."
+            );
+        }
+
         $conn = $this->getConnector();
         $cart = $conn->query(
             <<<END
