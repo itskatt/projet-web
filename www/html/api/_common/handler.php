@@ -253,7 +253,7 @@ abstract class LoginRequiredHandler extends RouteHandler
     /**
      * Renvoie l'Id du panier courant (non commandé).
      */
-    protected function getCurrentCartId(): int
+    protected function getCurrentCartId(): ?int
     {
         $conn = $this->getConnector();
 
