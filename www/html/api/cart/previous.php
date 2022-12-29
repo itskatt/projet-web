@@ -17,7 +17,7 @@ class PreviousCartHandler extends LoginRequiredHandler
 
         $id = $_GET["id"];
 
-        $cart = $conn->query(
+        $articles = $conn->query(
             <<<END
             select a.id as "article_id",
                 a.name_ "article_name",
@@ -38,9 +38,9 @@ class PreviousCartHandler extends LoginRequiredHandler
             where c.id = :id;
             END,
             ["id" => $id]
-        )->fetch(PDO::FETCH_ASSOC);
+        )->fetchAll(PDO::FETCH_ASSOC);
 
-        if (!$cart) {
+        if (!$articles) {
             // On verifie si le panier n'existe pas ou est vide
             $invoice = $conn->query(
                 "select id from invoice where cart_id = :id;",
@@ -54,11 +54,18 @@ class PreviousCartHandler extends LoginRequiredHandler
                 );
             }
 
-            $cart = [];
+            $articles = [];
+        }
+
+        $priceNoTax = 0;
+        foreach ($articles as $article) {
+            $priceNoTax += $article["price_no_tax"];
         }
 
         $this->sendOK([
-            "cart" => $cart
+            "articles" => $articles,
+            "price_no_tax" => $priceNoTax,
+            "price_tax" => $priceNoTax * 1.2
         ]);
     }
 }
