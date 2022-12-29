@@ -16,7 +16,8 @@ class LoginHandler extends PublicHandler
         $res = $conn->query(
             <<<END
             select email,
-                   password_ "password"
+                   password_ "password",
+                   admin_ "admin"
             from client
             where email = :email;
             END,
@@ -34,9 +35,19 @@ class LoginHandler extends PublicHandler
             );
         }
 
+        // Si l'utilisateur est un admin, il reçois un avertissement si le stock d'un article < 10
+        $warnings = [];
+        if ($res["admin"]) {
+            $warnings = $conn->query(
+                "select article_id, quantity from stock where quantity < 10;"
+            )->fetchAll(PDO::FETCH_ASSOC);
+        }
+
         $this->startSession($data["email"]);
 
-        $this->sendOK([]);
+        $this->sendOK([
+            "warnings" => $warnings
+        ]);
     }
 }
 
