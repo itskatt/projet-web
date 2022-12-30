@@ -7,7 +7,8 @@ class DatabaseConnector
 {
     private static $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this::$db = new PDO(
             "mysql:host=localhost;dbname=tel;charset=utf8",
             "root",
@@ -54,4 +55,3 @@ class DatabaseConnector
         return $this::$db->rollBack();
     }
 }
-

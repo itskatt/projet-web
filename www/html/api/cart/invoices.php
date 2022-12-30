@@ -2,7 +2,7 @@
 
 require_once "../_common/handler.php";
 
-class InvoicesHandler extends LoginRequiredHandler 
+class InvoicesHandler extends LoginRequiredHandler
 {
     protected function handleGET(): void
     {

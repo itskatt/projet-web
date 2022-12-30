@@ -8,7 +8,7 @@ class CreateCartHandler extends LoginRequiredHandler
     {
         // Est-ce qu'il y a déja un panier non-commandé ?
         $currentCardId = $this->getCurrentCartId();
-        
+
         if ($currentCardId) {
             $this->sendError(
                 409,

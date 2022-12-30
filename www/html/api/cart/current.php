@@ -2,7 +2,7 @@
 
 require_once "../_common/handler.php";
 
-class CurrentCartHandler extends LoginRequiredHandler 
+class CurrentCartHandler extends LoginRequiredHandler
 {
     protected function handleGET(): void
     {

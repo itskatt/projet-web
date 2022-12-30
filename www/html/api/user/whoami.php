@@ -22,7 +22,7 @@ class WhoAmIHandler extends PublicHandler
             END,
             ["token" => $token]
         )->fetch(PDO::FETCH_NUM)[0];
-        
+
         if (!$email) {
             $this->sendOK(
                 ["message" => "Personne n'est connecté (session expirée)."]

@@ -2,7 +2,7 @@
 
 require_once "../_common/handler.php";
 
-class DeleteCartHandler extends LoginRequiredHandler 
+class DeleteCartHandler extends LoginRequiredHandler
 {
     protected function handleDELETE(): void
     {

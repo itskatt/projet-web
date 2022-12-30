@@ -160,7 +160,8 @@ class AdminArticleHandler extends AdminRequiredHandler
             <<<END
             delete from article
             where id = :id;
-            END, [
+            END,
+            [
                 "id" => $_GET["id"]
             ]
         );
