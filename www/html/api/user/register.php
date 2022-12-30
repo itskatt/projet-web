@@ -21,6 +21,14 @@ class RegistrationHandler extends PublicHandler
             );
         }
 
+        // Le nom et prénom ne doivent pas être vide
+        if (strlen($data["last_name"]) == 0 or strlen($data["first_name"]) == 0) {
+            $this->sendError(
+                400,
+                "Le nom ou le prénom ne peuvent être vide."
+            );
+        }
+
         $conn = $this->getConnector();
 
         // L'utilisateur existe déjà ?
