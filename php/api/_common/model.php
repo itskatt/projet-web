@@ -1,5 +1,7 @@
 <?php
 
+require_once "../../../config.php";
+
 /**
  * Connexion a notre base de données.
  */
@@ -11,8 +13,8 @@ class DatabaseConnector
     {
         $this::$db = new PDO(
             "mysql:host=localhost;dbname=tel;charset=utf8",
-            "root",
-            ""
+            DB_USER,
+            DB_PASSWORD
         );
     }
 

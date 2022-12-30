@@ -1,5 +1,7 @@
 .idea
 
+config.php
+
 # Logs
 logs
 *.log
