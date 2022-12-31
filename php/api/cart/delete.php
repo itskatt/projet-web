@@ -2,6 +2,9 @@
 
 require_once "../_common/handler.php";
 
+/**
+ * Supprime le panier courant
+ */
 class DeleteCartHandler extends LoginRequiredHandler
 {
     protected function handleDELETE(): void

@@ -2,6 +2,9 @@
 
 require_once "../_common/handler.php";
 
+/**
+ * Donne des informations sur le panier courant.
+ */
 class CurrentCartHandler extends LoginRequiredHandler
 {
     protected function handleGET(): void

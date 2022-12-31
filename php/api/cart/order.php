@@ -2,6 +2,9 @@
 
 require_once "../_common/handler.php";
 
+/**
+ * Effectue la commande du panier courrant.
+ */
 class OrderCartHandler extends LoginRequiredHandler
 {
     protected function handlePOST(?array $data): void

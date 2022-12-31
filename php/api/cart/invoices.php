@@ -2,6 +2,9 @@
 
 require_once "../_common/handler.php";
 
+/**
+ * Liste des factures.
+ */
 class InvoicesHandler extends LoginRequiredHandler
 {
     protected function handleGET(): void

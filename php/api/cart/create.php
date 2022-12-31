@@ -2,6 +2,9 @@
 
 require_once "../_common/handler.php";
 
+/**
+ * Crée un panier.
+ */
 class CreateCartHandler extends LoginRequiredHandler
 {
     protected function handlePOST(?array $data): void

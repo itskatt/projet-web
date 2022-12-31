@@ -2,6 +2,9 @@
 
 require_once "../_common/handler.php";
 
+/**
+ * Statistiques sur le site.
+ */
 class AdminStatsHandler extends AdminRequiredHandler
 {
     protected function handleGET(): void

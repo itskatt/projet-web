@@ -2,6 +2,9 @@
 
 require_once "model.php";
 
+/**
+ * Classe de base pour la gestion de la logique d'une route REST.
+ */
 abstract class RouteHandler
 {
     private ?DatabaseConnector $conn = null;

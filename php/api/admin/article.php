@@ -2,6 +2,9 @@
 
 require_once "../_common/handler.php";
 
+/**
+ * Opérations d'administration sur les articles.
+ */
 class AdminArticleHandler extends AdminRequiredHandler
 {
     /**
