@@ -3,7 +3,7 @@ h1 {
     font-weight: bolder;
 }
 
-header, nav, .logo-container, .cart-container, .login-container, .register-container {
+header, nav, .nav-elem-container {
     display: flex;
     gap: 0.5em;
     align-items: center;
@@ -30,6 +30,13 @@ a {
     color: initial;
     text-decoration: none;
 }
+
+@media (max-width: 640px) {
+    .nav-elem-container span {
+        display: none;
+    }
+}
+
 /* TODO : partie du haut vers son propre composant */
 
 
