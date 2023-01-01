@@ -1,0 +1,72 @@
+main {
+    background-color: var(--bg);
+
+    margin: 3em auto;
+    max-width: 500px;
+
+    padding: 2em 1em;
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+
+    padding-bottom: 1.5em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input {
+    border: solid 1.5px var(--outline2);
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.input-container span {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input:focus, .input:valid {
+    outline: none;
+    border: 1.5px solid var(--accent);
+}
+
+.input:focus ~ span, .input:valid ~ span {
+    transform: translateY(-50%) scale(0.8);
+    background-color: var(--bg);
+    padding: 0 .2em;
+}
+
+.input:not(:focus):not(:valid) {
+    color: var(--bg);
+}
+
+.button {
+    padding: 1em;
+    border-radius: 10px;
+
+    border: 1px solid var(--outline);
+    background-color: var(--bg);
+
+    cursor: pointer;
+}
+
+.button:hover {
+    border-color: var(--accent);
+}
