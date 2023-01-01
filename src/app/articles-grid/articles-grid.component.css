@@ -1,5 +1,3 @@
-
-/* TODO lorsqu'il y aura plus de routage, vers son propre composant */
 main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -28,15 +26,15 @@ main {
 
     border-radius: 10px;
 
-    background-color: white;
+    background-color: var(--bg);
     padding: 1.5em;
 
-    outline: 2px solid white;
+    outline: 2px solid var(--bg);
     transition: outline-color 1s;
 }
 
 .article:hover {
-    outline-color: lightgray;
+    outline-color: var(--outline);
 }
 
 .article img {
@@ -51,7 +49,7 @@ main {
 
 /* Fournisseur + année */
 .article h3 {
-    color: hsl(214 7% 47%);
+    color: var(--text2);
 }
 
 /* Zone du milleu */
