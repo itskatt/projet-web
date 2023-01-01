@@ -30,3 +30,9 @@ video {
     display: block;
     max-width: 100%;
 }
+
+/* Let us use links the way we want */
+a {
+    color: initial;
+    text-decoration: none;
+}
