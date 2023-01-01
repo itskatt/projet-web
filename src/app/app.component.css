@@ -27,7 +27,7 @@ svg {
 }
 
 @media (max-width: 640px) {
-    .nav-elem-container span {
+    .nav-elem-container span:not(.logo) {
         display: none;
     }
 }
