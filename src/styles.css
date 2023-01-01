@@ -30,9 +30,3 @@ video {
     display: block;
     max-width: 100%;
 }
-
-/* Le us style links ourselves */
-a {
-    color: initial;
-    text-decoration: none;
-}
