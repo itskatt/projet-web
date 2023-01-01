@@ -4,7 +4,7 @@ main {
     margin: 3em auto;
     max-width: 500px;
 
-    padding: 1em;
+    padding: 2em 1em;
     border-radius: 10px;
 }
 
@@ -17,7 +17,7 @@ h1 {
     font-weight: bold;
     text-align: center;
 
-    margin: 1em 0;
+    padding-bottom: 1.5em;
 }
 
 form {
