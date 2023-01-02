@@ -11,14 +11,6 @@ export class HttpClientService {
 
     constructor(private http: HttpClient) { }
 
-    getArticles(): Observable<Article[]> {
-        return this.http.get<ArticlesResponse>(this.base + "public/articles.php?page=1") /* TODO les pages */
-            .pipe(
-                map((data: ArticlesResponse) => data.articles),
-                catchError(this.handleError<Article[]>([]))
-            );
-    }
-
     private handleError<T>(result?: T) {
         return (error: HttpErrorResponse): Observable<T> => {
 
@@ -29,5 +21,13 @@ export class HttpClientService {
 
             return of(result as T);
         };
+    }
+
+    getArticles(): Observable<Article[]> {
+        return this.http.get<ArticlesResponse>(this.base + "public/articles.php?page=1") /* TODO les pages */
+            .pipe(
+                map((data: ArticlesResponse) => data.articles),
+                catchError(this.handleError<Article[]>([]))
+            );
     }
 }
