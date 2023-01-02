@@ -1,4 +1,9 @@
 <main>
+    <p *ngIf="articles.length == 0">
+        <!-- TODO loader -->
+        Chargement en cours...
+    </p>
+
     <a routerLink="article/{{article.article_id}}" class="article" *ngFor="let article of articles">
         <!-- TODO image du telephone si non null -->
         <img src="https://picsum.photos/400/300" alt="">
