@@ -57,6 +57,10 @@ form {
     color: var(--bg);
 }
 
+input[type=checkbox] {
+    accent-color: var(--accent);
+}
+
 .button {
     padding: 1em;
     border-radius: 10px;
