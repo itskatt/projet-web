@@ -1,19 +1,19 @@
 <main>
     <h1>Vous revoila !</h1>
 
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
         <div class="input-container">
-            <input type="email" name="email" required class="input">
+            <input type="email" formControlName="email" required class="input">
             <span>Adresse e-mail</span>
         </div>
 
         <div class="input-container">
-            <input type="password" name="password" required class="input">
+            <input type="password" formControlName="password" required class="input">
             <span>Mot de passe</span>
         </div>
 
         <label for="remember">
-            <input type="checkbox" name="remember" id="remember">
+            <input type="checkbox" formControlName="remember" id="remember">
             Se souvenir de moi
         </label>
 
