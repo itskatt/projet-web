@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
-import { Article, ArticlesResponse, Statusable } from '../shared/interfaces';
+import { Article, ArticleResponse, ArticlesResponse, Statusable } from '../shared/interfaces';
 
 @Injectable({
     providedIn: 'root'
@@ -28,6 +28,14 @@ export class HttpClientService {
             .pipe(
                 map((data: ArticlesResponse) => data.articles),
                 catchError(this.handleError<Article[]>([]))
+            );
+    }
+
+    getArticle(id: number): Observable<Article> {
+        return this.http.get<ArticleResponse>(this.base + "public/article.php?id=" + id)
+            .pipe(
+                map((data: ArticleResponse) => data.article),
+                catchError(this.handleError<Article>())
             );
     }
 }

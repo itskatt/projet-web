@@ -19,3 +19,7 @@ export interface Article {
 export interface ArticlesResponse extends Statusable {
     articles: Article[]
 }
+
+export interface ArticleResponse extends Statusable {
+    article: Article
+}
