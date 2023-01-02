@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { Article, ArticlesResponse, Statusable } from '../interfaces';
@@ -20,12 +20,13 @@ export class HttpClientService {
     }
 
     private handleError<T>(result?: T) {
-        return (error: any): Observable<T> => {
+        return (error: HttpErrorResponse): Observable<T> => {
 
-            // TODO: send the error to remote logging infrastructure
-            console.error(error); // log to console instead
+            console.group("Erreur");
+            console.error(error.status);
+            console.error(error.error.message);
+            console.groupEnd();
 
-            // Let the app keep running by returning an empty result.
             return of(result as T);
         };
     }
