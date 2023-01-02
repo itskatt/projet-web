@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ArticlesGridComponent } from './articles-grid/articles-grid.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticlesGridComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
