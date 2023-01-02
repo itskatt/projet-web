@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
-import { Article, ArticlesResponse, Statusable } from '../interfaces';
+import { Article, ArticlesResponse, Statusable } from '../shared/interfaces';
 
 @Injectable({
     providedIn: 'root'
