@@ -5,20 +5,20 @@ import { HttpClientService } from '../service/http-client.service';
 @Component({
     selector: 'app-articles-grid',
     templateUrl: './articles-grid.component.html',
-    styleUrls: ['./articles-grid.component.css']
+    styleUrls: ['./articles-grid.component.css'],
 })
 export class ArticlesGridComponent implements OnInit {
     articles: Article[] = [];
 
-    constructor(private client: HttpClientService) { }
+    constructor(private client: HttpClientService) {}
 
     ngOnInit(): void {
         this.fetchArticles();
     }
 
     fetchArticles(): void {
-        this.client.getArticles().subscribe(articles => {
-            this.articles = articles
+        this.client.getArticles().subscribe((articles) => {
+            this.articles = articles;
         });
     }
 

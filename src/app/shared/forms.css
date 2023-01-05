@@ -42,22 +42,24 @@ form {
     transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.input:focus, .input:valid {
+.input:focus,
+.input:valid {
     outline: none;
     border: 1.5px solid var(--accent);
 }
 
-.input:focus ~ span, .input:valid ~ span {
+.input:focus ~ span,
+.input:valid ~ span {
     transform: translateY(-50%) scale(0.8);
     background-color: var(--bg);
-    padding: 0 .2em;
+    padding: 0 0.2em;
 }
 
 .input:not(:focus):not(:valid) {
     color: var(--bg);
 }
 
-input[type=checkbox] {
+input[type="checkbox"] {
     accent-color: var(--accent);
 }
 

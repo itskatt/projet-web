@@ -9,7 +9,9 @@
     white-space: nowrap;
 }
 
-header, nav, .nav-elem-container {
+header,
+nav,
+.nav-elem-container {
     display: flex;
     gap: 0.5em;
     align-items: center;

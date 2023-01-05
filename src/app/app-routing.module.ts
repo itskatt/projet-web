@@ -8,29 +8,29 @@ import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
     {
-        path: "",
-        component: ArticlesGridComponent
+        path: '',
+        component: ArticlesGridComponent,
     },
     {
-        path: "article/:id",
-        component: ArticleComponent
+        path: 'article/:id',
+        component: ArticleComponent,
     },
     {
-        path: "register",
-        component: RegisterComponent
+        path: 'register',
+        component: RegisterComponent,
     },
     {
-        path: "login",
-        component: LoginComponent
+        path: 'login',
+        component: LoginComponent,
     },
     {
-        path: "cart",
-        component: CartComponent
-    }
+        path: 'cart',
+        component: CartComponent,
+    },
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

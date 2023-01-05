@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http"
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,25 +13,27 @@ import { CartComponent } from './cart/cart.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ArticlesGridComponent,
-    RegisterComponent,
-    LoginComponent,
-    ArticleComponent,
-    CartComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpInterceptorService,
-    multi: true
-  }],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ArticlesGridComponent,
+        RegisterComponent,
+        LoginComponent,
+        ArticleComponent,
+        CartComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HttpInterceptorService,
+            multi: true,
+        },
+    ],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
