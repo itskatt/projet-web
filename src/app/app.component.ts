@@ -10,4 +10,9 @@ export class AppComponent {
     title = 'projet-web';
 
     constructor(public currentUser: CurrentUserService) { }
+
+    logout(): void {
+        this.currentUser.localLogout()
+        // todo : http logout
+    }
 }

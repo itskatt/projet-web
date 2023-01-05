@@ -32,7 +32,7 @@
         <ng-container *ngIf="currentUser.isLoggedIn()">
             <span class="current-user">Bienvenue, {{ currentUser.firstName }} {{ currentUser.lastName }}</span>
 
-            <a (click)="currentUser.localLogout()" routerLink="" class="nav-elem-container">
+            <a (click)="logout()" routerLink="" class="nav-elem-container">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round"
