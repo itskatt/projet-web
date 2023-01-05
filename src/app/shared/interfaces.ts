@@ -23,3 +23,12 @@ export interface ArticlesResponse extends Statusable {
 export interface ArticleResponse extends Statusable {
     article: Article
 }
+
+export interface WarningElement {
+    article_id: number,
+    quantity: number
+}
+
+export interface LoginResponse extends Statusable {
+    warnings: WarningElement[]
+}
