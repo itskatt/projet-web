@@ -108,9 +108,6 @@ abstract class RouteHandler
     {
         // Pour ne pas être géné par des trucs d'avant.
         ob_clean();
-        // header_remove();
-
-        header("Access-Control-Allow-Origin: *"); // TODO : temporaire pendant le dévelopement
 
         header("Content-type: application/json");
         echo json_encode($array);
