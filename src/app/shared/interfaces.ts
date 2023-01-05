@@ -34,3 +34,14 @@ export interface LoginResponse extends Statusable {
     first_name: string,
     warnings: WarningElement[]
 }
+
+export interface Invoice {
+    invoice_id: number,
+    cart_id: number,
+    created: string | Date,
+    num_articles: string | number | null
+}
+
+export interface CartInvoicesResponse extends Statusable {
+    invoices: Invoice[]
+}

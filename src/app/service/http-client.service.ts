@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
-import { Article, ArticleResponse, ArticlesResponse, LoginResponse, Statusable } from '../shared/interfaces';
+import { Article, ArticleResponse, ArticlesResponse, CartInvoicesResponse, Invoice, LoginResponse, Statusable } from '../shared/interfaces';
 
 @Injectable({
     providedIn: 'root'
@@ -50,5 +50,13 @@ export class HttpClientService {
                 withCredentials: true
             }
         ).pipe(catchError(this.handleError<LoginResponse>()));
+    }
+
+    getInvoices(): Observable<Invoice[]> {
+        return this.http.get<CartInvoicesResponse>(this.base + "cart/invoices.php")
+            .pipe(
+                map((data: CartInvoicesResponse) => data.invoices),
+                catchError(this.handleError<Invoice[]>())
+            );
     }
 }

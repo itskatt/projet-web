@@ -1,2 +1,9 @@
-<p>cart works!</p>
 <p>Email : {{ email }}</p>
+<ul>
+    <li *ngFor="let invoice of invoices">
+        <ul>
+            <li>ID : {{ invoice.invoice_id }}</li>
+            <li>Created : {{ invoice.created }}</li>
+        </ul>
+    </li>
+</ul>
