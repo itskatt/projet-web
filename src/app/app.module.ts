@@ -9,6 +9,7 @@ import { ArticlesGridComponent } from './articles-grid/articles-grid.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ArticleComponent } from './article/article.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ArticleComponent } from './article/article.component';
     ArticlesGridComponent,
     RegisterComponent,
     LoginComponent,
-    ArticleComponent
+    ArticleComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
