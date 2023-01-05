@@ -30,5 +30,7 @@ export interface WarningElement {
 }
 
 export interface LoginResponse extends Statusable {
+    last_name: string,
+    first_name: string,
     warnings: WarningElement[]
 }
