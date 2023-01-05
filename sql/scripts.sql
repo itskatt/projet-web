@@ -65,6 +65,8 @@ where token = '';
 
 -- verif utilisateur
 select email,
+       last_name,
+       first_name,
        password_ "password",
        admin_ "admin"
 from client

@@ -16,6 +16,8 @@ class LoginHandler extends PublicHandler
         $res = $conn->query(
             <<<END
             select email,
+                   last_name,
+                   first_name,
                    password_ "password",
                    admin_ "admin"
             from client
@@ -46,6 +48,8 @@ class LoginHandler extends PublicHandler
         $this->startSession($data["email"]);
 
         $this->sendOK([
+            "last_name" => $res["last_name"],
+            "first_name" => $res["first_name"],
             "warnings" => $warnings
         ]);
     }
