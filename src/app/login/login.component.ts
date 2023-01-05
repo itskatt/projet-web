@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpClientService } from '../service/http-client.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { HttpClientService } from '../service/http-client.service';
 export class LoginComponent {
     loginForm: FormGroup;
 
-    constructor(private client: HttpClientService) {
+    constructor(private client: HttpClientService, private router: Router) {
         this.loginForm = new FormGroup({
             email: new FormControl(""),
             password: new FormControl(""),
@@ -31,6 +32,8 @@ export class LoginComponent {
             localStorage.setItem("email", this.loginForm.value.email)
             localStorage.setItem("last_name", response.last_name)
             localStorage.setItem("first_name", response.first_name)
+
+            this.router.navigate([""])
         })
     }
 }
