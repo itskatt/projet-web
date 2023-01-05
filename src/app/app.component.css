@@ -3,6 +3,12 @@
     font-weight: bolder;
 }
 
+.current-user {
+    font-size: large;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 header, nav, .nav-elem-container {
     display: flex;
     gap: 0.5em;

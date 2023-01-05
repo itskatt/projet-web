@@ -28,7 +28,9 @@ export class LoginComponent {
             this.loginForm.value.password,
             this.loginForm.value.remember
         ).subscribe(response => {
-            console.log(response) // TODO stocker les infos pour les concerver de page en page
+            localStorage.setItem("email", this.loginForm.value.email)
+            localStorage.setItem("last_name", response.last_name)
+            localStorage.setItem("first_name", response.first_name)
         })
     }
 }
