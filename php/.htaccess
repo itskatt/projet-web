@@ -1,0 +1,7 @@
+## TODO: ce fichier est a utiliser que pour le developement
+Header always set Access-Control-Allow-Origin http://localhost:4200
+Header always set Access-Control-Allow-Headers "*"
+Header always set Access-Control-Allow-Credentials true
+Header always set Access-Control-Allow-Headers Content-Type
+# Header always set Access-Control-Max-Age "1000"
+# Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
