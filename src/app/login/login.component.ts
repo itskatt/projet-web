@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { HttpClientService } from '../service/http-client.service';
 
 @Component({
     selector: 'app-login',
@@ -9,7 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class LoginComponent {
     loginForm: FormGroup;
 
-    constructor() {
+    constructor(private client: HttpClientService) {
         this.loginForm = new FormGroup({
             email: new FormControl(""),
             password: new FormControl(""),
@@ -22,8 +23,12 @@ export class LoginComponent {
             return;
         }
 
-        console.log(this.loginForm.value.email);
-        console.log(this.loginForm.value.password);
-        console.log(this.loginForm.value.remember);
+        this.client.login(
+            this.loginForm.value.email,
+            this.loginForm.value.password,
+            this.loginForm.value.remember
+        ).subscribe(response => {
+            console.log(response) // TODO stocker les infos pour les concerver de page en page
+        })
     }
 }

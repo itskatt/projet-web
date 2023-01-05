@@ -1,7 +1,7 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
-import { Article, ArticleResponse, ArticlesResponse, Statusable } from '../shared/interfaces';
+import { Article, ArticleResponse, ArticlesResponse, LoginResponse, Statusable } from '../shared/interfaces';
 
 @Injectable({
     providedIn: 'root'
@@ -37,5 +37,18 @@ export class HttpClientService {
                 map((data: ArticleResponse) => data.article),
                 catchError(this.handleError<Article>())
             );
+    }
+
+    login(email: string, password: string, rememberMe: boolean): Observable<LoginResponse> {
+        return this.http.post<LoginResponse>(
+            this.base + "user/login.php",
+            {
+                email: email,
+                password: password
+            },
+            {
+                withCredentials: true
+            }
+        ).pipe(catchError(this.handleError<LoginResponse>()));
     }
 }
