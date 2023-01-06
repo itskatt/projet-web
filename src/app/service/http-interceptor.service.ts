@@ -28,7 +28,7 @@ export class HttpInterceptorService implements HttpInterceptor {
                     }
 
                     // Send to other handler
-                    return throwError(() => { error })
+                    return throwError(() => error)
                 })
             );
     }
