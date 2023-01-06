@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { ArticleComponent } from './article/article.component';
 import { CartComponent } from './cart/cart.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
+import { ErrorHandlerService } from './service/error-handler.service';
 
 @NgModule({
     declarations: [
@@ -33,6 +34,10 @@ import { HttpInterceptorService } from './service/http-interceptor.service';
             useClass: HttpInterceptorService,
             multi: true,
         },
+        {
+            provide: ErrorHandler,
+            useClass: ErrorHandlerService
+        }
     ],
     bootstrap: [AppComponent],
 })

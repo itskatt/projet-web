@@ -27,11 +27,7 @@ export class HttpInterceptorService implements HttpInterceptor {
                             break
                     }
 
-                    // Not handled TODO global error handler
-                    console.group("Error in HTTP interceptor");
-                    console.error(error.status);
-                    console.error(error.error.message);
-                    console.groupEnd();
+                    // Send to other handler
                     return throwError(() => { error })
                 })
             );
