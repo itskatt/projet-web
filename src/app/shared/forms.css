@@ -24,8 +24,8 @@ h1 {
     margin: 1.5em;
     border-radius: 10px;
 
-    background-color: #FFE0E0;
-    color: red;
+    background-color: var(--bg-error);
+    color: var(--error-text);
 }
 
 .error svg {

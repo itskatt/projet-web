@@ -9,6 +9,9 @@
 
     --text: hsl(0, 0%, 0%);
     --text2: hsl(214 7% 47%);
+
+    --bg-error: hsl(0, 100%, 94%);
+    --error-text: hsl(0, 100%, 50%);
 }
 
 /* makes sizing simpler */
