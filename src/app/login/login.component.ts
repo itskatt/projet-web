@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClientService } from '../service/http-client.service';
@@ -30,12 +31,25 @@ export class LoginComponent {
                 this.loginForm.value.password,
                 this.loginForm.value.remember
             )
-            .subscribe((response) => {
-                localStorage.setItem('email', this.loginForm.value.email);
-                localStorage.setItem('last_name', response.last_name);
-                localStorage.setItem('first_name', response.first_name);
+            .subscribe({
+                next: (response) => {
+                    localStorage.setItem('email', this.loginForm.value.email);
+                    localStorage.setItem('last_name', response.last_name);
+                    localStorage.setItem('first_name', response.first_name);
+    
+                    this.router.navigate(['']);
+                },
+                error: (error: Error) => {
+                    if (error instanceof HttpErrorResponse) {
+                        if (error.status === 401) {
+                            console.log("mdp incorect")
+                            return
+                        }
+                    }
 
-                this.router.navigate(['']);
+                    throw error;
+                    
+                }
             });
     }
 }
