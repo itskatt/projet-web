@@ -4,15 +4,14 @@ import {
     HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import {
     Article,
     ArticleResponse,
     ArticlesResponse,
     CartInvoicesResponse,
     Invoice,
-    LoginResponse,
-    Statusable,
+    LoginResponse
 } from '../shared/interfaces';
 
 @Injectable({
@@ -21,18 +20,7 @@ import {
 export class HttpClientService {
     private base: string = 'http://localhost/api/';
 
-    constructor(private http: HttpClient) {}
-
-    private handleError<T>(result?: T) {
-        return (error: HttpErrorResponse): Observable<T> => {
-            console.group('Erreur');
-            console.error(error.status);
-            console.error(error.error.message);
-            console.groupEnd();
-
-            return of(result as T);
-        };
-    }
+    constructor(private http: HttpClient) { }
 
     getArticles(): Observable<Article[]> {
         return this.http
@@ -41,7 +29,11 @@ export class HttpClientService {
             ) /* TODO les pages */
             .pipe(
                 map((data: ArticlesResponse) => data.articles),
-                catchError(this.handleError<Article[]>([]))
+
+                catchError((error: HttpErrorResponse) => {
+                    console.error(error)
+                    return of([])
+                })
             );
     }
 
@@ -49,8 +41,7 @@ export class HttpClientService {
         return this.http
             .get<ArticleResponse>(this.base + 'public/article.php?id=' + id)
             .pipe(
-                map((data: ArticleResponse) => data.article),
-                catchError(this.handleError<Article>())
+                map((data: ArticleResponse) => data.article)
             );
     }
 
@@ -70,15 +61,13 @@ export class HttpClientService {
                     withCredentials: true,
                 }
             )
-            .pipe(catchError(this.handleError<LoginResponse>()));
     }
 
     getInvoices(): Observable<Invoice[]> {
         return this.http
             .get<CartInvoicesResponse>(this.base + 'cart/invoices.php')
             .pipe(
-                map((data: CartInvoicesResponse) => data.invoices),
-                catchError(this.handleError<Invoice[]>())
+                map((data: CartInvoicesResponse) => data.invoices)
             );
     }
 }
