@@ -25,6 +25,15 @@ export class CurrentUserService {
         localStorage.removeItem('first_name');
     }
 
+    /**
+     * Enregistre les données de l'utilisateur en local.
+     */
+    localLogin(email: string, last_name: string, first_name: string): void {
+        localStorage.setItem('email', email);
+        localStorage.setItem('last_name', last_name);
+        localStorage.setItem('first_name', first_name);
+    }
+
     get email(): string | null {
         return localStorage.getItem('email');
     }

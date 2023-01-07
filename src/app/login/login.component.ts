@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CurrentUserService } from '../service/current-user.service';
 import { HttpClientService } from '../service/http-client.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginComponent {
     loginForm: FormGroup;
     loginError: string = "";
 
-    constructor(private client: HttpClientService, private router: Router) {
+    constructor(private client: HttpClientService, private router: Router, private user: CurrentUserService) {
         this.loginForm = new FormGroup({
             email: new FormControl(''),
             password: new FormControl(''),
@@ -34,10 +35,8 @@ export class LoginComponent {
             )
             .subscribe({
                 next: (response) => {
-                    localStorage.setItem('email', this.loginForm.value.email);
-                    localStorage.setItem('last_name', response.last_name);
-                    localStorage.setItem('first_name', response.first_name);
-    
+                    this.user.localLogin(this.loginForm.value.email, response.last_name, response.first_name);
+
                     this.router.navigate(['']);
                 },
                 error: (error: Error) => {
