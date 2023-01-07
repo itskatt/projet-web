@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css', '../shared/forms.css'],
 })
-export class RegisterComponent {}
+export class RegisterComponent {
+    registerError: string = "";
+}

@@ -11,7 +11,7 @@ import { HttpClientService } from '../service/http-client.service';
 })
 export class LoginComponent {
     loginForm: FormGroup;
-    loginError: boolean = false;
+    loginError: string = "";
 
     constructor(private client: HttpClientService, private router: Router) {
         this.loginForm = new FormGroup({
@@ -43,7 +43,7 @@ export class LoginComponent {
                 error: (error: Error) => {
                     if (error instanceof HttpErrorResponse) {
                         if (error.status === 401) {
-                            this.loginError = true;
+                            this.loginError = error.error.message;
                             return
                         }
                     }
