@@ -1,6 +1,10 @@
 <main>
     <h1>Vous revoila !</h1>
 
+    <div *ngIf="loginError" class="error">
+        Votre adresse e-mail ou mot de passe est incorect !
+    </div>
+
     <form [formGroup]="loginForm" (ngSubmit)="submit()">
         <div class="input-container">
             <input
