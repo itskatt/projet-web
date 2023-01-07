@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CurrentUserService } from './service/current-user.service';
+import { HttpClientService } from './service/http-client.service';
 
 @Component({
     selector: 'app-root',
@@ -9,10 +10,10 @@ import { CurrentUserService } from './service/current-user.service';
 export class AppComponent {
     title = 'projet-web';
 
-    constructor(public currentUser: CurrentUserService) {}
+    constructor(public currentUser: CurrentUserService, private client: HttpClientService) {}
 
     logout(): void {
+        this.client.logout().subscribe()
         this.currentUser.localLogout();
-        // todo : http logout
     }
 }

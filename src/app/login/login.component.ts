@@ -36,6 +36,7 @@ export class LoginComponent {
             .subscribe({
                 next: (response) => {
                     this.user.localLogin(this.loginForm.value.email, response.last_name, response.first_name);
+                    // TODO response.warnings
 
                     this.router.navigate(['']);
                 },

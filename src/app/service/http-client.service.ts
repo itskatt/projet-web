@@ -56,11 +56,12 @@ export class HttpClientService {
                 {
                     email: email,
                     password: password,
-                },
-                {
-                    withCredentials: true,
-                }
+                }, { withCredentials: true }
             )
+    }
+
+    logout(): Observable<any> {
+        return this.http.post(this.base + "user/logout.php", {}, { withCredentials: true });
     }
 
     getInvoices(): Observable<Invoice[]> {
