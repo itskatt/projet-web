@@ -68,4 +68,12 @@ export class CartComponent implements OnInit {
             this.cartPrice = 0;
         });
     }
+
+    updateArticle(id: number, action: "add" | "sub"): void {
+        for (let article of this.cartArticles) {
+            if (article.article_id == id) {
+                action == "add" ? article.cart_quantity++: article.cart_quantity--
+            }
+        }
+    }
 }
