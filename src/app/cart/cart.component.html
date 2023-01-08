@@ -7,7 +7,7 @@
 
             <ng-container *ngIf="cartPrice == -1">
                 <p>Vous n'avez pas de panier</p>
-                <button>J'en crée un</button>
+                <button (click)="createCart()">J'en crée un</button>
             </ng-container>
 
             <ng-container *ngIf="cartPrice != -1 && cartArticles.length == 0">

@@ -57,7 +57,7 @@ export class HttpClientService {
                 password: password,
                 remember: rememberMe,
             },
-            { withCredentials: true }
+            { withCredentials: true } // TODO suppr
         );
     }
 
@@ -87,5 +87,9 @@ export class HttpClientService {
 
     deleteCurrentCart(): Observable<any> {
         return this.http.delete(this.base + "cart/delete.php")
+    }
+
+    createCart(): Observable<any> {
+        return this.http.post(this.base + "cart/create.php", {});
     }
 }

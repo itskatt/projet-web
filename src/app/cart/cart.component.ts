@@ -62,4 +62,10 @@ export class CartComponent implements OnInit {
             this.cartArticles = [];
         });
     }
+
+    createCart() {
+        this.client.createCart().subscribe(_ => {
+            this.cartPrice = 0;
+        });
+    }
 }
