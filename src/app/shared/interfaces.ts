@@ -4,7 +4,7 @@ export interface Statusable {
     status: Status;
 }
 
-export interface Article {
+interface BaseArticle {
     article_id: number;
     article_name: string;
     description: string;
@@ -13,7 +13,15 @@ export interface Article {
     price_tax: string | number;
     image: string;
     supplier_name: string;
+}
+
+export interface Article extends BaseArticle{
     quantity: number;
+}
+
+// TODO : ce truc n'est pas complet, on peut le changer en fonction des besoins
+export interface SoldArticle extends BaseArticle{
+    cart_quantity: number;
 }
 
 export interface ArticlesResponse extends Statusable {
@@ -44,4 +52,10 @@ export interface Invoice {
 
 export interface CartInvoicesResponse extends Statusable {
     invoices: Invoice[];
+}
+
+export interface PreviousInvoiceResponse extends Statusable {
+    articles: SoldArticle[];
+    price_no_tax: number;
+    price_tax: number;
 }

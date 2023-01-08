@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ArticleComponent } from './article/article.component';
 import { ArticlesGridComponent } from './articles-grid/articles-grid.component';
 import { CartComponent } from './cart/cart.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -27,6 +28,10 @@ const routes: Routes = [
         path: 'cart',
         component: CartComponent,
     },
+    {
+        path: 'invoice/:id',
+        component: InvoiceComponent
+    }
 ];
 
 @NgModule({

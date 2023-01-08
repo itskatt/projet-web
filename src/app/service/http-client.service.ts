@@ -11,7 +11,8 @@ import {
     ArticlesResponse,
     CartInvoicesResponse,
     Invoice,
-    LoginResponse
+    LoginResponse,
+    PreviousInvoiceResponse
 } from '../shared/interfaces';
 
 @Injectable({
@@ -71,5 +72,9 @@ export class HttpClientService {
             .pipe(
                 map((data: CartInvoicesResponse) => data.invoices)
             );
+    }
+
+    getPreviousInvoice(id: number): Observable<PreviousInvoiceResponse> {
+        return this.http.get<PreviousInvoiceResponse>(this.base + "cart/previous.php?id=" + id);
     }
 }

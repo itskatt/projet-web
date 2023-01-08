@@ -1,0 +1,8 @@
+<p>Price tax : {{ priceTax }}</p>
+<p>Price no tax : {{ priceNoTax }}</p>
+
+<ul>
+    <li *ngFor="let article of articles">
+        {{ article.article_name }} &mdash; {{ article.cart_quantity }} dans le panier
+    </li>
+</ul>
