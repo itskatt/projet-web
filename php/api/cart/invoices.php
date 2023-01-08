@@ -19,8 +19,9 @@ class InvoicesHandler extends LoginRequiredHandler
                         where cart_id = i.cart_id) "num_articles"
                 from invoice i
                 inner join cart c on i.cart_id = c.id
-                where c.client_email = 'raph10@mail.com';
-            END
+                where c.client_email = :email;
+            END,
+            ["email" => $this->email]
         )->fetchAll(PDO::FETCH_ASSOC);
 
         $this->sendOK([
