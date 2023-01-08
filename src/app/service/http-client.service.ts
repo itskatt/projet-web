@@ -10,6 +10,7 @@ import {
     ArticleResponse,
     ArticlesResponse,
     CartInvoicesResponse,
+    CurrentCartResponse,
     Invoice,
     LoginResponse,
     PreviousInvoiceResponse as PreviousCartResponse,
@@ -78,5 +79,9 @@ export class HttpClientService {
         return this.http.get<PreviousCartResponse>(
             this.base + 'cart/previous.php?id=' + id
         );
+    }
+
+    getCurrentCart(): Observable<CurrentCartResponse> {
+        return this.http.get<CurrentCartResponse>(this.base + "cart/current.php");
     }
 }

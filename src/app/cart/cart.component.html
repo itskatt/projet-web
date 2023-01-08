@@ -4,6 +4,28 @@
     <div class="cart-page-elements">
         <section>
             <h2>Mon panier</h2>
+
+            <ng-container *ngIf="cartPrice == -1">
+                <p>Vous n'avez pas de panier</p>
+                <button>J'en crée un</button>
+            </ng-container>
+
+            <ng-container *ngIf="cartPrice != -1 && cartArticles.length == 0">
+                <p>Votre panier est vide</p>
+                <a routerLink="">Je le remplis</a>
+            </ng-container>
+
+            <ng-container *ngIf="cartArticles.length > 0">
+                <ul>
+                    <li *ngFor="let article of cartArticles">
+                        {{ article.article_name }} x{{ article.cart_quantity }}
+                    </li>
+                </ul>
+                <p>
+                    Prix TTC : {{ cartPrice }}&nbsp;€
+                </p>
+            </ng-container>
+            
         </section>
 
         <section>
