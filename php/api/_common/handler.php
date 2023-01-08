@@ -98,7 +98,7 @@ abstract class RouteHandler
         // On nettoie les sessions expirées
         $conn->query("delete from session where expires < now();");
 
-        setcookie("token", $token, time() + $cookieTime, "/");
+        setcookie("token", $token, time() + $cookieTime, "/"); // TODO http only
     }
 
     /**
@@ -145,10 +145,13 @@ abstract class RouteHandler
     public function handle(): void
     {
         try {
-            $this->check();
+            $method = $_SERVER["REQUEST_METHOD"];
+
+            // La méthode OPTIONS est utilisée pour la verification des CORS,
+            // elle doit absolument retourner un code 200 (pas de verifications a faire)
+            if ($method != "OPTIONS") $this->check();
 
             // Quelle methode utiliser
-            $method = $_SERVER["REQUEST_METHOD"];
             switch ($method) {
                 case "PUT":
                     $request_body = file_get_contents("php://input");

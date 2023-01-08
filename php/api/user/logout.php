@@ -2,7 +2,7 @@
 
 require_once "../_common/handler.php";
 
-class LogoutHandler extends PublicHandler // TODO : a cause des CORS, si solution remetre à LoginRequired
+class LogoutHandler extends LoginRequiredHandler
 {
     protected function handlePOST(?array $data): void
     {
