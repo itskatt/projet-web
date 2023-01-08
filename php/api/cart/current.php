@@ -37,10 +37,7 @@ class CurrentCartHandler extends LoginRequiredHandler
                     inner join supplier s on a.supplier_id = s.id
                     inner join stock s2 on a.id = s2.article_id
                     inner join cart_article ca on a.id = ca.article_id
-            where a.id in (
-                select article_id from cart_article
-                                where cart_id = $currentCartId
-            );
+            where cart_id = $currentCartId;
             END
         )->fetchAll(PDO::FETCH_ASSOC);
 
