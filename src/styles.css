@@ -55,3 +55,10 @@ a {
     color: initial;
     text-decoration: none;
 }
+
+/* Base style for all h1s */
+h1 {
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+}
