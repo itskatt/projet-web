@@ -35,7 +35,7 @@ export class CartComponent implements OnInit {
             error: (error: Error) => {
                 if (error instanceof HttpErrorResponse) {
                     if (error.status === 404) {
-                        console.log("Le panier n'existe pas")
+                        // Le panier n'existe pas
                         return;
                     }
                 }
@@ -53,6 +53,13 @@ export class CartComponent implements OnInit {
             year: 'numeric',
             hour: 'numeric',
             minute: 'numeric',
+        });
+    }
+
+    deleteCart() {
+        this.client.deleteCurrentCart().subscribe(_ => {
+            this.cartPrice = -1;
+            this.cartArticles = [];
         });
     }
 }

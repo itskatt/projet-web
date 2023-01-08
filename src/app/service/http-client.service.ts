@@ -84,4 +84,8 @@ export class HttpClientService {
     getCurrentCart(): Observable<CurrentCartResponse> {
         return this.http.get<CurrentCartResponse>(this.base + "cart/current.php");
     }
+
+    deleteCurrentCart(): Observable<any> {
+        return this.http.delete(this.base + "cart/delete.php")
+    }
 }
