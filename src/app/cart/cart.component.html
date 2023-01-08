@@ -8,6 +8,9 @@
 
         <section>
             <h2>Mes commandes passées</h2>
+
+            <p *ngIf="invoices.length == 0">Chargement en cours...</p>
+
             <ul>
                 <li *ngFor="let invoice of invoices">
                     <a routerLink="invoice/{{ invoice.invoice_id }}">
