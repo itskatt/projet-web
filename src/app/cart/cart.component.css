@@ -1,0 +1,25 @@
+h1 {
+    margin: 1em 0;
+}
+
+h2 {
+    margin-bottom: 1em;
+}
+
+.cart-page-elements {
+    display: flex;
+    justify-content: space-around;
+}
+
+.cart-page-elements section {
+    background-color: var(--bg);
+    padding: 1.5em;
+    border-radius: 10px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}

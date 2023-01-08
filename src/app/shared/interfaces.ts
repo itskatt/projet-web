@@ -38,7 +38,7 @@ export interface LoginResponse extends Statusable {
 export interface Invoice {
     invoice_id: number;
     cart_id: number;
-    created: string | Date;
+    created: string;
     num_articles: string | number | null;
 }
 

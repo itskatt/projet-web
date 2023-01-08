@@ -1,9 +1,21 @@
-<p>Email : {{ email }}</p>
-<ul>
-    <li *ngFor="let invoice of invoices">
-        <ul>
-            <li>ID : {{ invoice.invoice_id }}</li>
-            <li>Created : {{ invoice.created }}</li>
-        </ul>
-    </li>
-</ul>
+<main>
+    <h1>Mon espace</h1>
+    
+    <div class="cart-page-elements">
+        <section>
+            <h2>Mon panier</h2>
+        </section>
+
+        <section>
+            <h2>Mes commandes passées</h2>
+            <ul>
+                <li *ngFor="let invoice of invoices">
+                    <a routerLink="invoice/{{ invoice.invoice_id }}">
+                        <p>Facture n°{{ invoice.invoice_id }}, {{ invoice.num_articles }} articles.</p>
+                        <p>Crée le {{ formatDate(invoice.created) }}</p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </div>
+</main>

@@ -56,9 +56,15 @@ a {
     text-decoration: none;
 }
 
-/* Base style for all h1s */
 h1 {
     font-size: xx-large;
+}
+
+h2 {
+    font-size: large;
+}
+
+h1, h2 {
     font-weight: bold;
     text-align: center;
 }
