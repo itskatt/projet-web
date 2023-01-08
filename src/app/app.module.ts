@@ -12,7 +12,7 @@ import { ArticleComponent } from './article/article.component';
 import { CartComponent } from './cart/cart.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
 import { ErrorHandlerService } from './service/error-handler.service';
-import { InvoiceComponent } from './invoice/invoice.component';
+import { PreviousCartComponent } from './previous-cart/previous-cart.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +22,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
         LoginComponent,
         ArticleComponent,
         CartComponent,
-        InvoiceComponent,
+        PreviousCartComponent,
     ],
     imports: [
         BrowserModule,

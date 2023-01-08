@@ -13,7 +13,7 @@
 
             <ul>
                 <li *ngFor="let invoice of invoices">
-                    <a routerLink="/invoice/{{ invoice.cart_id }}">
+                    <a routerLink="/previous-cart/{{ invoice.cart_id }}">
                         <p>Facture n°{{ invoice.invoice_id }}, {{ invoice.num_articles }} articles.</p>
                         <p>Crée le {{ formatDate(invoice.created) }}</p>
                     </a>

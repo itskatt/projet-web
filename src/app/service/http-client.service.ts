@@ -12,7 +12,7 @@ import {
     CartInvoicesResponse,
     Invoice,
     LoginResponse,
-    PreviousInvoiceResponse
+    PreviousInvoiceResponse as PreviousCartResponse
 } from '../shared/interfaces';
 
 @Injectable({
@@ -74,7 +74,7 @@ export class HttpClientService {
             );
     }
 
-    getPreviousInvoice(id: number): Observable<PreviousInvoiceResponse> {
-        return this.http.get<PreviousInvoiceResponse>(this.base + "cart/previous.php?id=" + id);
+    getPreviousCart(id: number): Observable<PreviousCartResponse> {
+        return this.http.get<PreviousCartResponse>(this.base + "cart/previous.php?id=" + id);
     }
 }
