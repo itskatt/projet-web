@@ -56,6 +56,7 @@ export class HttpClientService {
                 {
                     email: email,
                     password: password,
+                    remember: rememberMe
                 }, { withCredentials: true }
             )
     }

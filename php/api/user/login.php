@@ -7,7 +7,7 @@ class LoginHandler extends PublicHandler
     protected function handlePOST($data): void
     {
         $this->checkFields(
-            ["email", "password"],
+            ["email", "password", "remember"],
             $data
         );
 
@@ -45,7 +45,7 @@ class LoginHandler extends PublicHandler
             )->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        $this->startSession($data["email"]);
+        $this->startSession($data["email"], boolval($data["remember"]));
 
         $this->sendOK([
             "last_name" => $res["last_name"],
