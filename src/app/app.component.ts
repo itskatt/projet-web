@@ -10,10 +10,13 @@ import { HttpClientService } from './service/http-client.service';
 export class AppComponent {
     title = 'projet-web';
 
-    constructor(public currentUser: CurrentUserService, private client: HttpClientService) {}
+    constructor(
+        public currentUser: CurrentUserService,
+        private client: HttpClientService
+    ) {}
 
     logout(): void {
-        this.client.logout().subscribe()
+        this.client.logout().subscribe();
         this.currentUser.localLogout();
     }
 }

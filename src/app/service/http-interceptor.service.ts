@@ -13,23 +13,22 @@ import { catchError, Observable, throwError } from 'rxjs';
     providedIn: 'root',
 })
 export class HttpInterceptorService implements HttpInterceptor {
-    constructor(private router: Router) { }
+    constructor(private router: Router) {}
     intercept(
         req: HttpRequest<any>,
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
-        return next.handle(req.clone({ withCredentials: true }))
-            .pipe(
-                catchError((error: HttpErrorResponse) => {
-                    switch (error.status) {
-                        case 401: // Unauthorised
-                            this.router.navigateByUrl("/login")
-                            break
-                    }
+        return next.handle(req.clone({ withCredentials: true })).pipe(
+            catchError((error: HttpErrorResponse) => {
+                switch (error.status) {
+                    case 401: // Unauthorised
+                        this.router.navigateByUrl('/login');
+                        break;
+                }
 
-                    // Send to other handler
-                    return throwError(() => error)
-                })
-            );
+                // Send to other handler
+                return throwError(() => error);
+            })
+        );
     }
 }

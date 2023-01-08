@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./register.component.css', '../shared/forms.css'],
 })
 export class RegisterComponent {
-    registerError: string = "";
+    registerError: string = '';
 }

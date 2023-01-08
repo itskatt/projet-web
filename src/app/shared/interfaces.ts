@@ -15,12 +15,12 @@ interface BaseArticle {
     supplier_name: string;
 }
 
-export interface Article extends BaseArticle{
+export interface Article extends BaseArticle {
     quantity: number;
 }
 
 // TODO : ce truc n'est pas complet, on peut le changer en fonction des besoins
-export interface SoldArticle extends BaseArticle{
+export interface SoldArticle extends BaseArticle {
     cart_quantity: number;
 }
 

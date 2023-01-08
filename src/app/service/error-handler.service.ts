@@ -9,16 +9,16 @@ export class ErrorHandlerService implements ErrorHandler {
 
     handleError(error: Error): void {
         if (error instanceof HttpErrorResponse) {
-            console.group("Http error in global EH");
+            console.group('Http error in global EH');
             console.error(error.status);
             console.error(error.error.message);
             console.groupEnd();
-            
-            return
+
+            return;
         }
-        
-        console.group("Uncaugh error")
-        console.error(error)
+
+        console.group('Uncaugh error');
+        console.error(error);
         console.groupEnd();
     }
 }

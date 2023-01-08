@@ -30,8 +30,8 @@ const routes: Routes = [
     },
     {
         path: 'previous-cart/:id',
-        component: PreviousCartComponent
-    }
+        component: PreviousCartComponent,
+    },
 ];
 
 @NgModule({

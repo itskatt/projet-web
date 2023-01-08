@@ -12,9 +12,13 @@ import { HttpClientService } from '../service/http-client.service';
 })
 export class LoginComponent {
     loginForm: FormGroup;
-    loginError: string = "";
+    loginError: string = '';
 
-    constructor(private client: HttpClientService, private router: Router, private user: CurrentUserService) {
+    constructor(
+        private client: HttpClientService,
+        private router: Router,
+        private user: CurrentUserService
+    ) {
         this.loginForm = new FormGroup({
             email: new FormControl(''),
             password: new FormControl(''),
@@ -35,7 +39,11 @@ export class LoginComponent {
             )
             .subscribe({
                 next: (response) => {
-                    this.user.localLogin(this.loginForm.value.email, response.last_name, response.first_name);
+                    this.user.localLogin(
+                        this.loginForm.value.email,
+                        response.last_name,
+                        response.first_name
+                    );
                     // TODO response.warnings
 
                     this.router.navigate(['']);
@@ -44,12 +52,12 @@ export class LoginComponent {
                     if (error instanceof HttpErrorResponse) {
                         if (error.status === 401) {
                             this.loginError = error.error.message;
-                            return
+                            return;
                         }
                     }
 
                     throw error;
-                }
+                },
             });
     }
 }

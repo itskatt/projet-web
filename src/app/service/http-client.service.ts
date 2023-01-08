@@ -12,7 +12,7 @@ import {
     CartInvoicesResponse,
     Invoice,
     LoginResponse,
-    PreviousInvoiceResponse as PreviousCartResponse
+    PreviousInvoiceResponse as PreviousCartResponse,
 } from '../shared/interfaces';
 
 @Injectable({
@@ -21,7 +21,7 @@ import {
 export class HttpClientService {
     private base: string = 'http://localhost/api/';
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
     getArticles(): Observable<Article[]> {
         return this.http
@@ -32,8 +32,8 @@ export class HttpClientService {
                 map((data: ArticlesResponse) => data.articles),
 
                 catchError((error: HttpErrorResponse) => {
-                    console.error(error)
-                    return of([])
+                    console.error(error);
+                    return of([]);
                 })
             );
     }
@@ -41,9 +41,7 @@ export class HttpClientService {
     getArticle(id: number): Observable<Article> {
         return this.http
             .get<ArticleResponse>(this.base + 'public/article.php?id=' + id)
-            .pipe(
-                map((data: ArticleResponse) => data.article)
-            );
+            .pipe(map((data: ArticleResponse) => data.article));
     }
 
     login(
@@ -51,30 +49,34 @@ export class HttpClientService {
         password: string,
         rememberMe: boolean
     ): Observable<LoginResponse> {
-        return this.http
-            .post<LoginResponse>(
-                this.base + 'user/login.php',
-                {
-                    email: email,
-                    password: password,
-                    remember: rememberMe
-                }, { withCredentials: true }
-            )
+        return this.http.post<LoginResponse>(
+            this.base + 'user/login.php',
+            {
+                email: email,
+                password: password,
+                remember: rememberMe,
+            },
+            { withCredentials: true }
+        );
     }
 
     logout(): Observable<any> {
-        return this.http.post(this.base + "user/logout.php", {}, { withCredentials: true });
+        return this.http.post(
+            this.base + 'user/logout.php',
+            {},
+            { withCredentials: true }
+        );
     }
 
     getInvoices(): Observable<Invoice[]> {
         return this.http
             .get<CartInvoicesResponse>(this.base + 'cart/invoices.php')
-            .pipe(
-                map((data: CartInvoicesResponse) => data.invoices)
-            );
+            .pipe(map((data: CartInvoicesResponse) => data.invoices));
     }
 
     getPreviousCart(id: number): Observable<PreviousCartResponse> {
-        return this.http.get<PreviousCartResponse>(this.base + "cart/previous.php?id=" + id);
+        return this.http.get<PreviousCartResponse>(
+            this.base + 'cart/previous.php?id=' + id
+        );
     }
 }

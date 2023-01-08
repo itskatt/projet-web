@@ -11,7 +11,10 @@ import { Invoice } from '../shared/interfaces';
 export class CartComponent implements OnInit {
     invoices: Invoice[] = [];
 
-    constructor(private client: HttpClientService, protected user: CurrentUserService) { }
+    constructor(
+        private client: HttpClientService,
+        protected user: CurrentUserService
+    ) {}
 
     ngOnInit(): void {
         this.client
@@ -20,13 +23,13 @@ export class CartComponent implements OnInit {
     }
 
     formatDate(date: string): string {
-        return new Date(date).toLocaleDateString("fr-FR", {
-            weekday: "long",
-            day: "numeric",
+        return new Date(date).toLocaleDateString('fr-FR', {
+            weekday: 'long',
+            day: 'numeric',
             month: 'long',
             year: 'numeric',
             hour: 'numeric',
-            minute: 'numeric'
+            minute: 'numeric',
         });
     }
 }

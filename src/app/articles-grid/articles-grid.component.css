@@ -58,7 +58,8 @@ main {
 }
 
 /* La description du produit */
-.desc, .stock {
+.desc,
+.stock {
     margin-top: 0.75em;
     line-clamp: 3;
 }

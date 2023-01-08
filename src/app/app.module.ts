@@ -38,8 +38,8 @@ import { PreviousCartComponent } from './previous-cart/previous-cart.component';
         },
         {
             provide: ErrorHandler,
-            useClass: ErrorHandlerService
-        }
+            useClass: ErrorHandlerService,
+        },
     ],
     bootstrap: [AppComponent],
 })

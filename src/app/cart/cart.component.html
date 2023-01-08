@@ -1,6 +1,6 @@
 <main>
     <h1>Mon espace</h1>
-    
+
     <div class="cart-page-elements">
         <section>
             <h2>Mon panier</h2>
@@ -17,7 +17,9 @@
                         <p>
                             Facture n°{{ invoice.invoice_id }},
                             {{ invoice.num_articles || "aucun" }}
-                            article<span *ngIf="(invoice.num_articles || 2) > 1">s</span>.
+                            article<span *ngIf="(invoice.num_articles || 2) > 1"
+                                >s</span
+                            >.
                         </p>
                         <p>Crée le {{ formatDate(invoice.created) }}</p>
                     </a>
