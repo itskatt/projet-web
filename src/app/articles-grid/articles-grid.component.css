@@ -58,9 +58,13 @@ main {
 }
 
 /* La description du produit */
-.product-info p {
+.desc, .stock {
     margin-top: 0.75em;
     line-clamp: 3;
+}
+
+.stock {
+    font-style: italic;
 }
 
 .product-footer {

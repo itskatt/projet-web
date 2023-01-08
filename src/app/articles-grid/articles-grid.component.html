@@ -17,8 +17,12 @@
             <h3>{{ article.supplier_name }} &mdash; {{ article.year }}</h3>
 
             <!-- TODO limite de mots -->
-            <p>
+            <p class="desc">
                 {{ article.description }}
+            </p>
+
+            <p class="stock">
+                En stock : {{ article.quantity }}
             </p>
         </div>
 
