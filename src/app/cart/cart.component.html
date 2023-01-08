@@ -14,7 +14,11 @@
             <ul>
                 <li *ngFor="let invoice of invoices">
                     <a routerLink="/previous-cart/{{ invoice.cart_id }}">
-                        <p>Facture n°{{ invoice.invoice_id }}, {{ invoice.num_articles }} articles.</p>
+                        <p>
+                            Facture n°{{ invoice.invoice_id }},
+                            {{ invoice.num_articles || "aucun" }}
+                            article<span *ngIf="(invoice.num_articles || 2) > 1">s</span>.
+                        </p>
                         <p>Crée le {{ formatDate(invoice.created) }}</p>
                     </a>
                 </li>
