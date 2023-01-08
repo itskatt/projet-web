@@ -16,6 +16,8 @@ export class CartComponent implements OnInit {
     cartPrice: number = -1;
     cartPriceNoTax: number = -1;
 
+    articleMap: Map<number, CartArticle> = new Map();
+
     constructor(
         private client: HttpClientService,
         protected user: CurrentUserService
@@ -31,6 +33,10 @@ export class CartComponent implements OnInit {
                 this.cartArticles = cart.articles;
                 this.cartPrice = cart.price_tax;
                 this.cartPriceNoTax = cart.price_no_tax;
+
+                for (let article of this.cartArticles) {
+                    this.articleMap.set(article.article_id, article);
+                }
             },
             error: (error: Error) => {
                 if (error instanceof HttpErrorResponse) {
@@ -70,10 +76,13 @@ export class CartComponent implements OnInit {
     }
 
     updateArticle(id: number, action: "add" | "sub"): void {
-        for (let article of this.cartArticles) {
-            if (article.article_id == id) {
-                action == "add" ? article.cart_quantity++: article.cart_quantity--
-            }
+        let article = this.articleMap.get(id);
+        if (article == undefined) return;
+
+        if (action == "add") {
+            article.cart_quantity++;
+        } else if (article.cart_quantity != 0) {
+            article.cart_quantity--;
         }
     }
 }
