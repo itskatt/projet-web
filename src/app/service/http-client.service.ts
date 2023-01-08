@@ -56,16 +56,14 @@ export class HttpClientService {
                 email: email,
                 password: password,
                 remember: rememberMe,
-            },
-            { withCredentials: true } // TODO suppr
+            }
         );
     }
 
     logout(): Observable<any> {
         return this.http.post(
             this.base + 'user/logout.php',
-            {},
-            { withCredentials: true }
+            {}
         );
     }
 
