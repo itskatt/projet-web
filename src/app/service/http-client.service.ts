@@ -46,6 +46,20 @@ export class HttpClientService {
             .pipe(map((data: ArticleResponse) => data.article));
     }
 
+    register(
+        email: string,
+        lastName: string,
+        firstName: string,
+        password: string
+    ): Observable<any> {
+        return this.http.post(this.base + "user/register.php", {
+            email: email,
+            last_name: lastName,
+            first_name: firstName,
+            password: password
+        });
+    }
+
     login(
         email: string,
         password: string,

@@ -19,27 +19,27 @@
         <span>{{ registerError }}</span>
     </div>
 
-    <form>
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
         <div class="input-container">
-            <input type="email" name="" id="" required class="input" />
+            <input type="email" formControlName="email" required class="input" />
             <span>Adresse e-mail</span>
         </div>
 
         <div class="input-container">
-            <input type="text" name="" id="" required class="input" />
+            <input type="text" formControlName="lastName" required class="input" />
             <span>Nom</span>
         </div>
 
         <div class="input-container">
-            <input type="email" name="" id="" required class="input" />
+            <input type="text" formControlName="firstName" required class="input" />
             <span>Prénom</span>
         </div>
 
         <div class="input-container">
-            <input type="password" name="" id="" required class="input" />
+            <input type="password" formControlName="password" required class="input" />
             <span>Mot de passe</span>
         </div>
 
-        <input type="submit" value="Créer mon compte" class="button" />
+        <input type="submit" value="Je crée mon compte" class="button" />
     </form>
 </main>
