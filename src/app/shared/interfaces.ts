@@ -71,3 +71,8 @@ export interface CurrentCartResponse extends Statusable, Priceable {
     cart_id: number;
     articles: CartArticle[];
 }
+
+export interface CartUpdateStatement {
+    article_id: number,
+    quantity: number
+}

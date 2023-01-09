@@ -10,6 +10,7 @@ import {
     ArticleResponse,
     ArticlesResponse,
     CartInvoicesResponse,
+    CartUpdateStatement,
     CurrentCartResponse,
     Invoice,
     LoginResponse,
@@ -89,5 +90,9 @@ export class HttpClientService {
 
     createCart(): Observable<any> {
         return this.http.post(this.base + "cart/create.php", {});
+    }
+
+    updateCart(toUpdate: CartUpdateStatement[]): Observable<any> {
+        return this.http.put(this.base + "cart/update.php", toUpdate);
     }
 }

@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CurrentUserService } from '../service/current-user.service';
 import { HttpClientService } from '../service/http-client.service';
-import { CartArticle, Invoice } from '../shared/interfaces';
+import { CartArticle, CartUpdateStatement, Invoice } from '../shared/interfaces';
 
 @Component({
     selector: 'app-cart',
@@ -64,16 +64,38 @@ export class CartComponent implements OnInit {
         });
     }
 
-    deleteCart() {
+    deleteCart(): void {
         this.client.deleteCurrentCart().subscribe(_ => {
             this.cartPrice = -1;
             this.cartArticles = [];
         });
     }
 
-    createCart() {
+    createCart(): void {
         this.client.createCart().subscribe(_ => {
             this.cartPrice = 0;
+        });
+    }
+
+    updateCart(): void {
+        let toUpdate: CartUpdateStatement[] = [];
+        let toDelete: number[] = [];
+
+        for (let article of this.cartArticles) {
+            toUpdate.push({
+                article_id: article.article_id,
+                quantity: article.cart_quantity
+            });
+            if (article.cart_quantity == 0) {
+                toDelete.push(article.article_id);
+            }
+        }
+
+        // filter
+        this.cartArticles = this.cartArticles.filter(a => !toDelete.includes(a.article_id));
+
+        this.client.updateCart(toUpdate).subscribe(_ => {
+            this.updateHappened = false;
         });
     }
 
