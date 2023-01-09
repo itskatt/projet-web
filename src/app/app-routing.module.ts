@@ -6,6 +6,7 @@ import { CartComponent } from "./cart/cart.component";
 import { PreviousCartComponent } from "./previous-cart/previous-cart.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
+import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
 
 const routes: Routes = [
     {
@@ -32,6 +33,10 @@ const routes: Routes = [
         path: "previous-cart/:id",
         component: PreviousCartComponent,
     },
+    {
+        path: "admin",
+        component: AdminDashboardComponent
+    }
 ];
 
 @NgModule({

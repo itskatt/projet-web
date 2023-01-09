@@ -13,6 +13,7 @@ import { CartComponent } from "./cart/cart.component";
 import { HttpInterceptorService } from "./service/http-interceptor.service";
 import { ErrorHandlerService } from "./service/error-handler.service";
 import { PreviousCartComponent } from "./previous-cart/previous-cart.component";
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { PreviousCartComponent } from "./previous-cart/previous-cart.component";
         ArticleComponent,
         CartComponent,
         PreviousCartComponent,
+        AdminDashboardComponent,
     ],
     imports: [
         BrowserModule,
