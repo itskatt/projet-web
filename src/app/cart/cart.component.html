@@ -29,6 +29,11 @@
                 <p>
                     Prix TTC : {{ cartPrice }}&nbsp;€
                 </p>
+
+                <ng-container *ngIf="updateHappened">
+                    <button>Mettre à jour mon panier</button> <br>
+                </ng-container>
+
                 <button>Je commande</button>
                 <button (click)="deleteCart()">Je supprime mon panier</button>
             </ng-container>

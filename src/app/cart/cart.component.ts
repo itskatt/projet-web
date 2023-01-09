@@ -16,6 +16,8 @@ export class CartComponent implements OnInit {
     cartPrice: number = -1;
     cartPriceNoTax: number = -1;
 
+    updateHappened: boolean = false;
+
     articleMap: Map<number, CartArticle> = new Map();
 
     constructor(
@@ -89,5 +91,6 @@ export class CartComponent implements OnInit {
         } else if (action == "sub" && article.cart_quantity != 0) {
             article.cart_quantity--;
         }
+        this.updateHappened = true;
     }
 }
