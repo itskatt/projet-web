@@ -76,3 +76,33 @@ export interface CartUpdateStatement {
     article_id: number;
     quantity: number;
 }
+
+interface InvoiceSales {
+    id: number,
+    sales: number
+}
+
+interface TopArticle {
+    article_id: number,
+    total_quantity: number,
+    turnover: number
+}
+
+interface HighStock {
+    name: string,
+    article_id: number,
+    quantity: number
+}
+
+interface SupplierStockInfo {
+    supplier_name: string,
+    num_articles: number
+}
+
+export interface AdminStatsResponse extends Statusable {
+    sales_per_invoice: InvoiceSales[],
+    turnover: number,
+    most_sold_articles: TopArticle[],
+    highest_stocks: HighStock[],
+    num_articles_per_supplier: SupplierStockInfo[]
+}

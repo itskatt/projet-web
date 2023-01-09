@@ -6,6 +6,7 @@ import {
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, of, throwError } from "rxjs";
 import {
+    AdminStatsResponse,
     Article,
     ArticleResponse,
     ArticlesResponse,
@@ -104,5 +105,9 @@ export class HttpClientService {
 
     updateCart(toUpdate: CartUpdateStatement[]): Observable<any> {
         return this.http.put(this.base + "cart/update.php", toUpdate);
+    }
+
+    getAdminStats(): Observable<AdminStatsResponse> {
+        return this.http.get<AdminStatsResponse>(this.base + "admin/stats.php");
     }
 }
