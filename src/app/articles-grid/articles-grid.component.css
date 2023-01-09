@@ -33,6 +33,10 @@ main {
     transition: outline-color 1s;
 }
 
+.article h2 {
+    text-align: left;
+}
+
 .article:hover {
     outline-color: var(--outline);
 }
