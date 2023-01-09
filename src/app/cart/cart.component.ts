@@ -84,9 +84,9 @@ export class CartComponent implements OnInit {
         let article = this.articleMap.get(id);
         if (article == undefined) return;
 
-        if (action == "add") {
+        if (action == "add" && article.cart_quantity <= article.stock_quantity) {
             article.cart_quantity++;
-        } else if (article.cart_quantity != 0) {
+        } else if (action == "sub" && article.cart_quantity != 0) {
             article.cart_quantity--;
         }
     }
