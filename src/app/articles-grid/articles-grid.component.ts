@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Article } from '../shared/interfaces';
-import { HttpClientService } from '../service/http-client.service';
+import { Component, OnInit } from "@angular/core";
+import { Article } from "../shared/interfaces";
+import { HttpClientService } from "../service/http-client.service";
 
 @Component({
-    selector: 'app-articles-grid',
-    templateUrl: './articles-grid.component.html',
-    styleUrls: ['./articles-grid.component.css'],
+    selector: "app-articles-grid",
+    templateUrl: "./articles-grid.component.html",
+    styleUrls: ["./articles-grid.component.css"],
 })
 export class ArticlesGridComponent implements OnInit {
     articles: Article[] = [];

@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { HttpClientService } from '../service/http-client.service';
-import { Article } from '../shared/interfaces';
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
+import { HttpClientService } from "../service/http-client.service";
+import { Article } from "../shared/interfaces";
 
 @Component({
-    selector: 'app-article',
-    templateUrl: './article.component.html',
-    styleUrls: ['./article.component.css'],
+    selector: "app-article",
+    templateUrl: "./article.component.html",
+    styleUrls: ["./article.component.css"],
 })
 export class ArticleComponent implements OnInit {
     article: Article = {
         // Valeurs par défault
         article_id: 0,
-        article_name: '',
-        description: '',
+        article_name: "",
+        description: "",
         rating: 0,
         year: 0,
-        price_tax: '',
-        image: '',
-        supplier_name: '',
+        price_tax: "",
+        image: "",
+        supplier_name: "",
         quantity: 0,
     };
 
@@ -29,7 +29,7 @@ export class ArticleComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+        const id = parseInt(this.route.snapshot.paramMap.get("id")!, 10);
 
         // Récuperation de l'article
         this.client.getArticle(id).subscribe((article) => {
@@ -38,12 +38,16 @@ export class ArticleComponent implements OnInit {
     }
 
     addToCart(): void {
-        this.client.updateCart([{
-            article_id: this.article.article_id,
-            quantity: 1
-        }]).subscribe(_ => {
-            // TODO button animation ?
-            this.router.navigateByUrl("/cart");
-        })
+        this.client
+            .updateCart([
+                {
+                    article_id: this.article.article_id,
+                    quantity: 1,
+                },
+            ])
+            .subscribe((_) => {
+                // TODO button animation ?
+                this.router.navigateByUrl("/cart");
+            });
     }
 }

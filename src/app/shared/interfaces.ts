@@ -1,4 +1,4 @@
-type Status = 'success' | 'error';
+type Status = "success" | "error";
 
 export interface Statusable {
     status: Status;
@@ -73,6 +73,6 @@ export interface CurrentCartResponse extends Statusable, Priceable {
 }
 
 export interface CartUpdateStatement {
-    article_id: number,
-    quantity: number
+    article_id: number;
+    quantity: number;
 }

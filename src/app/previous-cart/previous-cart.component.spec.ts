@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PreviousCartComponent } from './previous-cart.component';
+import { PreviousCartComponent } from "./previous-cart.component";
 
-describe('PreviousCartComponent', () => {
+describe("PreviousCartComponent", () => {
     let component: PreviousCartComponent;
     let fixture: ComponentFixture<PreviousCartComponent>;
 
@@ -16,7 +16,7 @@ describe('PreviousCartComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

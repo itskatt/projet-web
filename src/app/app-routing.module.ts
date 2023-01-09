@@ -1,35 +1,35 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ArticleComponent } from './article/article.component';
-import { ArticlesGridComponent } from './articles-grid/articles-grid.component';
-import { CartComponent } from './cart/cart.component';
-import { PreviousCartComponent } from './previous-cart/previous-cart.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { ArticleComponent } from "./article/article.component";
+import { ArticlesGridComponent } from "./articles-grid/articles-grid.component";
+import { CartComponent } from "./cart/cart.component";
+import { PreviousCartComponent } from "./previous-cart/previous-cart.component";
+import { LoginComponent } from "./login/login.component";
+import { RegisterComponent } from "./register/register.component";
 
 const routes: Routes = [
     {
-        path: '',
+        path: "",
         component: ArticlesGridComponent,
     },
     {
-        path: 'article/:id',
+        path: "article/:id",
         component: ArticleComponent,
     },
     {
-        path: 'register',
+        path: "register",
         component: RegisterComponent,
     },
     {
-        path: 'login',
+        path: "login",
         component: LoginComponent,
     },
     {
-        path: 'cart',
+        path: "cart",
         component: CartComponent,
     },
     {
-        path: 'previous-cart/:id',
+        path: "previous-cart/:id",
         component: PreviousCartComponent,
     },
 ];

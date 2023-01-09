@@ -17,27 +17,38 @@
 
             <ng-container *ngIf="cartArticles.length > 0">
                 <ul>
-                    <li *ngFor="let article of cartArticles" (wheel)="handleArticleScroll($event, article.article_id)">
+                    <li
+                        *ngFor="let article of cartArticles"
+                        (wheel)="
+                            handleArticleScroll($event, article.article_id)
+                        "
+                    >
                         {{ article.article_name }} x{{ article.cart_quantity }}
-                        <button (click)="updateArticle(article.article_id, 'add')">+</button>
-                        <button (click)="updateArticle(article.article_id, 'sub')">-</button>
+                        <button
+                            (click)="updateArticle(article.article_id, 'add')"
+                        >
+                            +
+                        </button>
+                        <button
+                            (click)="updateArticle(article.article_id, 'sub')"
+                        >
+                            -
+                        </button>
                     </li>
                 </ul>
-                <p>
-                    Prix HT : {{ cartPriceNoTax }}&nbsp;€
-                </p>
-                <p>
-                    Prix TTC : {{ cartPrice }}&nbsp;€
-                </p>
+                <p>Prix HT : {{ cartPriceNoTax }}&nbsp;€</p>
+                <p>Prix TTC : {{ cartPrice }}&nbsp;€</p>
 
                 <ng-container *ngIf="updateHappened">
-                    <button (click)="updateCart()">Mettre à jour mon panier</button> <br>
+                    <button (click)="updateCart()">
+                        Mettre à jour mon panier
+                    </button>
+                    <br />
                 </ng-container>
 
                 <button>Je commande</button>
                 <button (click)="deleteCart()">Je supprime mon panier</button>
             </ng-container>
-            
         </section>
 
         <section>

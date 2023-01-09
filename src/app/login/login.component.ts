@@ -1,18 +1,18 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { CurrentUserService } from '../service/current-user.service';
-import { HttpClientService } from '../service/http-client.service';
+import { HttpErrorResponse } from "@angular/common/http";
+import { Component } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
+import { Router } from "@angular/router";
+import { CurrentUserService } from "../service/current-user.service";
+import { HttpClientService } from "../service/http-client.service";
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css', '../shared/forms.css'],
+    selector: "app-login",
+    templateUrl: "./login.component.html",
+    styleUrls: ["./login.component.css", "../shared/forms.css"],
 })
 export class LoginComponent {
     loginForm: FormGroup;
-    loginError: string = '';
+    loginError: string = "";
 
     constructor(
         private client: HttpClientService,
@@ -20,8 +20,8 @@ export class LoginComponent {
         private user: CurrentUserService
     ) {
         this.loginForm = new FormGroup({
-            email: new FormControl(''),
-            password: new FormControl(''),
+            email: new FormControl(""),
+            password: new FormControl(""),
             remember: new FormControl(false),
         });
     }
@@ -46,7 +46,7 @@ export class LoginComponent {
                     );
                     // TODO response.warnings
 
-                    this.router.navigate(['']);
+                    this.router.navigate([""]);
                 },
                 error: (error: Error) => {
                     if (error instanceof HttpErrorResponse) {

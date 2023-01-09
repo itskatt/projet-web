@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ArticlesGridComponent } from './articles-grid.component';
+import { ArticlesGridComponent } from "./articles-grid.component";
 
-describe('ArticlesGridComponent', () => {
+describe("ArticlesGridComponent", () => {
     let component: ArticlesGridComponent;
     let fixture: ComponentFixture<ArticlesGridComponent>;
 
@@ -16,7 +16,7 @@ describe('ArticlesGridComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

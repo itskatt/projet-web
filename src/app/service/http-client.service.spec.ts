@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { HttpClientService } from './http-client.service';
+import { HttpClientService } from "./http-client.service";
 
-describe('HttpClientService', () => {
+describe("HttpClientService", () => {
     let service: HttpClientService;
 
     beforeEach(() => {
@@ -10,7 +10,7 @@ describe('HttpClientService', () => {
         service = TestBed.inject(HttpClientService);
     });
 
-    it('should be created', () => {
+    it("should be created", () => {
         expect(service).toBeTruthy();
     });
 });

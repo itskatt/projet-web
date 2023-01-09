@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { ErrorHandlerService } from './error-handler.service';
+import { ErrorHandlerService } from "./error-handler.service";
 
-describe('ErrorHandlerService', () => {
+describe("ErrorHandlerService", () => {
     let service: ErrorHandlerService;
 
     beforeEach(() => {
@@ -10,7 +10,7 @@ describe('ErrorHandlerService', () => {
         service = TestBed.inject(ErrorHandlerService);
     });
 
-    it('should be created', () => {
+    it("should be created", () => {
         expect(service).toBeTruthy();
     });
 });

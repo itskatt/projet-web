@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { CurrentUserService } from './service/current-user.service';
-import { HttpClientService } from './service/http-client.service';
+import { Component } from "@angular/core";
+import { CurrentUserService } from "./service/current-user.service";
+import { HttpClientService } from "./service/http-client.service";
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
+    selector: "app-root",
+    templateUrl: "./app.component.html",
+    styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-    title = 'projet-web';
+    title = "projet-web";
 
     constructor(
         public currentUser: CurrentUserService,

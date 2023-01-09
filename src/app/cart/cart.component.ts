@@ -1,13 +1,17 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { CurrentUserService } from '../service/current-user.service';
-import { HttpClientService } from '../service/http-client.service';
-import { CartArticle, CartUpdateStatement, Invoice } from '../shared/interfaces';
+import { HttpErrorResponse } from "@angular/common/http";
+import { Component, OnInit } from "@angular/core";
+import { CurrentUserService } from "../service/current-user.service";
+import { HttpClientService } from "../service/http-client.service";
+import {
+    CartArticle,
+    CartUpdateStatement,
+    Invoice,
+} from "../shared/interfaces";
 
 @Component({
-    selector: 'app-cart',
-    templateUrl: './cart.component.html',
-    styleUrls: ['./cart.component.css'],
+    selector: "app-cart",
+    templateUrl: "./cart.component.html",
+    styleUrls: ["./cart.component.css"],
 })
 export class CartComponent implements OnInit {
     invoices: Invoice[] = [];
@@ -31,7 +35,7 @@ export class CartComponent implements OnInit {
             .subscribe((invoices) => (this.invoices = invoices));
 
         this.client.getCurrentCart().subscribe({
-            next: cart => {
+            next: (cart) => {
                 this.cartArticles = cart.articles;
                 this.cartPrice = +cart.price_tax.toFixed(2);
                 this.cartPriceNoTax = +cart.price_no_tax.toFixed(2);
@@ -49,30 +53,30 @@ export class CartComponent implements OnInit {
                 }
 
                 throw error;
-            }
+            },
         });
     }
 
     formatDate(date: string): string {
-        return new Date(date).toLocaleDateString('fr-FR', {
-            weekday: 'long',
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
+        return new Date(date).toLocaleDateString("fr-FR", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric",
         });
     }
 
     deleteCart(): void {
-        this.client.deleteCurrentCart().subscribe(_ => {
+        this.client.deleteCurrentCart().subscribe((_) => {
             this.cartPrice = -1;
             this.cartArticles = [];
         });
     }
 
     createCart(): void {
-        this.client.createCart().subscribe(_ => {
+        this.client.createCart().subscribe((_) => {
             this.cartPrice = 0;
         });
     }
@@ -84,7 +88,7 @@ export class CartComponent implements OnInit {
         for (let article of this.cartArticles) {
             toUpdate.push({
                 article_id: article.article_id,
-                quantity: article.cart_quantity
+                quantity: article.cart_quantity,
             });
             if (article.cart_quantity == 0) {
                 toDelete.push(article.article_id);
@@ -92,15 +96,17 @@ export class CartComponent implements OnInit {
         }
 
         // filter
-        this.cartArticles = this.cartArticles.filter(a => !toDelete.includes(a.article_id));
+        this.cartArticles = this.cartArticles.filter(
+            (a) => !toDelete.includes(a.article_id)
+        );
 
-        this.client.updateCart(toUpdate).subscribe(_ => {
+        this.client.updateCart(toUpdate).subscribe((_) => {
             this.updateHappened = false;
         });
     }
 
     handleArticleScroll(event: WheelEvent, id: number): void {
-        let action: "add" | "sub" = event.deltaY > 0 ? "add": "sub";
+        let action: "add" | "sub" = event.deltaY > 0 ? "add" : "sub";
         this.updateArticle(id, action);
     }
 
@@ -108,7 +114,10 @@ export class CartComponent implements OnInit {
         let article = this.articleMap.get(id);
         if (article == undefined) return;
 
-        if (action == "add" && article.cart_quantity <= article.stock_quantity) {
+        if (
+            action == "add" &&
+            article.cart_quantity <= article.stock_quantity
+        ) {
             article.cart_quantity++;
         } else if (action == "sub" && article.cart_quantity != 0) {
             article.cart_quantity--;
