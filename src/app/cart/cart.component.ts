@@ -31,8 +31,8 @@ export class CartComponent implements OnInit {
         this.client.getCurrentCart().subscribe({
             next: cart => {
                 this.cartArticles = cart.articles;
-                this.cartPrice = cart.price_tax;
-                this.cartPriceNoTax = cart.price_no_tax;
+                this.cartPrice = +cart.price_tax.toFixed(2);
+                this.cartPriceNoTax = +cart.price_no_tax.toFixed(2);
 
                 for (let article of this.cartArticles) {
                     this.articleMap.set(article.article_id, article);
@@ -73,6 +73,11 @@ export class CartComponent implements OnInit {
         this.client.createCart().subscribe(_ => {
             this.cartPrice = 0;
         });
+    }
+
+    handleArticleScroll(event: WheelEvent, id: number): void {
+        let action: "add" | "sub" = event.deltaY > 0 ? "add": "sub";
+        this.updateArticle(id, action);
     }
 
     updateArticle(id: number, action: "add" | "sub"): void {

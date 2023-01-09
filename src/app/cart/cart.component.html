@@ -17,7 +17,7 @@
 
             <ng-container *ngIf="cartArticles.length > 0">
                 <ul>
-                    <li *ngFor="let article of cartArticles">
+                    <li *ngFor="let article of cartArticles" (wheel)="handleArticleScroll($event, article.article_id)">
                         {{ article.article_name }} x{{ article.cart_quantity }}
                         <button (click)="updateArticle(article.article_id, 'add')">+</button>
                         <button (click)="updateArticle(article.article_id, 'sub')">-</button>
