@@ -24,16 +24,26 @@ export class ArticleComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
+        private router: Router,
         private client: HttpClientService
     ) {}
 
     ngOnInit(): void {
         const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-        console.log("ID de l'article : " + id);
 
         // Récuperation de l'article
         this.client.getArticle(id).subscribe((article) => {
             this.article = article;
         });
+    }
+
+    addToCart(): void {
+        this.client.updateCart([{
+            article_id: this.article.article_id,
+            quantity: 1
+        }]).subscribe(_ => {
+            // TODO button animation ?
+            this.router.navigateByUrl("/cart");
+        })
     }
 }
