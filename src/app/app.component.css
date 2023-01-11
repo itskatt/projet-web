@@ -18,6 +18,15 @@ nav,
     align-items: center;
 }
 
+.nav-elem-container:not(:has(.logo)) {
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.nav-elem-container:hover:not(:has(.logo)) {
+    background-color: var(--bg2);
+}
+
 header {
     position: fixed;
     top: 0;
@@ -65,7 +74,8 @@ nav {
     }
 
     .hamburger {
-        display: block;
+        display: inherit; /* flex */
+        cursor: pointer;
     }
 }
 
