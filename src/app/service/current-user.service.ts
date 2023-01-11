@@ -23,6 +23,7 @@ export class CurrentUserService {
         localStorage.removeItem("email");
         localStorage.removeItem("last_name");
         localStorage.removeItem("first_name");
+        localStorage.removeItem("admin");
     }
 
     /**
