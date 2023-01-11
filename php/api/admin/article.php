@@ -137,6 +137,13 @@ class AdminArticleHandler extends AdminRequiredHandler
 
         $quantity = $this->validateInt($data, "quantity");
 
+        if ($quantity < 0) {
+            $this->sendError(
+                400,
+                "Le stock d'articles ne peut pas être négatif."
+            );
+        }
+
         $conn = $this->getConnector();
         // TODO : aussi ajuster cart_article si nouveau stock < cart_article.quantity
         $conn->query(
