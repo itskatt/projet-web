@@ -1,0 +1,28 @@
+h1 {
+    margin: 1em 0;
+}
+
+h2 {
+    margin-bottom: 1em;
+}
+
+.dual-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.dual-container section {
+    background-color: var(--bg);
+    padding: 1.5em;
+    border-radius: 10px;
+    margin-bottom: 2em;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
