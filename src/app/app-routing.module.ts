@@ -7,6 +7,7 @@ import { PreviousCartComponent } from "./previous-cart/previous-cart.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
+import { AdminAddArticleComponent } from "./admin-add-article/admin-add-article.component";
 
 const routes: Routes = [
     {
@@ -36,6 +37,10 @@ const routes: Routes = [
     {
         path: "admin",
         component: AdminDashboardComponent
+    },
+    {
+        path: "new-article",
+        component: AdminAddArticleComponent
     }
 ];
 

@@ -8,7 +8,8 @@
             <p *ngIf="articles.length == 0">Chargement en cours...</p>
 
             <ng-container *ngIf="articles.length != 0">
-                <button>Ajouter un article</button>
+                <button routerLink="/new-article">Ajouter un article</button>
+
                 <ul class="article-list">
                     <li *ngFor="let article of articles">
                         {{ article.article_name }} &mdash;

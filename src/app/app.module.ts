@@ -14,6 +14,7 @@ import { HttpInterceptorService } from "./service/http-interceptor.service";
 import { ErrorHandlerService } from "./service/error-handler.service";
 import { PreviousCartComponent } from "./previous-cart/previous-cart.component";
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminAddArticleComponent } from './admin-add-article/admin-add-article.component';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
         CartComponent,
         PreviousCartComponent,
         AdminDashboardComponent,
+        AdminAddArticleComponent,
     ],
     imports: [
         BrowserModule,
