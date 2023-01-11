@@ -95,7 +95,8 @@ export class CartComponent implements OnInit {
             }
         }
 
-        // filter
+        // On veut supprimer de l'affichage les articles
+        // auquelle leur quantité == 0
         this.cartArticles = this.cartArticles.filter(
             (a) => !toDelete.includes(a.article_id)
         );

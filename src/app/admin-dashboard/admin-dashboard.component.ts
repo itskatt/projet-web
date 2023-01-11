@@ -9,6 +9,10 @@ import { AdminStatsResponse, Article } from '../shared/interfaces';
 })
 export class AdminDashboardComponent implements OnInit {
     articles: Article[] = [];
+    articleMap: Map<number, Article> = new Map();
+
+    updateHappened: boolean = false;
+
     stats: AdminStatsResponse | null = null;
 
     constructor(private client: HttpClientService) { }
@@ -20,7 +24,28 @@ export class AdminDashboardComponent implements OnInit {
 
         this.client.getArticles().subscribe(articles => {
             this.articles = articles;
+            for (let article of this.articles) {
+                this.articleMap.set(article.article_id, article);
+            }
         })
+    }
+
+    handleArticleScroll(event: WheelEvent, id: number): void {
+        event.preventDefault();
+        let action: "add" | "sub" = event.deltaY > 0 ? "add" : "sub";
+        this.updateArticle(id, action);
+    }
+
+    updateArticle(id: number, action: "add" | "sub"): void {
+        let article = this.articleMap.get(id);
+        if (article == undefined) return;
+
+        if (action == "add") {
+            article.quantity++;
+        } else if (action == "sub" && article.quantity != 0) {
+            article.quantity--;
+        }
+        this.updateHappened = true;
     }
 
     avgSalesPerInvoices(): number {

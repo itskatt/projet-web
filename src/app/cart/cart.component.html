@@ -24,7 +24,11 @@
                             handleArticleScroll($event, article.article_id)
                         "
                     >
-                        <span>{{ article.article_name }} x{{ article.cart_quantity }}</span>
+                        <span
+                            >{{ article.article_name }} x{{
+                                article.cart_quantity
+                            }}</span
+                        >
                         <button
                             (click)="updateArticle(article.article_id, 'add')"
                         >
