@@ -106,3 +106,8 @@ export interface AdminStatsResponse extends Statusable {
     highest_stocks: HighStock[],
     num_articles_per_supplier: SupplierStockInfo[]
 }
+
+export interface ArticleStockUpdateStatement {
+    article_id: number,
+    quantity: number
+}

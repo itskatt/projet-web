@@ -1,7 +1,6 @@
 import {
     HttpClient,
-    HttpErrorResponse,
-    HttpHeaders,
+    HttpErrorResponse
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, of, throwError } from "rxjs";
@@ -10,12 +9,14 @@ import {
     Article,
     ArticleResponse,
     ArticlesResponse,
+    ArticleStockUpdateStatement,
     CartInvoicesResponse,
     CartUpdateStatement,
     CurrentCartResponse,
     Invoice,
     LoginResponse,
     PreviousInvoiceResponse as PreviousCartResponse,
+    Statusable,
 } from "../shared/interfaces";
 
 @Injectable({
@@ -109,5 +110,9 @@ export class HttpClientService {
 
     getAdminStats(): Observable<AdminStatsResponse> {
         return this.http.get<AdminStatsResponse>(this.base + "admin/stats.php");
+    }
+
+    updateArticleStock(toUpdate: ArticleStockUpdateStatement): Observable<Statusable> {
+        return this.http.put<Statusable>(this.base + "admin/article.php", toUpdate);
     }
 }
