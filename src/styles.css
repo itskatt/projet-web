@@ -50,6 +50,10 @@ video {
     max-width: 100%;
 }
 
+svg {
+    width: 24px;
+}
+
 /* Let us use links the way we want */
 a {
     color: initial;

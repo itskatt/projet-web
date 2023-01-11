@@ -38,10 +38,6 @@ nav {
     gap: 1em;
 }
 
-svg {
-    width: 24px;
-}
-
 .wrapper {
     min-height: 100vh;
     display: grid;
