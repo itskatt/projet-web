@@ -28,21 +28,11 @@ export class AdminDashboardComponent implements OnInit {
         });
     }
 
-    handleArticleScroll(event: WheelEvent, id: number): void {
-        event.preventDefault();
-        let action: "add" | "sub" = event.deltaY > 0 ? "add" : "sub";
-        this.updateArticle(id, action);
-    }
-
-    updateArticle(id: number, action: "add" | "sub"): void {
+    updateArticle(id: number, event: Event): void {
         let article = this.articleMap.get(id);
         if (article == undefined) return;
 
-        if (action == "add") {
-            article.quantity++;
-        } else if (action == "sub" && article.quantity != 0) {
-            article.quantity--;
-        }
+        article.quantity = +(<HTMLInputElement>event.target).value;
 
         this.client
             .updateArticleStock({
