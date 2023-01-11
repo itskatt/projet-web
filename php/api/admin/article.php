@@ -169,8 +169,9 @@ class AdminArticleHandler extends AdminRequiredHandler
         $conn = $this->getConnector();
         $conn->query(
             <<<END
-            delete from article
-            where id = :id;
+            update stock
+            set quantity = -1
+            where article_id = :id;
             END,
             [
                 "id" => $_GET["id"]

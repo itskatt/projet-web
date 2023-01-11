@@ -31,7 +31,7 @@ class SingleArticleHandler extends PublicHandler
             from article a
                     inner join supplier s on a.supplier_id = s.id
                     inner join stock s2 on a.id = s2.article_id
-            where a.id = :id;
+            where a.id = :id and s2.quantity >= 0;
             END,
             ["id" => $id]
         )->fetch(PDO::FETCH_ASSOC);

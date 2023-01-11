@@ -32,6 +32,7 @@ class MultipleArticleHandler extends PublicHandler
             from article a
                     inner join supplier s on a.supplier_id = s.id
                     inner join stock s2 on a.id = s2.article_id
+            where s2.quantity >= 0
             order by a.id
             limit $start, $stop;
             END,
