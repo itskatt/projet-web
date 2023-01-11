@@ -45,7 +45,7 @@ export class LoginComponent {
                         response.first_name,
                         response.admin
                     );
-                    // TODO response.warnings, admin info
+                    // TODO response.warnings
 
                     this.router.navigate([""]);
                 },

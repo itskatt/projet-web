@@ -48,7 +48,7 @@ export class CurrentUserService {
         return localStorage.getItem("first_name");
     }
 
-    get admin(): string | null {
-        return localStorage.getItem("admin");
+    get isAdmin(): boolean {
+        return localStorage.getItem("admin") === "1";
     }
 }
