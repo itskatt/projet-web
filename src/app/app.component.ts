@@ -10,6 +10,8 @@ import { HttpClientService } from "./service/http-client.service";
 export class AppComponent {
     title = "projet-web";
 
+    menuShown: boolean = false;
+
     constructor(
         public currentUser: CurrentUserService,
         private client: HttpClientService
@@ -18,5 +20,9 @@ export class AppComponent {
     logout(): void {
         this.client.logout().subscribe();
         this.currentUser.localLogout();
+    }
+
+    toggleMenu(): void {
+        this.menuShown = !this.menuShown;
     }
 }

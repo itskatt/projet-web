@@ -5,6 +5,7 @@
 
 .current-user {
     font-size: large;
+    letter-spacing: 1px;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -38,6 +39,36 @@ nav {
     gap: 1em;
 }
 
+.hamburger {
+    display: none;
+}
+
+@media (max-width: 835px) {
+    nav {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+
+        background-color: var(--bg);
+        padding: 1em;
+
+        transform: scaleY(1);
+        transform-origin: top;
+        transition: 0.5s transform;
+
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hidden {
+        transform: scaleY(0);
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
 .wrapper {
     min-height: 100vh;
     display: grid;
@@ -56,11 +87,4 @@ footer .logo {
 
 footer p {
     text-align: center;
-}
-
-/* TODO changer le responsive */
-@media (max-width: 640px) {
-    .nav-elem-container span:not(.logo) {
-        display: none;
-    }
 }
