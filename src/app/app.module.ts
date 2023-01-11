@@ -15,6 +15,7 @@ import { ErrorHandlerService } from "./service/error-handler.service";
 import { PreviousCartComponent } from "./previous-cart/previous-cart.component";
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminAddArticleComponent } from './admin-add-article/admin-add-article.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { AdminAddArticleComponent } from './admin-add-article/admin-add-article.
         PreviousCartComponent,
         AdminDashboardComponent,
         AdminAddArticleComponent,
+        PageNotFoundComponent,
     ],
     imports: [
         BrowserModule,
