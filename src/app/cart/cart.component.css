@@ -1,1 +1,3 @@
-
+.deleted span {
+    text-decoration-line: line-through;
+}
