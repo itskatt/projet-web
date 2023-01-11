@@ -42,7 +42,8 @@ export class LoginComponent {
                     this.user.localLogin(
                         this.loginForm.value.email,
                         response.last_name,
-                        response.first_name
+                        response.first_name,
+                        response.admin
                     );
                     // TODO response.warnings, admin info
 

@@ -50,6 +50,7 @@ class LoginHandler extends PublicHandler
         $this->sendOK([
             "last_name" => $res["last_name"],
             "first_name" => $res["first_name"],
+            "admin" => $res["admin"],
             "warnings" => $warnings
         ]);
     }
