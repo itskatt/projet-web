@@ -16,6 +16,7 @@ import { PreviousCartComponent } from "./previous-cart/previous-cart.component";
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminAddArticleComponent } from './admin-add-article/admin-add-article.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         AdminDashboardComponent,
         AdminAddArticleComponent,
         PageNotFoundComponent,
+        StarRatingComponent,
     ],
     imports: [
         BrowserModule,

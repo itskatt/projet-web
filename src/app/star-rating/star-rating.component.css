@@ -1,0 +1,7 @@
+.star-container {
+    display: flex;
+}
+
+.star-container svg {
+    width: 20px;
+}
