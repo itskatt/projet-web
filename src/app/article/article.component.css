@@ -1,3 +1,7 @@
+.main-container {
+    padding: 0 2em;
+}
+
 main {
     background-color: var(--bg);
 
@@ -5,7 +9,7 @@ main {
 
     margin: 2em auto;
     padding: 1em;
-    padding-bottom: 2em;
+    padding-bottom: 3em;
 
     max-width: 920px;
 }
@@ -27,6 +31,8 @@ h3 {
 .article-content {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2em;
 }
 
 .image-desc {
