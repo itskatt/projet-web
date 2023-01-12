@@ -40,6 +40,11 @@ body {
     color: var(--text);
 }
 
+::selection {
+    background-color: var(--accent);
+    color: var(--bg2);
+}
+
 /* responsive images/videos */
 img,
 picture,
