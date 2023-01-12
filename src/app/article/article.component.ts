@@ -2,12 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { HttpClientService } from "../service/http-client.service";
 import { ArticleUser } from "../shared/article-user";
-import { Article, SingleArticle } from "../shared/interfaces";
+import { SingleArticle } from "../shared/interfaces";
 
 @Component({
     selector: "app-article",
     templateUrl: "./article.component.html",
-    styleUrls: ["./article.component.css"],
+    styleUrls: ["./article.component.css", "../shared/button.css"],
 })
 export class ArticleComponent extends ArticleUser implements OnInit {
     article: SingleArticle = {
