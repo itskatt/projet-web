@@ -7,6 +7,7 @@ import { Component, Input } from "@angular/core";
 })
 export class StarRatingComponent {
     @Input() stars: number = 0;
+    @Input() large: boolean = false;
 
     filledStars(): Array<number> {
         return Array(this.stars);

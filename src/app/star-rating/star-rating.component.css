@@ -3,6 +3,10 @@
     justify-content: space-around;
 }
 
-.star-container svg {
+.star-container svg[small] {
     width: 20px;
+}
+
+.star-container svg[large] {
+    width: 24px;
 }
