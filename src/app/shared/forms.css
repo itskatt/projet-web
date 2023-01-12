@@ -71,16 +71,3 @@ input[type="checkbox"] {
     accent-color: var(--accent);
 }
 
-.button {
-    padding: 1em;
-    border-radius: 10px;
-
-    border: 1px solid var(--outline);
-    background-color: var(--bg);
-
-    cursor: pointer;
-}
-
-.button:hover {
-    border-color: var(--accent);
-}

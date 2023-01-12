@@ -8,7 +8,11 @@ import { HttpClientService } from "../service/http-client.service";
 @Component({
     selector: "app-login",
     templateUrl: "./login.component.html",
-    styleUrls: ["./login.component.css", "../shared/forms.css"],
+    styleUrls: [
+        "./login.component.css",
+        "../shared/forms.css",
+        "../shared/button.css",
+    ],
 })
 export class LoginComponent {
     loginForm: FormGroup;
