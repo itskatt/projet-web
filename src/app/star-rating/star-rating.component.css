@@ -1,5 +1,6 @@
 .star-container {
     display: flex;
+    justify-content: space-around;
 }
 
 .star-container svg {
