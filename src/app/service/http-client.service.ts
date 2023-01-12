@@ -16,6 +16,7 @@ import {
     Invoice,
     LoginResponse,
     PreviousInvoiceResponse as PreviousCartResponse,
+    SingleArticle,
     Statusable,
 } from "../shared/interfaces";
 
@@ -42,7 +43,7 @@ export class HttpClientService {
             );
     }
 
-    getArticle(id: number): Observable<Article> {
+    getArticle(id: number): Observable<SingleArticle> {
         return this.http
             .get<ArticleResponse>(this.base + "public/article.php?id=" + id)
             .pipe(map((data: ArticleResponse) => data.article));

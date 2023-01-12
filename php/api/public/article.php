@@ -25,6 +25,7 @@ class SingleArticleHandler extends PublicHandler
                 rating,
                 year,
                 round(supplier_price * 1.08 * 1.2, 2) "price_tax",
+                round(supplier_price * 1.08, 2) "price_no_tax",
                 image_ "image",
                 s.name_ "supplier_name",
                 quantity

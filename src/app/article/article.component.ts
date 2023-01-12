@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { HttpClientService } from "../service/http-client.service";
 import { ArticleUser } from "../shared/article-user";
-import { Article } from "../shared/interfaces";
+import { Article, SingleArticle } from "../shared/interfaces";
 
 @Component({
     selector: "app-article",
@@ -10,7 +10,7 @@ import { Article } from "../shared/interfaces";
     styleUrls: ["./article.component.css"],
 })
 export class ArticleComponent extends ArticleUser implements OnInit {
-    article: Article = {
+    article: SingleArticle = {
         // Valeurs par défault
         article_id: 0,
         article_name: "",
@@ -18,6 +18,7 @@ export class ArticleComponent extends ArticleUser implements OnInit {
         rating: 0,
         year: 0,
         price_tax: "",
+        price_no_tax: "",
         image: "",
         supplier_name: "",
         quantity: 0,

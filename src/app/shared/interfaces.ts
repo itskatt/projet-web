@@ -24,6 +24,10 @@ export interface Article extends BaseArticle {
     quantity: number;
 }
 
+export interface SingleArticle extends Article {
+    price_no_tax: string;
+}
+
 // TODO : ce truc n'est pas complet, on peut le changer en fonction des besoins
 export interface SoldArticle extends BaseArticle {
     cart_quantity: number;
@@ -38,7 +42,7 @@ export interface ArticlesResponse extends Statusable {
 }
 
 export interface ArticleResponse extends Statusable {
-    article: Article;
+    article: SingleArticle;
 }
 
 export interface WarningElement {
