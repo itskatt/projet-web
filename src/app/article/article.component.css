@@ -8,8 +8,18 @@ main {
     padding-bottom: 2em;
 }
 
-h1 {
-    padding: 1em 0;
+.article-header {
+    padding: 1.5em;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+h3 {
+    font-size: large;
+    color: var(--text2);
+    text-align: center;
 }
 
 .article-content {
@@ -29,16 +39,14 @@ h1 {
     box-shadow: rgba(149, 157, 165, 0.5) 0px 8px 24px;
 } */
 
-h3 {
-    font-size: large;
-    color: var(--text2);
-    text-align: center;
-}
-
 .image-desc p {
     border-left: 5px solid var(--text2);
     border-radius: 5px 0 0 5px;
     padding-left: 0.5em;
+}
+
+img {
+    border: 1px solid var(--outline);
 }
 
 .cart-stock {

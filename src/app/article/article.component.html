@@ -1,16 +1,20 @@
 <main>
-    <h1>{{ article.article_name }}</h1>
+    <div class="article-header">
+        <h1>{{ article.article_name }}</h1>
+        <h3>{{ article.supplier_name }} &mdash; {{ article.year }}</h3>
+    </div>
 
     <div class="article-content">
         <div class="image-desc">
             <img [src]="getImagePath(article.image, article.article_name)" alt="Image de présentation du {{ article.article_name }}">
-            <h3>{{ article.supplier_name }} &mdash; {{ article.year }}</h3>
             <p>
                 {{ article.description }}
             </p>
         </div>
 
         <div class="cart-stock">
+            
+
             <div>
                 <p class="ht">
                     Prix HT&nbsp;: {{ +article.price_tax / 1.2 }}&nbsp;€
