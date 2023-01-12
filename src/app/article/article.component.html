@@ -6,16 +6,21 @@
 
     <div class="article-content">
         <div class="image-desc">
-            <img [src]="getImagePath(article.image, article.article_name)" alt="Image de présentation du {{ article.article_name }}">
+            <img
+                [src]="getImagePath(article.image, article.article_name)"
+                alt="Image de présentation du {{ article.article_name }}"
+                width="400" height="300"
+            />
             <p>
                 {{ article.description }}
             </p>
         </div>
 
         <div class="cart-stock">
+            <p>Ce que d'autres en pensent...</p>
             <app-star-rating [stars]="article.rating"></app-star-rating>
 
-            <div>
+            <div class="prices">
                 <p class="ht">
                     Prix HT&nbsp;: {{ +article.price_no_tax }}&nbsp;€
                 </p>
@@ -24,9 +29,7 @@
                 </p>
             </div>
 
-            <p>
-                En stock&nbsp;: {{ article.quantity }}
-            </p>
+            <em> En stock&nbsp;: {{ article.quantity }} </em>
 
             <button (click)="addToCart()">J'ajoute au panier</button>
         </div>

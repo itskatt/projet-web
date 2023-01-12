@@ -3,9 +3,11 @@ main {
 
     border-radius: 10px;
 
-    margin: 1em;
+    margin: 2em auto;
     padding: 1em;
     padding-bottom: 2em;
+
+    max-width: 920px;
 }
 
 .article-header {
@@ -58,6 +60,11 @@ img {
     /* font-size: large; */
 }
 
+.prices {
+    font-size: larger;
+}
+
 .ht {
     color: var(--text2);
+    margin-bottom: 0.5em;
 }
