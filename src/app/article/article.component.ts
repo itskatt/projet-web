@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { HttpClientService } from "../service/http-client.service";
+import { ArticleUser } from "../shared/article-user";
 import { Article } from "../shared/interfaces";
 
 @Component({
@@ -8,7 +9,7 @@ import { Article } from "../shared/interfaces";
     templateUrl: "./article.component.html",
     styleUrls: ["./article.component.css"],
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent extends ArticleUser implements OnInit {
     article: Article = {
         // Valeurs par défault
         article_id: 0,
@@ -26,7 +27,9 @@ export class ArticleComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private client: HttpClientService
-    ) {}
+    ) {
+        super();
+    }
 
     ngOnInit(): void {
         const id = parseInt(this.route.snapshot.paramMap.get("id")!, 10);

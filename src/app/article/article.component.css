@@ -1,0 +1,55 @@
+main {
+    background-color: var(--bg);
+
+    border-radius: 10px;
+
+    margin: 1em;
+    padding: 1em;
+    padding-bottom: 2em;
+}
+
+h1 {
+    padding: 1em 0;
+}
+
+.article-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.image-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    max-width: 400px; /* Toutes nos images font 400x300 */
+}
+
+/* .image-desc img {
+    box-shadow: rgba(149, 157, 165, 0.5) 0px 8px 24px;
+} */
+
+h3 {
+    font-size: large;
+    color: var(--text2);
+    text-align: center;
+}
+
+.image-desc p {
+    border-left: 5px solid var(--text2);
+    border-radius: 5px 0 0 5px;
+    padding-left: 0.5em;
+}
+
+.cart-stock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+
+    /* font-size: large; */
+}
+
+.ht {
+    color: var(--text2);
+}

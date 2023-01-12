@@ -1,16 +1,19 @@
 import { Component, OnInit } from "@angular/core";
 import { Article } from "../shared/interfaces";
 import { HttpClientService } from "../service/http-client.service";
+import { ArticleUser } from "../shared/article-user";
 
 @Component({
     selector: "app-articles-grid",
     templateUrl: "./articles-grid.component.html",
     styleUrls: ["./articles-grid.component.css"],
 })
-export class ArticlesGridComponent implements OnInit {
+export class ArticlesGridComponent extends ArticleUser implements OnInit {
     articles: Article[] = [];
 
-    constructor(private client: HttpClientService) {}
+    constructor(private client: HttpClientService) {
+        super();
+    }
 
     ngOnInit(): void {
         this.fetchArticles();
@@ -20,22 +23,5 @@ export class ArticlesGridComponent implements OnInit {
         this.client.getArticles().subscribe((articles) => {
             this.articles = articles;
         });
-    }
-
-    filledStars(n: number): Array<number> {
-        return Array(n);
-    }
-
-    emptyStars(n: number): Array<number> {
-        return Array(5 - n);
-    }
-
-    getImagePath(image: string | null, name: string): string {
-        if (image == null) {
-            let code = (new Array(name)).map(c => c.charCodeAt(0)).reduce((a, b) => a + b) % 4;
-            return "/assets/default-" + code + ".png";
-        }
-
-        return "todo";
     }
 }
