@@ -1,3 +1,7 @@
+.full-container {
+    padding: 0 1em;
+}
+
 textarea {
     resize: vertical;
     padding: 1em;
@@ -19,6 +23,10 @@ textarea {
 .range-label {
     display: flex;
     gap: 1em;
+}
+
+.range-label label {
+    text-align: center;
 }
 
 .range-container input {
