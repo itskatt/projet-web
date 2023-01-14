@@ -57,6 +57,19 @@ class PreviousCartHandler extends LoginRequiredHandler
             $articles = [];
         }
 
+        // On récupère l'id de la facture, nombre total d'articles...
+        $invoice = $conn->query(
+            <<<END
+            select i.id as                        "id",
+                (select sum(quantity) from cart_article
+                    where cart_id = i.cart_id) "num_articles"
+            from invoice i
+            inner join cart c on i.cart_id = c.id
+            where c.id = :id;
+            END,
+            ["id" => $id]
+        )->fetch(PDO::FETCH_ASSOC);
+
         $priceNoTax = 0;
         foreach ($articles as $article) {
             $priceNoTax += $article["price_no_tax"];
@@ -64,6 +77,8 @@ class PreviousCartHandler extends LoginRequiredHandler
 
         $this->sendOK([
             "articles" => $articles,
+            "invoice_id" => $invoice["id"],
+            "num_articles" => $invoice["num_articles"],
             "price_no_tax" => $priceNoTax,
             "price_tax" => $priceNoTax * 1.2
         ]);

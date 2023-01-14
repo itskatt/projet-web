@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClientService } from "../service/http-client.service";
-import { Article, SoldArticle } from "../shared/interfaces";
+import { SoldArticle } from "../shared/interfaces";
 
 @Component({
     selector: "app-previous-cart",
@@ -12,6 +12,8 @@ export class PreviousCartComponent implements OnInit {
     articles: SoldArticle[] = [];
     priceNoTax: number = -1;
     priceTax: number = -1;
+    invoiceId: number = -1;
+    numArticles: number | string = -1;
 
     constructor(
         private client: HttpClientService,
@@ -24,6 +26,8 @@ export class PreviousCartComponent implements OnInit {
             this.articles = invoice.articles;
             this.priceNoTax = invoice.price_no_tax;
             this.priceTax = invoice.price_tax;
+            this.invoiceId = invoice.invoice_id;
+            this.numArticles = invoice.num_articles;
         });
     }
 }

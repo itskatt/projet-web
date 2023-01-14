@@ -70,6 +70,8 @@ export interface CartInvoicesResponse extends Statusable {
 
 export interface PreviousInvoiceResponse extends Statusable, Priceable {
     articles: SoldArticle[];
+    invoice_id: number,
+    num_articles: number | string
 }
 
 export interface CurrentCartResponse extends Statusable, Priceable {

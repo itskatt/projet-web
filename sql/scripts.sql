@@ -253,3 +253,11 @@ select s.name_ "supplier_name",
 from article
 inner join supplier s on article.supplier_id = s.id
 group by s.id;
+
+-- bref
+select i.id as                        "id",
+       (select sum(quantity) from cart_article
+           where cart_id = i.cart_id) "num_articles"
+from invoice i
+inner join cart c on i.cart_id = c.id
+where c.id = 4;
