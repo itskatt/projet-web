@@ -3,7 +3,11 @@ import { Component } from "@angular/core";
 @Component({
     selector: "app-admin-add-article",
     templateUrl: "./admin-add-article.component.html",
-    styleUrls: ["./admin-add-article.component.css", "../shared/forms.css"],
+    styleUrls: [
+        "./admin-add-article.component.css",
+        "../shared/forms.css",
+        "../shared/button.css",
+    ],
 })
 export class AdminAddArticleComponent {
     articleError: string = "";

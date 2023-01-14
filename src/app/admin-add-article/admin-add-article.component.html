@@ -30,9 +30,37 @@
             <span>Nom du fournisseur</span>
         </div>
 
-        <textarea>
-            TODO
-        </textarea>
+        <div class="input-container">
+            <input type="number" required class="input" min="2010">
+            <span>Date de sortie</span>
+        </div>
+
+        <div class="textarea-container">
+            <label for="desc">Description de l'article</label>
+            <textarea id="desc"></textarea>
+        </div>
+
+        <div class="range-container">
+            <div class="range-label">
+                <label for="rating">Note de l'article</label>
+                <input type="range" id="rating" min="0" max="5" #rating (input)="rating.value">
+            </div>
+            <app-star-rating [stars]="+rating.value"></app-star-rating>
+        </div>
+
+        <div class="input-container">
+            <input type="number" required class="input" min="0" step="0.01">
+            <span>Prix du fournisseur (€)</span>
+        </div>
+
+        <div class="input-container">
+            <input type="number" required class="input" min="0">
+            <span>En stock</span>
+        </div>
+
+        
+
+        <input type="submit" value="Mettre en vitrine" class="button">
     </form>
 
 </main>
