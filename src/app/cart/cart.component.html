@@ -41,7 +41,9 @@
                         />
 
                         <div class="article-info">
-                            <h3>{{ article.article_name }}</h3>
+                            <h3 routerLink="/article/{{ article.article_id }}">
+                                {{ article.article_name }}
+                            </h3>
                             <p>
                                 {{ article.supplier_name }} &mdash;
                                 {{ article.year }}

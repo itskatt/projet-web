@@ -46,6 +46,13 @@
 .article-info h3 {
     justify-self: flex-start;
     font-weight: bold;
+
+    transition: 0.5s color;
+}
+
+.article-info h3:hover {
+    cursor: pointer;
+    color: var(--accent);
 }
 
 .article-info > p {
