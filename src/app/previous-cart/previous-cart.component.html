@@ -1,9 +1,15 @@
-<p>Price tax : {{ priceTax }}</p>
-<p>Price no tax : {{ priceNoTax }}</p>
+<h1>Contenu du panier</h1>
+<main>
+    <h2>Facture n°{{ invoiceId }} &mdash; {{ numArticles }} articles </h2>
 
-<ul>
-    <li *ngFor="let article of articles">
-        {{ article.article_name }} &mdash; {{ article.cart_quantity }} dans le
-        panier
-    </li>
-</ul>
+    <ul>
+        <li *ngFor="let article of articles">
+            {{ article.article_name }} &mdash; {{ article.cart_quantity }} dans le
+            panier
+        </li>
+    </ul>
+
+    <p>Price tax : {{ priceTax }}</p>
+    <p>Price no tax : {{ priceNoTax }}</p>
+
+</main>

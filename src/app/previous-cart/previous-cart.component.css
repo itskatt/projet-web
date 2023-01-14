@@ -1,0 +1,10 @@
+h1 {
+    margin: 1em 0;
+}
+
+main {
+    background-color: var(--bg);
+    padding: 1.5em;
+    border-radius: 10px;
+    margin-bottom: 2em;
+}
