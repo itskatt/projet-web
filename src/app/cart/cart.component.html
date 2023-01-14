@@ -5,10 +5,11 @@
         <section>
             <h2>Mon panier</h2>
 
-            <ng-container *ngIf="cartPrice == -1">
+            <div class="empty-cart" *ngIf="cartPrice == -1">
                 <p>Vous n'avez pas de panier</p>
-                <button (click)="createCart()">J'en crée un</button>
-            </ng-container>
+                <img src="/assets/empty_cart.svg" alt="">
+                <button (click)="createCart()" class="button">J'en crée un</button>
+            </div>
 
             <ng-container *ngIf="cartPrice != -1 && cartArticles.length == 0">
                 <p>Votre panier est vide</p>

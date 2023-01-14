@@ -11,7 +11,11 @@ import {
 @Component({
     selector: "app-cart",
     templateUrl: "./cart.component.html",
-    styleUrls: ["./cart.component.css", "../shared/dual-ui.css"],
+    styleUrls: [
+        "./cart.component.css",
+        "../shared/dual-ui.css",
+        "../shared/button.css",
+    ],
 })
 export class CartComponent implements OnInit {
     invoices: Invoice[] = [];

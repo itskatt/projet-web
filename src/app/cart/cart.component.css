@@ -1,3 +1,19 @@
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.empty-cart p {
+    color: var(--text2);
+}
+
+.empty-cart img {
+    max-width: 350px;
+    margin: 1.5em 1em;
+}
+
 .deleted span {
     text-decoration-line: line-through;
 }
