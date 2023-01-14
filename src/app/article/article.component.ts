@@ -1,8 +1,9 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { HttpClientService } from "../service/http-client.service";
 import { ArticleUser } from "../shared/article-user";
-import { SingleArticle } from "../shared/interfaces";
+import { CartUpdateStatement, SingleArticle } from "../shared/interfaces";
 
 @Component({
     selector: "app-article",
@@ -42,16 +43,33 @@ export class ArticleComponent extends ArticleUser implements OnInit {
     }
 
     addToCart(): void {
-        this.client
-            .updateCart([
-                {
-                    article_id: this.article.article_id,
-                    quantity: 1,
-                },
-            ])
-            .subscribe((_) => {
-                // TODO button animation ?
-                this.router.navigateByUrl("/cart");
-            });
+        let content: CartUpdateStatement[] = [
+            {
+                article_id: this.article.article_id,
+                quantity: 1,
+            },
+        ];
+
+        this.client.updateCart(content).subscribe({
+            next: (_) => this.router.navigateByUrl("/cart"),
+
+            // Si le panier n'existe pas encore, on le crée
+            error: (error: Error) => {
+                if (error instanceof HttpErrorResponse) {
+                    if (error.status == 400) {
+                        this.client.createCart().subscribe((_) => {
+                            this.client
+                                .updateCart(content)
+                                .subscribe((_) =>
+                                    this.router.navigateByUrl("/cart")
+                                );
+                        });
+                        return;
+                    }
+                }
+
+                throw error;
+            },
+        });
     }
 }
