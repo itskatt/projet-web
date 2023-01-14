@@ -5,16 +5,17 @@
         <section>
             <h2>Mon panier</h2>
 
-            <div class="empty-cart" *ngIf="cartPrice == -1">
-                <p>Vous n'avez pas de panier</p>
+            <div class="no-articles" *ngIf="cartPrice == -1">
                 <img src="/assets/empty_cart.svg" alt="">
+                <p>Vous n'avez pas de panier</p>
                 <button (click)="createCart()" class="button">J'en crée un</button>
             </div>
 
-            <ng-container *ngIf="cartPrice != -1 && cartArticles.length == 0">
+            <div class="no-articles" *ngIf="cartPrice != -1 && cartArticles.length == 0">
+                <img src="/assets/fill_cart.svg" alt="">
                 <p>Votre panier est vide</p>
-                <a routerLink="">Je le remplis</a>
-            </ng-container>
+                <button routerLink="" class="button">Je le remplis</button>
+            </div>
 
             <ng-container *ngIf="cartArticles.length > 0">
                 <ul>
