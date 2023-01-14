@@ -110,3 +110,7 @@
 .ht {
     color: var(--text2);
 }
+
+.delete-btn:hover {
+    border-color: var(--error-text) !important;
+}
