@@ -27,9 +27,6 @@
                     <li
                         *ngFor="let article of cartArticles"
                         [class.deleted]="article.cart_quantity == 0"
-                        (wheel)="
-                            handleArticleScroll($event, article.article_id)
-                        "
                     >
                         <img
                             [src]="
@@ -50,7 +47,15 @@
                                 {{ article.year }}
                             </p>
 
-                            <div class="article-quantity-control">
+                            <div
+                                class="article-quantity-control"
+                                (wheel)="
+                                    handleArticleScroll(
+                                        $event,
+                                        article.article_id
+                                    )
+                                "
+                            >
                                 <p>
                                     Quantité&nbsp;: &times;{{
                                         article.cart_quantity
