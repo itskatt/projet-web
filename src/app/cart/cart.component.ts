@@ -38,6 +38,10 @@ export class CartComponent implements OnInit {
             .getInvoices()
             .subscribe((invoices) => (this.invoices = invoices));
 
+        this.fetchCart();
+    }
+
+    fetchCart(): void {
         this.client.getCurrentCart().subscribe({
             next: (cart) => {
                 this.cartArticles = cart.articles;
@@ -87,26 +91,17 @@ export class CartComponent implements OnInit {
 
     updateCart(): void {
         let toUpdate: CartUpdateStatement[] = [];
-        let toDelete: number[] = [];
 
         for (let article of this.cartArticles) {
             toUpdate.push({
                 article_id: article.article_id,
                 quantity: article.cart_quantity,
             });
-            if (article.cart_quantity == 0) {
-                toDelete.push(article.article_id);
-            }
         }
-
-        // On veut supprimer de l'affichage les articles
-        // auquelle leur quantité == 0
-        this.cartArticles = this.cartArticles.filter(
-            (a) => !toDelete.includes(a.article_id)
-        );
 
         this.client.updateCart(toUpdate).subscribe((_) => {
             this.updateHappened = false;
+            this.fetchCart();
         });
     }
 
