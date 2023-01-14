@@ -62,6 +62,14 @@ img {
     /* font-size: large; */
 }
 
+hr {
+    background-color: var(--outline);
+    height: 0.05em;
+    border: none;
+    width: 80%;
+    margin: 0 auto
+}
+
 .prices {
     font-size: larger;
 }
