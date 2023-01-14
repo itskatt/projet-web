@@ -114,3 +114,13 @@
 .delete-btn:hover {
     border-color: var(--error-text) !important;
 }
+
+.cart-article-list a {
+    padding: 1em;
+    display: flex;
+    gap: 1em;
+}
+
+.invoice-text p:last-child {
+    color: var(--text2);
+}
