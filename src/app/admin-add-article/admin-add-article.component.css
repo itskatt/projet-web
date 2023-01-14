@@ -24,3 +24,18 @@ textarea {
 .range-container input {
     accent-color: var(--accent);
 }
+
+.image-upload input {
+    display: none;
+}
+
+.image-upload {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.image-upload img {
+    width: 80%;
+}
