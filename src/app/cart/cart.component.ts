@@ -106,7 +106,7 @@ export class CartComponent implements OnInit {
     }
 
     handleArticleScroll(event: WheelEvent, id: number): void {
-        let action: "add" | "sub" = event.deltaY > 0 ? "add" : "sub";
+        let action: "add" | "sub" = event.deltaY < 0 ? "add" : "sub";
         this.updateArticle(id, action);
         event.preventDefault();
     }
