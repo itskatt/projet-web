@@ -6,19 +6,24 @@
             <h2>Mon panier</h2>
 
             <div class="no-articles" *ngIf="cartPrice == -1">
-                <img src="/assets/empty_cart.svg" alt="">
+                <img src="/assets/empty_cart.svg" alt="" />
                 <p>Vous n'avez pas de panier</p>
-                <button (click)="createCart()" class="button">J'en crée un</button>
+                <button (click)="createCart()" class="button">
+                    J'en crée un
+                </button>
             </div>
 
-            <div class="no-articles" *ngIf="cartPrice != -1 && cartArticles.length == 0">
-                <img src="/assets/fill_cart.svg" alt="">
+            <div
+                class="no-articles"
+                *ngIf="cartPrice != -1 && cartArticles.length == 0"
+            >
+                <img src="/assets/fill_cart.svg" alt="" />
                 <p>Votre panier est vide</p>
                 <button routerLink="" class="button">Je le remplis</button>
             </div>
 
-            <ng-container *ngIf="cartArticles.length > 0">
-                <ul>
+            <div class="cart-articles" *ngIf="cartArticles.length > 0">
+                <ul class="cart-article-list">
                     <li
                         *ngFor="let article of cartArticles"
                         [class.deleted]="article.cart_quantity == 0"
@@ -26,36 +31,85 @@
                             handleArticleScroll($event, article.article_id)
                         "
                     >
-                        <span
-                            >{{ article.article_name }} x{{
-                                article.cart_quantity
-                            }}</span
-                        >
-                        <button
-                            (click)="updateArticle(article.article_id, 'add')"
-                        >
-                            +
-                        </button>
-                        <button
-                            (click)="updateArticle(article.article_id, 'sub')"
-                        >
-                            -
-                        </button>
+                        <img
+                            [src]="
+                                getImagePath(
+                                    article.image,
+                                    article.article_name
+                                )
+                            "
+                            alt="Image de l'article : {{
+                                article.article_name
+                            }}"
+                        />
+
+                        <div class="article-info">
+                            <h3>{{ article.article_name }}</h3>
+                            <p>
+                                {{ article.supplier_name }} &mdash;
+                                {{ article.year }}
+                            </p>
+
+                            <div class="article-quantity-control">
+                                <p>
+                                    Quantité&nbsp;: &times;{{
+                                        article.cart_quantity
+                                    }}
+                                </p>
+                                <button
+                                    class="button"
+                                    (click)="
+                                        updateArticle(article.article_id, 'add')
+                                    "
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+                                        />
+                                    </svg>
+                                </button>
+                                <button
+                                    class="button"
+                                    (click)="
+                                        updateArticle(article.article_id, 'sub')
+                                    "
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+                                            clip-rule="evenodd"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                     </li>
                 </ul>
                 <p>Prix HT : {{ cartPriceNoTax }}&nbsp;€</p>
                 <p>Prix TTC : {{ cartPrice }}&nbsp;€</p>
 
                 <ng-container *ngIf="updateHappened">
-                    <button (click)="updateCart()">
+                    <button (click)="updateCart()" class="button">
                         Mettre à jour mon panier
                     </button>
-                    <br />
                 </ng-container>
 
-                <button>Je commande</button>
-                <button (click)="deleteCart()">Je supprime mon panier</button>
-            </ng-container>
+                <div class="buttons-container">
+                    <button class="button">Je commande</button>
+                    <button (click)="deleteCart()" class="button">
+                        Je supprime mon panier
+                    </button>
+                </div>
+            </div>
         </section>
 
         <section>

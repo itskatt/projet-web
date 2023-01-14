@@ -2,6 +2,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { CurrentUserService } from "../service/current-user.service";
 import { HttpClientService } from "../service/http-client.service";
+import { ArticleUser } from "../shared/article-user";
 import {
     CartArticle,
     CartUpdateStatement,
@@ -17,7 +18,7 @@ import {
         "../shared/button.css",
     ],
 })
-export class CartComponent implements OnInit {
+export class CartComponent extends ArticleUser implements OnInit {
     invoices: Invoice[] = [];
 
     cartArticles: CartArticle[] = [];
@@ -31,7 +32,9 @@ export class CartComponent implements OnInit {
     constructor(
         private client: HttpClientService,
         protected user: CurrentUserService
-    ) {}
+    ) {
+        super();
+    }
 
     ngOnInit(): void {
         this.client
