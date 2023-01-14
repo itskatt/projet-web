@@ -101,14 +101,13 @@
                         </div>
                     </li>
                 </ul>
+
+                <button (click)="updateCart()" class="button update-cart" [class.update-hidden]="!updateHappened">
+                    Mettre à jour mon panier
+                </button>
+
                 <p>Prix HT : {{ cartPriceNoTax }}&nbsp;€</p>
                 <p>Prix TTC : {{ cartPrice }}&nbsp;€</p>
-
-                <ng-container *ngIf="updateHappened">
-                    <button (click)="updateCart()" class="button">
-                        Mettre à jour mon panier
-                    </button>
-                </ng-container>
 
                 <div class="buttons-container">
                     <button class="button">Je commande</button>

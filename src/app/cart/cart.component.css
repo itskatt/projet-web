@@ -88,3 +88,15 @@
 .deleted img {
     filter: grayscale(0.5);
 }
+
+.update-cart {
+    transform-origin: top;
+    transition-duration: 0.5s;
+    transition-property: transform, opacity;
+}
+
+.update-hidden {
+    transform: scaleY(0);
+    opacity: 0;
+    visibility: hidden;
+}
