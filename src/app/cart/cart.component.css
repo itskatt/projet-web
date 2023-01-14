@@ -21,7 +21,11 @@
 
 .cart-article-list li {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 1.5em;
+
+    flex-wrap: wrap;
 
     border-radius: 10px;
 
@@ -29,13 +33,13 @@
 }
 
 .cart-article-list img {
-    width: 150px;
+    max-width: 150px;
 
     border-radius: 10px 0 0 10px;
 }
 
 .article-info {
-    flex-grow: 1;
+    /* flex-grow: 1; */
 
     display: flex;
     flex-direction: column;
@@ -102,7 +106,7 @@
     visibility: hidden;
 }
 
-.cart-articles p {
+.cart-articles > p {
     font-size: large;
     text-align: center;
 }
