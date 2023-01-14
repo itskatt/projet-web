@@ -78,6 +78,7 @@
 
 .buttons-container {
     display: flex;
+    justify-content: space-around;
     gap: 1em;
 }
 
@@ -99,4 +100,13 @@
     transform: scaleY(0);
     opacity: 0;
     visibility: hidden;
+}
+
+.cart-articles p {
+    font-size: large;
+    text-align: center;
+}
+
+.ht {
+    color: var(--text2);
 }

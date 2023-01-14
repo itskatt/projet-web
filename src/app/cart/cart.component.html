@@ -102,12 +102,16 @@
                     </li>
                 </ul>
 
-                <button (click)="updateCart()" class="button update-cart" [class.update-hidden]="!updateHappened">
+                <button
+                    (click)="updateCart()"
+                    class="button update-cart"
+                    [class.update-hidden]="!updateHappened"
+                >
                     Mettre à jour mon panier
                 </button>
 
-                <p>Prix HT : {{ cartPriceNoTax }}&nbsp;€</p>
-                <p>Prix TTC : {{ cartPrice }}&nbsp;€</p>
+                <p class="ht">Prix HT : {{ cartPriceNoTax.toLocaleString() }}&nbsp;€</p>
+                <p>Prix TTC : {{ cartPrice.toLocaleString() }}&nbsp;€</p>
 
                 <div class="buttons-container">
                     <button class="button">Je commande</button>
