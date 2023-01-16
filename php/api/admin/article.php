@@ -13,7 +13,7 @@ class AdminArticleHandler extends AdminRequiredHandler
     private function validateInt(array $data, string $name): int
     {
         $object = $data[$name];
-        if (!is_int($object)) {
+        if ($object !== strval((int) $object)) {
             $this->sendError(
                 400,
                 "Le paramètre '$name' n'est pas un nombre !"
@@ -23,9 +23,9 @@ class AdminArticleHandler extends AdminRequiredHandler
         return (int) $object;
     }
 
-    protected function handlePOST(array $data): void
+    protected function handlePOST(?array $data): void
     {
-        // TODO ? image
+        $data = $_POST; // pour pouvoir accepter l'image, on remplace le json par du multipart/form-data
 
         $this->checkFields(
             [
@@ -39,6 +39,7 @@ class AdminArticleHandler extends AdminRequiredHandler
         $supplierName = htmlspecialchars($data["supplier_name"]);
         $description = htmlspecialchars($data["description"]);
 
+        
         $rating = $this->validateInt($data, "rating");
 
         if ($rating > 5 or $rating < 0) {
@@ -53,7 +54,7 @@ class AdminArticleHandler extends AdminRequiredHandler
         $quantity = $this->validateInt($data, "quantity");
 
         $supplierPrice = $data["supplier_price"];
-        if (!(is_int($supplierPrice) or is_float($supplierPrice))) {
+        if ($supplierPrice !== strval(floatval($supplierPrice))) {
             $this->sendError(
                 400,
                 "Le prix de l'article n'est pas un nombre valide !"
