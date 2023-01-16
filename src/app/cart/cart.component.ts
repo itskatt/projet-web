@@ -16,6 +16,7 @@ import {
         "./cart.component.css",
         "../shared/dual-ui.css",
         "../shared/button.css",
+        "../shared/rounded-article-list.css"
     ],
 })
 export class CartComponent extends ArticleUser implements OnInit {

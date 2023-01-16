@@ -23,7 +23,7 @@
             </div>
 
             <div class="cart-articles" *ngIf="cartArticles.length > 0">
-                <ul class="cart-article-list">
+                <ul class="rounded-list">
                     <li
                         *ngFor="let article of cartArticles"
                         [class.deleted]="article.cart_quantity == 0"
@@ -129,7 +129,7 @@
 
             <p *ngIf="invoices.length == 0">Chargement en cours...</p>
 
-            <ul class="cart-article-list">
+            <ul class="rounded-list">
                 <li *ngFor="let invoice of invoices">
                     <a routerLink="/previous-cart/{{ invoice.cart_id }}">
                         <svg
