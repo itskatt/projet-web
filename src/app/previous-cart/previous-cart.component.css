@@ -32,6 +32,10 @@ h2 {
     margin-bottom: 0.5em;
 }
 
+.article-info div > p {
+    margin-bottom: 1em;
+}
+
 .inner > p {
     font-size: large;
     text-align: center;

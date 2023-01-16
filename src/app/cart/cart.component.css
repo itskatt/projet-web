@@ -78,6 +78,7 @@
 .rounded-list a {
     padding: 1em;
     display: flex;
+    align-items: center;
     gap: 1em;
 }
 

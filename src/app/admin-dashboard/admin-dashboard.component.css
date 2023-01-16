@@ -6,6 +6,8 @@ section > .button {
 .stock-quantity-control {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.7em;
 
     padding: 0 0.5em;

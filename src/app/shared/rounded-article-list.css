@@ -22,6 +22,8 @@
     flex-direction: column;
     justify-content: flex-end;
     gap: 0.3em;
+
+    margin: 0 1em;
 }
 
 .article-info h3 {
