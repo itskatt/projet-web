@@ -11,6 +11,6 @@ export abstract class ArticleUser {
             return "/assets/default-" + code + ".png";
         }
 
-        return "http://localhost:80/uploads/" + image; // TODO changer quand passage sur serv
+        return "/uploads/" + image;
     }
 }

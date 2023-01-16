@@ -22,7 +22,7 @@ import {
     providedIn: "root",
 })
 export class HttpClientService {
-    private base: string = "http://localhost/api/"; // TODO changer quand passage sur serv
+    private base: string = "/api/";
 
     constructor(private http: HttpClient) {}
 
