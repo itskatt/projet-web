@@ -24,6 +24,10 @@ section > .button {
     padding: 0.2em;
 }
 
+.stock-quantity-control .button:hover {
+    border-color: var(--error-text);
+}
+
 .stock-quantity-control svg {
     width: 20px;
 }
