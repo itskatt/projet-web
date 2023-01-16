@@ -20,9 +20,9 @@
             <span>{{ articleError }}</span>
         </div>
     
-        <form>
+        <form [formGroup]="newArticleForm" (ngSubmit)="submit()">
             <div class="input-container">
-                <input type="text" required class="input" />
+                <input type="text" required class="input" formControlName="articleName" />
                 <span>Nom de l'article</span>
             </div>
 
@@ -52,18 +52,18 @@
             </div>
     
             <div class="input-container">
-                <input type="text" required class="input" />
+                <input type="text" required class="input" formControlName="supplierName" />
                 <span>Nom du fournisseur</span>
             </div>
     
             <div class="input-container">
-                <input type="number" required class="input" min="2010" />
+                <input type="number" required class="input" min="2010" formControlName="year" />
                 <span>Date de sortie</span>
             </div>
     
             <div class="textarea-container">
                 <label for="desc">Description de l'article</label>
-                <textarea id="desc"></textarea>
+                <textarea id="desc" formControlName="description" required></textarea>
             </div>
     
             <div class="range-container">
@@ -74,6 +74,7 @@
                         id="rating"
                         min="0"
                         max="5"
+                        formControlName="rating"
                         #rating
                         (input)="(rating.value)"
                     />
@@ -82,12 +83,12 @@
             </div>
     
             <div class="input-container">
-                <input type="number" required class="input" min="0" step="0.01" />
+                <input type="number" required class="input" min="0" step="0.01" formControlName="supplierPrice" />
                 <span>Prix du fournisseur (€)</span>
             </div>
     
             <div class="input-container">
-                <input type="number" required class="input" min="0" />
+                <input type="number" required class="input" min="0" formControlName="quantity" />
                 <span>Nombre d'articles en stock</span>
             </div>
     
