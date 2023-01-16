@@ -1,3 +1,8 @@
+section > .button {
+    display: block;
+    margin: 0 auto 1em auto;
+}
+
 .stock-quantity-control {
     display: flex;
     align-items: center;
