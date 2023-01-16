@@ -25,6 +25,31 @@
                 <input type="text" required class="input" />
                 <span>Nom de l'article</span>
             </div>
+
+            <div class="image-upload">
+                <label for="image" class="button" *ngIf="!uploadImageUrl"
+                    >Ajouter une image</label
+                >
+                <input
+                    type="file"
+                    id="image"
+                    accept="image/png, image/jpeg"
+                    (change)="showImage($event)"
+                />
+    
+                <img
+                    [src]="uploadImageUrl"
+                    *ngIf="uploadImageUrl"
+                    alt="Image de l'article"
+                />
+                <button
+                    class="button"
+                    *ngIf="uploadImageUrl"
+                    (click)="removeImage()"
+                >
+                    Supprimer l'image
+                </button>
+            </div>
     
             <div class="input-container">
                 <input type="text" required class="input" />
@@ -63,32 +88,7 @@
     
             <div class="input-container">
                 <input type="number" required class="input" min="0" />
-                <span>En stock</span>
-            </div>
-    
-            <div class="image-upload">
-                <label for="image" class="button" *ngIf="!uploadImageUrl"
-                    >Ajouter une image</label
-                >
-                <input
-                    type="file"
-                    id="image"
-                    accept="image/png, image/jpeg"
-                    (change)="showImage($event)"
-                />
-    
-                <img
-                    [src]="uploadImageUrl"
-                    *ngIf="uploadImageUrl"
-                    alt="Image de l'article"
-                />
-                <button
-                    class="button"
-                    *ngIf="uploadImageUrl"
-                    (click)="removeImage()"
-                >
-                    Supprimer l'image
-                </button>
+                <span>Nombre d'articles en stock</span>
             </div>
     
             <input type="submit" value="Mettre en vitrine" class="button" />

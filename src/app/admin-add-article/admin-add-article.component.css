@@ -12,6 +12,9 @@ textarea {
     display: flex;
     flex-direction: column;
     gap: 0.4em;
+
+    min-width: max-content;
+    width: 80%;
 }
 
 .range-container {
