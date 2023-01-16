@@ -1,19 +1,26 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClientService } from "../service/http-client.service";
+import { ArticleUser } from "../shared/article-user";
 import { AdminStatsResponse, Article } from "../shared/interfaces";
 
 @Component({
     selector: "app-admin-dashboard",
     templateUrl: "./admin-dashboard.component.html",
-    styleUrls: ["./admin-dashboard.component.css", "../shared/dual-ui.css"],
+    styleUrls: [
+        "./admin-dashboard.component.css",
+        "../shared/dual-ui.css",
+        "../shared/rounded-article-list.css",
+    ],
 })
-export class AdminDashboardComponent implements OnInit {
+export class AdminDashboardComponent extends ArticleUser implements OnInit {
     articles: Article[] = [];
     articleMap: Map<number, Article> = new Map();
 
     stats: AdminStatsResponse | null = null;
 
-    constructor(private client: HttpClientService) {}
+    constructor(private client: HttpClientService) {
+        super();
+    }
 
     ngOnInit(): void {
         this.client.getAdminStats().subscribe((stats) => {
@@ -39,7 +46,7 @@ export class AdminDashboardComponent implements OnInit {
                 article_id: article.article_id,
                 quantity: article.quantity,
             })
-            .subscribe(_ => {});
+            .subscribe((_) => {});
     }
 
     avgSalesPerInvoices(): number {

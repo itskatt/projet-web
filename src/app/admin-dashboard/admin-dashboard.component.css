@@ -1,13 +1,18 @@
-.article-list li {
+.stock-quantity-control {
     display: flex;
-    gap: 1em;
     align-items: center;
-    justify-content: space-between;
+    gap: 0.7em;
+
+    padding: 0 0.5em;
+    padding-bottom: 0.5em;
 }
 
-h3 {
-    font-weight: bold;
-    margin-bottom: 0.2em;
+.stock-quantity-control input {
+    width: 4em;
+
+    border: solid 1.5px var(--outline2);
+    border-radius: 5px;
+    padding: 0.3em;
 }
 
 .stats {

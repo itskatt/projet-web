@@ -10,15 +10,42 @@
             <ng-container *ngIf="articles.length != 0">
                 <button routerLink="/new-article">Ajouter un article</button>
 
-                <ul class="article-list">
+                <ul class="rounded-list">
                     <li *ngFor="let article of articles">
-                        {{ article.article_name }} &mdash;
-                        <input
-                            type="number"
-                            min="0"
-                            [value]="article.quantity"
-                            (input)="updateArticle(article.article_id, $event)"
+                        <img
+                            [src]="
+                                getImagePath(
+                                    article.image,
+                                    article.article_name
+                                )
+                            "
+                            alt="Image de l'article : {{
+                                article.article_name
+                            }}"
                         />
+
+                        <div class="article-info">
+                            <h3 routerLink="/article/{{ article.article_id }}">
+                                {{ article.article_name }}
+                            </h3>
+                            <p>
+                                {{ article.supplier_name }} &mdash;
+                                {{ article.year }}
+                            </p>
+
+                            <div class="stock-quantity-control">
+                                <label for="stock-quantity-{{article.article_id}}"> Modifier le stock&nbsp;:</label>
+                                <input
+                                    type="number"
+                                    min="0"
+                                    id="stock-quantity-{{article.article_id}}"
+                                    [value]="article.quantity"
+                                    (input)="
+                                        updateArticle(article.article_id, $event)
+                                    "
+                                />
+                            </div>
+                        </div>
 
                         <!--
                             TODO : peut être ne pas implémenter la suppression
