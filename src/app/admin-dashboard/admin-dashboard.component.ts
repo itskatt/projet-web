@@ -60,12 +60,12 @@ export class AdminDashboardComponent extends ArticleUser implements OnInit {
         });
     }
 
-    avgSalesPerInvoices(): number {
-        if (this.stats == null) return -1;
+    avgSalesPerInvoices(): string {
+        if (this.stats == null) return "-1";
         return (
             this.stats.sales_per_invoice
                 .map((invoice) => invoice.sales)
                 .reduce((a, b) => a + b) / this.stats.sales_per_invoice.length
-        );
+        ).toLocaleString();
     }
 }

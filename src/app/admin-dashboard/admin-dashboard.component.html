@@ -78,7 +78,7 @@
             <p *ngIf="stats == null">Chargement en cours...</p>
 
             <div class="stats" *ngIf="stats != null">
-                <div class="statr">
+                <div class="stat">
                     <h3>Bénéfice net</h3>
                     <p>{{ stats.turnover }}&nbsp;€</p>
                 </div>
@@ -89,8 +89,34 @@
                 </div>
 
                 <div class="stat">
-                    <h3>TODO...</h3>
-                    <p>TODO...</p>
+                    <h3>Articles les plus vendus</h3>
+                    <ul class="rounded-list">
+                        <li *ngFor="let top of stats.most_sold_articles">
+                            <a routerLink="/article/{{ top.article_id }}">
+                                &times;{{ top.total_quantity }} &ndash; {{ top.turnover.toLocaleString() }}&nbsp;€ de gains rapportés
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="stat">
+                    <h3>Stock les plus importants</h3>
+                    <ul class="rounded-list">
+                        <li *ngFor="let stock of stats.highest_stocks">
+                            <a routerLink="/article/{{ stock.article_id }}">
+                                {{ stock.name }} &ndash; {{ stock.quantity }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="stat">
+                    <h3>Articles par fournisseurs</h3>
+                    <ul class="rounded-list">
+                        <li *ngFor="let s of stats.num_articles_per_supplier">
+                            <span>{{ s.supplier_name }} &ndash; {{ s.num_articles }}</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
