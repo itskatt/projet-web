@@ -2,6 +2,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
+import { Router } from "@angular/router";
 import { HttpClientService } from "../service/http-client.service";
 
 @Component({
@@ -23,7 +24,8 @@ export class AdminAddArticleComponent {
     constructor(
         private sanitizer: DomSanitizer,
         builder: FormBuilder,
-        private client: HttpClientService
+        private client: HttpClientService,
+        private router: Router
     ) {
         this.newArticleForm = builder.group({
             articleName: [""],
@@ -74,7 +76,7 @@ export class AdminAddArticleComponent {
 
         this.client.createArticle(formData).subscribe({
             next: (resp) => {
-                console.log(resp);
+                this.router.navigate(["/article/" + resp.article_id]);
             },
             error: (error: Error) => {
                 if (error instanceof HttpErrorResponse) {
