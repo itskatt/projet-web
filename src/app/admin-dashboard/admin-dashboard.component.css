@@ -32,6 +32,12 @@ section > .button {
     width: 20px;
 }
 
+.turnover {
+    font-size: x-large;
+    font-weight: bolder;
+    color: var(--accent);
+}
+
 .stats {
     display: flex;
     flex-direction: column;
