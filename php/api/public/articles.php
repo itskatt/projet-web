@@ -6,16 +6,6 @@ class MultipleArticleHandler extends PublicHandler
 {
     protected function handleGET(): void
     {
-        if (isset($_GET["page"])) {
-            // Par défault on revoie la première page
-            $page = 1;
-        } else {
-            $page = $_GET["page"];
-        }
-
-        $stop = $page * 20;
-        $start = $stop - 20;
-
         $conn = $this->getConnector();
 
         $res = $conn->query(
@@ -33,17 +23,9 @@ class MultipleArticleHandler extends PublicHandler
                     inner join supplier s on a.supplier_id = s.id
                     inner join stock s2 on a.id = s2.article_id
             where s2.quantity >= 0
-            order by a.id
-            limit $start, $stop;
+            order by a.id;
             END,
         )->fetchAll(PDO::FETCH_ASSOC);
-
-        if (!$res) {
-            $this->sendError(
-                404,
-                "Cette page n'existe pas."
-            );
-        }
 
         $this->sendOK([
             "articles" => array_values($res)
