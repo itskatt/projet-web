@@ -2,8 +2,9 @@
 config.php
 
 # Uploaded images
-uploads
-!uploads/.htaccess
+php/uploads/*.jpg
+php/uploads/*.jpeg
+php/uploads/*.png
 
 # Compiled output
 /dist
