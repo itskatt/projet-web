@@ -1,6 +1,10 @@
 # Backend configuration file
 config.php
 
+# Uploaded images
+uploads
+!uploads/.htaccess
+
 # Compiled output
 /dist
 /tmp
