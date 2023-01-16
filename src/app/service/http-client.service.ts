@@ -1,7 +1,4 @@
-import {
-    HttpClient,
-    HttpErrorResponse
-} from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, of, throwError } from "rxjs";
 import {
@@ -59,7 +56,7 @@ export class HttpClientService {
             email: email,
             last_name: lastName,
             first_name: firstName,
-            password: password
+            password: password,
         });
     }
 
@@ -113,7 +110,18 @@ export class HttpClientService {
         return this.http.get<AdminStatsResponse>(this.base + "admin/stats.php");
     }
 
-    updateArticleStock(toUpdate: ArticleStockUpdateStatement): Observable<Statusable> {
-        return this.http.put<Statusable>(this.base + "admin/article.php", toUpdate);
+    updateArticleStock(
+        toUpdate: ArticleStockUpdateStatement
+    ): Observable<Statusable> {
+        return this.http.put<Statusable>(
+            this.base + "admin/article.php",
+            toUpdate
+        );
+    }
+
+    deleteArticle(id: number): Observable<Statusable> {
+        return this.http.delete<Statusable>(
+            this.base + "admin/article.php?id=" + id
+        );
     }
 }

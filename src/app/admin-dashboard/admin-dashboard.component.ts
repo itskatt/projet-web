@@ -28,6 +28,10 @@ export class AdminDashboardComponent extends ArticleUser implements OnInit {
             this.stats = stats;
         });
 
+        this.fetchArticles();
+    }
+
+    fetchArticles(): void {
         this.client.getArticles().subscribe((articles) => {
             this.articles = articles;
             for (let article of this.articles) {
@@ -48,6 +52,12 @@ export class AdminDashboardComponent extends ArticleUser implements OnInit {
                 quantity: article.quantity,
             })
             .subscribe((_) => {});
+    }
+
+    deleteArticle(id: number): void {
+        this.client.deleteArticle(id).subscribe((_) => {
+            this.fetchArticles();
+        });
     }
 
     avgSalesPerInvoices(): number {
