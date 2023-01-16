@@ -25,4 +25,8 @@ export class AppComponent {
     toggleMenu(): void {
         this.menuShown = !this.menuShown;
     }
+
+    hideMenu(): void {
+        this.menuShown = false;
+    }
 }

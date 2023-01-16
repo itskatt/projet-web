@@ -18,7 +18,7 @@
             <span>Menu</span>
         </div>       
 
-        <nav [class.hidden]="!menuShown">
+        <nav [class.hidden]="!menuShown" (click)="hideMenu()">
             <ng-container *ngIf="!currentUser.isLoggedIn()">
                 <a routerLink="register" class="nav-elem-container">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
