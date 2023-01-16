@@ -81,6 +81,14 @@
     gap: 1em;
 }
 
+.rounded-list a p:first-of-type {
+    transition: 0.5s;
+}
+
+.rounded-list a:hover p:first-of-type {
+    color: var(--accent);
+}
+
 .invoice-text p:last-child {
     color: var(--text2);
 }
