@@ -1,14 +1,18 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClientService } from "../service/http-client.service";
+import { ArticleUser } from "../shared/article-user";
 import { SoldArticle } from "../shared/interfaces";
 
 @Component({
     selector: "app-previous-cart",
     templateUrl: "./previous-cart.component.html",
-    styleUrls: ["./previous-cart.component.css"],
+    styleUrls: [
+        "./previous-cart.component.css",
+        "../shared/rounded-article-list.css",
+    ],
 })
-export class PreviousCartComponent implements OnInit {
+export class PreviousCartComponent extends ArticleUser implements OnInit {
     articles: SoldArticle[] = [];
     priceNoTax: number = -1;
     priceTax: number = -1;
@@ -18,7 +22,9 @@ export class PreviousCartComponent implements OnInit {
     constructor(
         private client: HttpClientService,
         private route: ActivatedRoute
-    ) {}
+    ) {
+        super();
+    }
 
     ngOnInit(): void {
         const id = parseInt(this.route.snapshot.paramMap.get("id")!, 10);
