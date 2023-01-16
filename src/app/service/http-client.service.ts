@@ -107,6 +107,10 @@ export class HttpClientService {
         return this.http.put(this.base + "cart/update.php", toUpdate);
     }
 
+    orderCurrentCart(): Observable<any> {
+        return this.http.post(this.base + "cart/order.php", {});
+    }
+
     getAdminStats(): Observable<AdminStatsResponse> {
         return this.http.get<AdminStatsResponse>(this.base + "admin/stats.php");
     }

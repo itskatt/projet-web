@@ -129,7 +129,7 @@ class OrderCartHandler extends LoginRequiredHandler
 
         $body = "Voici le contenu de votre commande :\n";
         foreach ($invoiceArticles as $article) {
-            $body .= "\t* " . $article["article_name"] . " - x" . $article["cart_quantity"] . " : " . $article["price_tax"] . " €\n";
+            $body .= "    * " . $article["article_name"] . " - x" . $article["cart_quantity"] . " : " . $article["price_tax"] . " €\n";
         }
 
         $body .= "\nMerci d'avoir commandé chez TelTech !";

@@ -38,11 +38,15 @@ export class CartComponent extends ArticleUser implements OnInit {
     }
 
     ngOnInit(): void {
+        this.fetchInvoices();
+
+        this.fetchCart();
+    }
+
+    fetchInvoices(): void {
         this.client
             .getInvoices()
             .subscribe((invoices) => (this.invoices = invoices));
-
-        this.fetchCart();
     }
 
     fetchCart(): void {
@@ -85,6 +89,14 @@ export class CartComponent extends ArticleUser implements OnInit {
             this.cartPrice = -1;
             this.cartArticles = [];
         });
+    }
+
+    order(): void {
+        this.client.orderCurrentCart().subscribe(_ => {
+            this.cartPrice = -1;
+            this.cartArticles = [];
+            this.fetchInvoices();
+        })
     }
 
     createCart(): void {
