@@ -20,7 +20,7 @@ export class ArticlesGridComponent extends ArticleUser implements OnInit {
     }
 
     fetchArticles(): void {
-        this.client.getArticles().subscribe((articles) => {
+        this.client.getArticles(true).subscribe((articles) => {
             this.articles = articles;
         });
     }

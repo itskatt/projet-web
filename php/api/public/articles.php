@@ -6,6 +6,12 @@ class MultipleArticleHandler extends PublicHandler
 {
     protected function handleGET(): void
     {
+        if (isset($_GET["random"])) {
+            $order = "order by rand()";
+        } else {
+            $order = "order by a.id";
+        }
+
         $conn = $this->getConnector();
 
         $res = $conn->query(
@@ -23,7 +29,7 @@ class MultipleArticleHandler extends PublicHandler
                     inner join supplier s on a.supplier_id = s.id
                     inner join stock s2 on a.id = s2.article_id
             where s2.quantity >= 0
-            order by a.id;
+            $order;
             END,
         )->fetchAll(PDO::FETCH_ASSOC);
 

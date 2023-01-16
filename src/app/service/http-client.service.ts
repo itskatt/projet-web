@@ -25,11 +25,11 @@ export class HttpClientService {
 
     constructor(private http: HttpClient) {}
 
-    getArticles(): Observable<Article[]> {
+    getArticles(random: boolean = false): Observable<Article[]> {
         return this.http
             .get<ArticlesResponse>(
-                this.base + "public/articles.php?page=1"
-            ) /* TODO les pages */
+                this.base + "public/articles.php" + (random ? "?random=1": "")
+            )
             .pipe(
                 map((data: ArticlesResponse) => data.articles),
 
