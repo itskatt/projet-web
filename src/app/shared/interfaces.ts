@@ -118,3 +118,7 @@ export interface ArticleStockUpdateStatement {
     article_id: number,
     quantity: number
 }
+
+export interface CreateArticleResponse extends Statusable {
+    article_id: number
+}

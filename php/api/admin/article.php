@@ -104,7 +104,6 @@ class AdminArticleHandler extends AdminRequiredHandler
         }
 
         $fileName = $_FILES["upl_img"]['name'];
-        $fileSize = $_FILES["upl_img"]['size'];
         $fileTmpName  = $_FILES["upl_img"]['tmp_name'];
         $fileType = $_FILES["upl_img"]['type'];
 
@@ -183,8 +182,7 @@ class AdminArticleHandler extends AdminRequiredHandler
         }
         $supplierPrice = (float) $supplierPrice;
 
-        echo $this->processImage();
-        die();
+        $image = $this->processImage();
 
         $conn = $this->getConnector();
         // Premièrement, on s'occupe du fournisseur
@@ -221,8 +219,8 @@ class AdminArticleHandler extends AdminRequiredHandler
         // On peut enfin créer l'article...
         $conn->query(
             <<<END
-            insert into article (supplier_id, name_, description_, rating, year, supplier_price)
-            values ($supplierId, :name, :desc, $rating, $year, $supplierPrice);
+            insert into article (supplier_id, name_, description_, rating, year, supplier_price, image_)
+            values ($supplierId, :name, :desc, $rating, $year, $supplierPrice, '$image');
             END,
             [
                 "name" => $articleName,

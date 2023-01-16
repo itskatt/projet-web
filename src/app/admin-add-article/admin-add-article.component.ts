@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
+import { HttpClientService } from "../service/http-client.service";
 
 @Component({
     selector: "app-admin-add-article",
@@ -18,7 +20,11 @@ export class AdminAddArticleComponent {
     uploadImageUrl: any = "";
     uploadImage: File | null = null;
 
-    constructor(private sanitizer: DomSanitizer, private builder: FormBuilder) {
+    constructor(
+        private sanitizer: DomSanitizer,
+        builder: FormBuilder,
+        private client: HttpClientService
+    ) {
         this.newArticleForm = builder.group({
             articleName: [""],
             supplierName: [""],
@@ -26,7 +32,7 @@ export class AdminAddArticleComponent {
             description: [""],
             rating: [0],
             supplierPrice: [],
-            quantity: []
+            quantity: [],
         });
     }
 
@@ -34,7 +40,7 @@ export class AdminAddArticleComponent {
         this.uploadImageUrl = this.sanitizer.bypassSecurityTrustUrl(
             URL.createObjectURL(event.target.files[0])
         );
-        this.uploadImage = event.target.files;
+        this.uploadImage = event.target.files[0];
     }
 
     removeImage(): void {
@@ -42,11 +48,44 @@ export class AdminAddArticleComponent {
     }
 
     submit(): void {
-        console.log(this.newArticleForm.value)
-        // if (!this.newArticleForm.valid) {
-        //     return;
-        // }
+        if (!this.newArticleForm.valid) {
+            return;
+        }
 
-        // let formData = new FormData();
+        let formData = new FormData();
+        formData.append("article_name", this.newArticleForm.value.articleName);
+        formData.append(
+            "supplier_name",
+            this.newArticleForm.value.supplierName
+        );
+        formData.append("description", this.newArticleForm.value.description);
+        formData.append("rating", this.newArticleForm.value.rating);
+        formData.append("year", this.newArticleForm.value.year);
+        formData.append(
+            "supplier_price",
+            this.newArticleForm.value.supplierPrice
+        );
+        formData.append("quantity", this.newArticleForm.value.supplierPrice);
+
+        // Si nous avons une image, on l'ajoute
+        if (this.uploadImage != null) {
+            formData.append("upl_img", this.uploadImage, this.uploadImage.name);
+        }
+
+        this.client.createArticle(formData).subscribe({
+            next: (resp) => {
+                console.log(resp);
+            },
+            error: (error: Error) => {
+                if (error instanceof HttpErrorResponse) {
+                    if ([400, 409].includes(error.status)) {
+                        this.articleError = error.error.message;
+                        return;
+                    }
+                }
+
+                throw error;
+            },
+        });
     }
 }

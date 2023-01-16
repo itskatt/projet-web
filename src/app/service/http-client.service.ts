@@ -9,6 +9,7 @@ import {
     ArticleStockUpdateStatement,
     CartInvoicesResponse,
     CartUpdateStatement,
+    CreateArticleResponse,
     CurrentCartResponse,
     Invoice,
     LoginResponse,
@@ -28,7 +29,7 @@ export class HttpClientService {
     getArticles(random: boolean = false): Observable<Article[]> {
         return this.http
             .get<ArticlesResponse>(
-                this.base + "public/articles.php" + (random ? "?random=1": "")
+                this.base + "public/articles.php" + (random ? "?random=1" : "")
             )
             .pipe(
                 map((data: ArticlesResponse) => data.articles),
@@ -122,6 +123,13 @@ export class HttpClientService {
     deleteArticle(id: number): Observable<Statusable> {
         return this.http.delete<Statusable>(
             this.base + "admin/article.php?id=" + id
+        );
+    }
+
+    createArticle(formData: FormData): Observable<CreateArticleResponse> {
+        return this.http.post<CreateArticleResponse>(
+            this.base + "admin/article.php",
+            formData
         );
     }
 }
