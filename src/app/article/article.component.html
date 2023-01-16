@@ -4,7 +4,7 @@
             <h1>{{ article.article_name }}</h1>
             <h3>{{ article.supplier_name }} &mdash; {{ article.year }}</h3>
         </div>
-    
+
         <div class="article-content">
             <div class="image-desc">
                 <img
@@ -15,13 +15,16 @@
                     {{ article.description }}
                 </p>
             </div>
-    
+
             <div class="cart-stock">
-                <hr>
-                    <p>Ce que d'autres en pensent...</p>
-                    <app-star-rating [stars]="article.rating" [large]="true"></app-star-rating>
-                <hr>
-    
+                <hr />
+                <p>Ce que d'autres en pensent...</p>
+                <app-star-rating
+                    [stars]="article.rating"
+                    [large]="true"
+                ></app-star-rating>
+                <hr />
+
                 <div class="prices">
                     <p class="ht">
                         Prix HT&nbsp;: {{ +article.price_no_tax }}&nbsp;€
@@ -30,10 +33,12 @@
                         Prix TTC&nbsp;: {{ article.price_tax }}&nbsp;€
                     </p>
                 </div>
-    
+
                 <em> En stock&nbsp;: {{ article.quantity }} </em>
-    
-                <button (click)="addToCart()" class="button">J'ajoute au panier</button>
+
+                <button (click)="addToCart()" class="button">
+                    J'ajoute au panier
+                </button>
             </div>
         </div>
     </main>

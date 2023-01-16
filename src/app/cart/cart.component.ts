@@ -16,7 +16,7 @@ import {
         "./cart.component.css",
         "../shared/dual-ui.css",
         "../shared/button.css",
-        "../shared/rounded-article-list.css"
+        "../shared/rounded-article-list.css",
     ],
 })
 export class CartComponent extends ArticleUser implements OnInit {
@@ -92,11 +92,11 @@ export class CartComponent extends ArticleUser implements OnInit {
     }
 
     order(): void {
-        this.client.orderCurrentCart().subscribe(_ => {
+        this.client.orderCurrentCart().subscribe((_) => {
             this.cartPrice = -1;
             this.cartArticles = [];
             this.fetchInvoices();
-        })
+        });
     }
 
     createCart(): void {
@@ -131,10 +131,7 @@ export class CartComponent extends ArticleUser implements OnInit {
         let article = this.articleMap.get(id);
         if (article == undefined) return;
 
-        if (
-            action == "add" &&
-            article.cart_quantity < article.stock_quantity
-        ) {
+        if (action == "add" && article.cart_quantity < article.stock_quantity) {
             article.cart_quantity++;
         } else if (action == "sub" && article.cart_quantity != 0) {
             article.cart_quantity--;

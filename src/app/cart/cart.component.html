@@ -116,7 +116,9 @@
                 <p>Prix TTC : {{ cartPrice.toLocaleString() }}&nbsp;€</p>
 
                 <div class="buttons-container">
-                    <button class="button" (click)="order()">Je commande</button>
+                    <button class="button" (click)="order()">
+                        Je commande
+                    </button>
                     <button (click)="deleteCart()" class="button delete-btn">
                         Je supprime mon panier
                     </button>
@@ -150,7 +152,8 @@
                             <p>
                                 Facture n°{{ invoice.invoice_id }},
                                 {{ invoice.num_articles || "aucun" }}
-                                article<span *ngIf="(invoice.num_articles || 2) > 1"
+                                article<span
+                                    *ngIf="(invoice.num_articles || 2) > 1"
                                     >s</span
                                 >.
                             </p>

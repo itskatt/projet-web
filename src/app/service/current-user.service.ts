@@ -29,7 +29,12 @@ export class CurrentUserService {
     /**
      * Enregistre les données de l'utilisateur en local.
      */
-    localLogin(email: string, last_name: string, first_name: string, admin: boolean): void {
+    localLogin(
+        email: string,
+        last_name: string,
+        first_name: string,
+        admin: boolean
+    ): void {
         localStorage.setItem("email", email);
         localStorage.setItem("last_name", last_name);
         localStorage.setItem("first_name", first_name);

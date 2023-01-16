@@ -8,7 +8,9 @@
             <p *ngIf="articles.length == 0">Chargement en cours...</p>
 
             <ng-container *ngIf="articles.length != 0">
-                <button routerLink="/new-article" class="button">Ajouter un article</button>
+                <button routerLink="/new-article" class="button">
+                    Ajouter un article
+                </button>
 
                 <ul class="rounded-list">
                     <li *ngFor="let article of articles">
@@ -53,7 +55,10 @@
                                         )
                                     "
                                 />
-                                <button class="button" (click)="deleteArticle(article.article_id)">
+                                <button
+                                    class="button"
+                                    (click)="deleteArticle(article.article_id)"
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 20 20"
@@ -93,7 +98,9 @@
                     <ul class="rounded-list">
                         <li *ngFor="let top of stats.most_sold_articles">
                             <a routerLink="/article/{{ top.article_id }}">
-                                &times;{{ top.total_quantity }} &ndash; {{ top.turnover.toLocaleString() }}&nbsp;€ de gains rapportés
+                                &times;{{ top.total_quantity }} &ndash;
+                                {{ top.turnover.toLocaleString() }}&nbsp;€ de
+                                gains rapportés
                             </a>
                         </li>
                     </ul>
@@ -114,7 +121,10 @@
                     <h3>Articles par fournisseurs</h3>
                     <ul class="rounded-list">
                         <li *ngFor="let s of stats.num_articles_per_supplier">
-                            <span>{{ s.supplier_name }} &ndash; {{ s.num_articles }}</span>
+                            <span
+                                >{{ s.supplier_name }} &ndash;
+                                {{ s.num_articles }}</span
+                            >
                         </li>
                     </ul>
                 </div>

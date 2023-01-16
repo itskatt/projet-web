@@ -37,17 +37,17 @@ const routes: Routes = [
     },
     {
         path: "admin",
-        component: AdminDashboardComponent
+        component: AdminDashboardComponent,
     },
     {
         path: "new-article",
-        component: AdminAddArticleComponent
+        component: AdminAddArticleComponent,
     },
     {
         path: "**",
         pathMatch: "full",
-        component: PageNotFoundComponent
-    }
+        component: PageNotFoundComponent,
+    },
 ];
 
 @NgModule({
