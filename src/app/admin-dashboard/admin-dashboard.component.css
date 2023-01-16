@@ -15,6 +15,14 @@
     padding: 0.3em;
 }
 
+.stock-quantity-control .button {
+    padding: 0.2em;
+}
+
+.stock-quantity-control svg {
+    width: 20px;
+}
+
 .stats {
     display: flex;
     flex-direction: column;

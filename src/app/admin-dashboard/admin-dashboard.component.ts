@@ -9,6 +9,7 @@ import { AdminStatsResponse, Article } from "../shared/interfaces";
     styleUrls: [
         "./admin-dashboard.component.css",
         "../shared/dual-ui.css",
+        "../shared/button.css",
         "../shared/rounded-article-list.css",
     ],
 })
