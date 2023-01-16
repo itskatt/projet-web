@@ -121,7 +121,7 @@ export class CartComponent extends ArticleUser implements OnInit {
 
         if (
             action == "add" &&
-            article.cart_quantity <= article.stock_quantity
+            article.cart_quantity < article.stock_quantity
         ) {
             article.cart_quantity++;
         } else if (action == "sub" && article.cart_quantity != 0) {
