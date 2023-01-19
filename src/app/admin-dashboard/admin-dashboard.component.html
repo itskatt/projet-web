@@ -5,13 +5,13 @@
         <section>
             <h2>Articles</h2>
 
+            <button routerLink="/new-article" class="button">
+                Ajouter un article
+            </button>
+
             <p *ngIf="articles.length == 0">Chargement en cours...</p>
 
             <ng-container *ngIf="articles.length != 0">
-                <button routerLink="/new-article" class="button">
-                    Ajouter un article
-                </button>
-
                 <ul class="rounded-list">
                     <li *ngFor="let article of articles">
                         <img
