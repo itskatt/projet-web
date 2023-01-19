@@ -165,9 +165,10 @@ class AdminArticleHandler extends AdminRequiredHandler
             $data
         );
 
-        $articleName = htmlspecialchars($data["article_name"]);
-        $supplierName = htmlspecialchars($data["supplier_name"]);
-        $description = htmlspecialchars($data["description"]);
+        // L'anti-XSS se fait coté client avec angular
+        $articleName = $data["article_name"];
+        $supplierName = $data["supplier_name"];
+        $description = $data["description"];
 
         $rating = $this->validateInt($data, "rating");
 
