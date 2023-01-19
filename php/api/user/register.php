@@ -64,7 +64,6 @@ class RegistrationHandler extends PublicHandler
             ]
         );
 
-        // TODO : also login the user
         $this->sendOK([
             "email" => $email
         ]);
