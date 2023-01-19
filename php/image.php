@@ -33,4 +33,5 @@ if (!$path) {
 header('Content-Description: File Transfer');
 header('Content-Length: ' . filesize($path));
 header("Content-Type: " . getimagesize($path)["mime"]);
+header("Cache-Control: max-age=31536000, immutable");
 readfile($path);
