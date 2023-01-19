@@ -9,6 +9,8 @@ import { ArticleUser } from "../shared/article-user";
     styleUrls: ["./articles-grid.component.css"],
 })
 export class ArticlesGridComponent extends ArticleUser implements OnInit {
+    len: number = 40;
+
     articles: Article[] = [];
 
     constructor(private client: HttpClientService) {
@@ -23,5 +25,13 @@ export class ArticlesGridComponent extends ArticleUser implements OnInit {
         this.client.getArticles(true).subscribe((articles) => {
             this.articles = articles;
         });
+    }
+
+    trunc(text: string): string {
+        if (text.length > this.len) {
+            return text.substring(0, this.len) + "…";
+        }
+
+        return text;
     }
 }
