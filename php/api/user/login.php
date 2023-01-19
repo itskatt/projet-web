@@ -41,7 +41,7 @@ class LoginHandler extends PublicHandler
         $warnings = [];
         if ($res["admin"]) {
             $warnings = $conn->query(
-                "select article_id, quantity from stock where quantity < 10;"
+                "select article_id, quantity from stock where quantity < 10 and quantity >= 0;"
             )->fetchAll(PDO::FETCH_ASSOC);
         }
 
