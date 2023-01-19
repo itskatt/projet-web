@@ -277,7 +277,6 @@ class AdminArticleHandler extends AdminRequiredHandler
         }
 
         $conn = $this->getConnector();
-        // TODO : aussi ajuster cart_article si nouveau stock < cart_article.quantity
         $conn->query(
             <<<END
             update stock

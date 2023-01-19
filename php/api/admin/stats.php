@@ -68,7 +68,7 @@ class AdminStatsHandler extends AdminRequiredHandler
         $this->sendOK([
             "sales_per_invoice" => $salesPerInvoices,
             "turnover" => (float) $turnover,
-            "most_sold_articles" => $mostSoldArticlesAndTurnover, // TODO peut être ajouter les noms d'articles
+            "most_sold_articles" => $mostSoldArticlesAndTurnover,
             "highest_stocks" => $highestStocks,
             "num_articles_per_supplier" => $numArticlesPerSupplier
         ]);
