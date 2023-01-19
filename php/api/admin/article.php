@@ -26,7 +26,7 @@ class AdminArticleHandler extends AdminRequiredHandler
     private function validateInt(array $data, string $name): int
     {
         $object = $data[$name];
-        if ($object !== strval((int) $object)) {
+        if (gettype($object) !== "integer" and $object !== strval((int) $object)) {
             $this->sendError(
                 400,
                 "Le paramètre '$name' n'est pas un nombre !"
