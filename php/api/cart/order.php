@@ -96,13 +96,7 @@ class OrderCartHandler extends LoginRequiredHandler
             );
         }
 
-        $invoiceId = $conn->query(
-            <<<END
-            select auto_increment - 1 "id"
-            from information_schema.TABLES
-            where TABLE_SCHEMA = database() and TABLE_NAME = 'invoice';
-            END
-        )->fetch(PDO::FETCH_NUM)[0];
+        $invoiceId = $conn->lastInsertId();
 
         // On envoie le mail
         $invoiceArticles = $conn->query(

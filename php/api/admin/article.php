@@ -217,13 +217,7 @@ class AdminArticleHandler extends AdminRequiredHandler
             );
 
             // On récupère l'id du fournisseur tout juste crée
-            $supplierId = $conn->query(
-                <<<END
-                select auto_increment - 1 "id"
-                from information_schema.TABLES
-                where TABLE_SCHEMA = database() and TABLE_NAME = 'supplier';
-                END
-            )->fetch(PDO::FETCH_NUM)[0];
+            $supplierId = $conn->lastInsertId();
         }
 
         // On peut enfin créer l'article...
@@ -238,13 +232,7 @@ class AdminArticleHandler extends AdminRequiredHandler
             ]
         );
 
-        $articleId = $conn->query(
-            <<<END
-            select auto_increment - 1 "id"
-            from information_schema.TABLES
-            where TABLE_SCHEMA = database() and TABLE_NAME = 'article';
-            END
-        )->fetch(PDO::FETCH_NUM)[0];
+        $articleId = $conn->lastInsertId();
 
         // ...et le stock en question
         $conn->query(

@@ -56,4 +56,12 @@ class DatabaseConnector
     {
         return $this::$db->rollBack();
     }
+
+    /**
+     * Expose la méthode PDO::lastInsertId()
+     */
+    public function lastInsertId(): string
+    {
+        return $this::$db->lastInsertId();
+    }
 }
