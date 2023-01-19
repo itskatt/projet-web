@@ -19,6 +19,11 @@ main {
     gap: 1.5em;
 }
 
+img {
+    object-fit: contain;
+    aspect-ratio: 4/3;
+}
+
 h2 {
     margin-bottom: 1.5em;
 }

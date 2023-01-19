@@ -136,7 +136,7 @@ class AdminArticleHandler extends AdminRequiredHandler
         }
 
         // Ensuite on redimentionne l'image dans le format souhaité
-        $res = $this->createThumbnail($tempDest, $destDir . "/" . $imageId, 400, 300);
+        $res = $this->createThumbnail($tempDest, $destDir . "/" . $imageId, 400);
 
         // On supprime l'image non-redimentionée
         unlink($tempDest);

@@ -1,3 +1,8 @@
+img {
+    object-fit: contain;
+    aspect-ratio: 4/3;
+}
+
 .no-articles,
 .cart-articles {
     display: flex;

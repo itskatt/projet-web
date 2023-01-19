@@ -41,14 +41,14 @@ main {
 
 .article img {
     transition: 0.5s transform;
+    border-radius: 10px;
+
+    object-fit: contain;
+    aspect-ratio: 4/3;
 }
 
 .article:hover img {
     transform: scale(1.1);
-}
-
-.article img {
-    border-radius: 10px;
 }
 
 /* Nom du produit */

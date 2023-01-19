@@ -52,6 +52,9 @@ h3 {
 
 img {
     border: 1px solid var(--outline);
+
+    object-fit: contain;
+    aspect-ratio: 4/3;
 }
 
 .cart-stock {
