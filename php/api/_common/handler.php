@@ -269,7 +269,7 @@ abstract class LoginRequiredHandler extends RouteHandler
                 select c.id from cart c
                 inner join invoice i on c.id = i.cart_id
                 where c.client_email = :email
-            );
+            ) and client_email = :email;
             END,
             ["email" => $this->email]
         )->fetch(PDO::FETCH_NUM)[0];
