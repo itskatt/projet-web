@@ -6,8 +6,6 @@ class LogoutHandler extends LoginRequiredHandler
 {
     protected function handlePOST(?array $data): void
     {
-        $token = $_COOKIE["token"];
-
         // On supprime le cookie
         setcookie("token", "", time() - 10, "/");
 
@@ -16,12 +14,9 @@ class LogoutHandler extends LoginRequiredHandler
         $conn->query(
             <<<END
             delete from session
-            where client_email = (
-                select client_email from session
-                where token = :token
-                );
+            where client_email = :email;
             END,
-            ["token" => $token]
+            ["email" => $this->email]
         );
 
         $this->sendOK([]);
