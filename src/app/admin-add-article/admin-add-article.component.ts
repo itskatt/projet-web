@@ -67,7 +67,7 @@ export class AdminAddArticleComponent {
             "supplier_price",
             this.newArticleForm.value.supplierPrice
         );
-        formData.append("quantity", this.newArticleForm.value.supplierPrice);
+        formData.append("quantity", this.newArticleForm.value.quantity);
 
         // Si nous avons une image, on l'ajoute
         if (this.uploadImage != null) {
