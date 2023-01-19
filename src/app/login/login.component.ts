@@ -49,7 +49,12 @@ export class LoginComponent {
                         response.first_name,
                         response.admin
                     );
-                    // TODO response.warnings
+                    
+                    if (response.warnings.length !== 0) {
+                        this.router.navigate(["admin"]);
+                        alert(response.warnings.length + " articles ont un stock dangereusement bas, merci de verifier les stock.");
+                        return;
+                    }
 
                     this.router.navigate([""]);
                 },
