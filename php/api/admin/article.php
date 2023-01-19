@@ -136,12 +136,17 @@ class AdminArticleHandler extends AdminRequiredHandler
         }
 
         // Ensuite on redimentionne l'image dans le format souhaité
-        $this->createThumbnail($tempDest, $destDir . "/" . $imageId, 400, 300);
+        $res = $this->createThumbnail($tempDest, $destDir . "/" . $imageId, 400, 300);
 
         // On supprime l'image non-redimentionée
         unlink($tempDest);
 
-        return $imageId;
+        if ($res != null) {
+            return $imageId;
+        } else {
+            // Si la redimention a eu un problème, il n'y aura pas d'image...
+            return null;
+        }
     }
 
     protected function handlePOST(?array $data): void
