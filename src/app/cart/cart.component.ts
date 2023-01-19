@@ -20,7 +20,7 @@ import {
     ],
 })
 export class CartComponent extends ArticleUser implements OnInit {
-    invoices: Invoice[] = [];
+    invoices: Invoice[] | null = null;
 
     cartArticles: CartArticle[] = [];
     cartPrice: number = -1;

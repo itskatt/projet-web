@@ -129,7 +129,13 @@
         <section>
             <h2>Mes commandes passées</h2>
 
-            <p *ngIf="invoices.length == 0">Chargement en cours...</p>
+            <p *ngIf="invoices === null">Chargement en cours...</p>
+
+            <div class="no-articles" *ngIf="invoices !== null && invoices.length === 0">
+                <img src="/assets/no_invoices.svg" alt="Aucunes commandes">
+
+                <p style="text-align: center;">Vous n'avez encore rien commandé sur TelTech.<br>Qu'attendez-vous&nbsp;!</p>
+            </div>
 
             <ul class="rounded-list">
                 <li *ngFor="let invoice of invoices">
