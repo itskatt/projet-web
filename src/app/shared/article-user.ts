@@ -11,6 +11,6 @@ export abstract class ArticleUser {
             return "/assets/default-" + code + ".png";
         }
 
-        return "/uploads/" + image;
+        return "/image.php?id=" + image;
     }
 }

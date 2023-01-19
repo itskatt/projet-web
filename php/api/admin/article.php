@@ -123,7 +123,11 @@ class AdminArticleHandler extends AdminRequiredHandler
             return null;
         }
 
-        $destDir = realpath(__DIR__ . "/../../uploads");
+        $destDir = realpath(__DIR__ . "/../../../uploads");
+        if (!is_dir($destDir)) {
+            $this->sendError(500, "Merci de créer le dossier d'images...");
+        }
+
         $imageId = uniqid() . "." . $fileExtension;
 
         $tempDest = $destDir . "/TMP-" . $imageId;

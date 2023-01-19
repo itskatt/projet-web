@@ -2,9 +2,7 @@
 config.php
 
 # Uploaded images
-php/uploads/*.jpg
-php/uploads/*.jpeg
-php/uploads/*.png
+uploads/
 
 # Compiled output
 /dist
