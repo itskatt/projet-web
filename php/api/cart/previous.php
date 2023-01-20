@@ -35,16 +35,16 @@ class PreviousCartHandler extends LoginRequiredHandler
                     inner join cart_article ca on a.id = ca.article_id
                     inner join cart c on ca.cart_id = c.id
                     inner join invoice i on c.id = i.cart_id
-            where c.id = :id;
+            where c.id = :id and c.client_email = :email;
             END,
-            ["id" => $id]
+            ["id" => $id, "email" => $this->email]
         )->fetchAll(PDO::FETCH_ASSOC);
 
         if (!$articles) {
             // On verifie si le panier n'existe pas ou est vide
             $invoice = $conn->query(
-                "select id from invoice where cart_id = :id;",
-                ["id" => $id]
+                "select i.id from invoice i inner join cart c on c.id = i.cart_id where i.cart_id = :id and c.client_email = :email;",
+                ["id" => $id, "email" => $this->email]
             )->fetch(PDO::FETCH_ASSOC);
 
             if (!$invoice) {
