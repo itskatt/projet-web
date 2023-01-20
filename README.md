@@ -44,6 +44,12 @@ Create or use an existing user account, the create the required database:
 CREATE DATABASE tel;
 ```
 
+Switch over to the database:
+
+```sql
+USE tel;
+```
+
 Then run the schema creation script found under `sql/schema.sql` to create all the
 required tables.
 
