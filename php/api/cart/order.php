@@ -60,6 +60,8 @@ class OrderCartHandler extends LoginRequiredHandler
             END
         );
 
+        $invoiceId = $conn->lastInsertId();
+
         // Pour tout les articles dans le panier, faire baisser leur stock
         $cartArticles = $conn->query(
             <<<END
@@ -95,8 +97,6 @@ class OrderCartHandler extends LoginRequiredHandler
                 ]
             );
         }
-
-        $invoiceId = $conn->lastInsertId();
 
         // On envoie le mail
         $invoiceArticles = $conn->query(
