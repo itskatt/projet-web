@@ -3,7 +3,11 @@
 ## About
 
 A simple e-commerce website made for my web development
-classes. Built with Angular and PHP.
+classes. Built with:
+
+-   **PHP 8.1**: RESTfull back-end
+-   **MySql 8**: Database
+-   **Angular 15**: Front-end
 
 ## How to run
 
@@ -66,10 +70,14 @@ The build artifacts can be found in the `dist` folder.
 Move the content to the build artifacts to your apache DocumentRoot, then, in the same directory
 where the DocumentRoot is located:
 
-- Create a folder named `uploads` and give read and write rights to PHP (using `chmod`)
-- Create a file named `config.php` following the template of the `config.example.php` file
+-   Create a folder named `uploads` and give read and write rights to PHP (using `chmod`)
+-   Create a file named `config.php` following the template of the `config.example.php` file
 
 Congradulations, the website is up and running !
+
+## Author
+
+Raphaël Caldwell &ndash; [itskatt](https://github.com/itskatt)
 
 ## License
 
